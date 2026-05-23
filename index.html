@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NUDRAK — Donovan Agustin Alvarez. Backend Engineer. Python, FastAPI, APIs escalables y arquitectura modular.">
+  <title>NUDRAK | Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- GitHub Pages: Settings → Pages → Deploy from branch main, folder / (root).
+       Si el repo no usa username.github.io, mover el contenido de portfolio/ a la raíz. -->
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo">NUDRAK</a>
+
+      <button class="header__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+      </button>
+
+      <nav class="header__nav" id="nav">
+        <a href="#about" class="header__link">About</a>
+        <a href="#skills" class="header__link">Skills</a>
+        <a href="#projects" class="header__link">Projects</a>
+        <a href="#contact" class="header__link">Contact</a>
+        <a href="assets/CV_Donovan_Agustin_Alvarez.pdf" class="header__link" target="_blank" rel="noopener noreferrer">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero__linux-bg" aria-hidden="true">
+        <pre class="hero__linux-scroll"><code><span class="tok-comment"># ~/scripts/deploy.sh</span>
+<span class="tok-keyword">#!/bin/bash</span>
+<span class="tok-fn">cd</span> /home/nudrak/projects/api
+<span class="tok-fn">source</span> .venv/bin/activate
+<span class="tok-fn">export</span> ENV=production
+
+<span class="tok-fn">systemctl</span> status nudrak-api
+<span class="tok-fn">journalctl</span> -u api -n 3 --no-pager
+<span class="tok-comment"># May 23 02:14:01 linux systemd[1]: Started API.</span>
+
+<span class="tok-fn">ls</span> -la ~/projects/
+drwxr-xr-x  ecommerce-api
+drwxr-xr-x  task-manager
+drwxr-xr-x  rag-core
+
+<span class="tok-fn">uname</span> -sr
+Linux 6.x.x-amd64
+<span class="tok-fn">htop</span> <span class="tok-comment"># monitoring</span></code></pre>
+      </div>
+      <div class="hero__code-bg" aria-hidden="true">
+        <pre class="hero__code-scroll"><code><span class="tok-comment"># api/main.py</span>
+<span class="tok-keyword">from</span> fastapi <span class="tok-keyword">import</span> FastAPI
+<span class="tok-keyword">from</span> app.routes <span class="tok-keyword">import</span> router
+
+app = FastAPI(title=<span class="tok-string">"NUDRAK API"</span>)
+
+<span class="tok-dec">@app.get</span>(<span class="tok-string">"/health"</span>)
+<span class="tok-keyword">async def</span> <span class="tok-fn">health_check</span>():
+    <span class="tok-keyword">return</span> {<span class="tok-string">"status"</span>: <span class="tok-string">"ok"</span>}
+
+app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
+<span class="tok-comment"># Layered: routes → services → repos</span>
+<span class="tok-keyword">class</span> <span class="tok-fn">UserRepository</span>:
+    <span class="tok-keyword">async def</span> <span class="tok-fn">get_by_id</span>(self, id: int): ...
+<span class="tok-comment"># Docker · PostgreSQL · Redis</span>
+<span class="tok-keyword">await</span> redis.set(<span class="tok-string">"session"</span>, token, ex=<span class="tok-num">3600</span>)
+<span class="tok-dec">@router.post</span>(<span class="tok-string">"/auth/login"</span>)
+<span class="tok-keyword">async def</span> <span class="tok-fn">login</span>(payload: LoginSchema): ...
+</code></pre>
+      </div>
+
+      <div class="container hero__layout">
+        <div class="hero__inner">
+          <p class="hero__label">
+            <span class="hero__label-prefix">&gt;_</span>
+            <span id="hero-role" class="hero__label-text">Backend Engineer</span>
+            <span class="code-cursor" aria-hidden="true"></span>
+          </p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__title-wrap" tabindex="0" aria-label="NUDRAK">
+              <span class="hero__title-top">
+                <span class="hero__bracket hero__bracket--open">{</span><span class="hero__title-text">NUDRAK</span>
+              </span><span class="hero__bracket hero__bracket--close">}</span>
+            </span>
+          </h1>
+          <p class="hero__name">Donovan Agustin Alvarez</p>
+          <p class="hero__env">
+            <span class="hero__env-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 1.5c1.66 0 3.17.57 4.37 1.52-.47.12-.97.19-1.49.19-1.93 0-3.68-.82-4.91-2.13C10.57 4.35 11.26 4.5 12 4.5zM7.03 6.9c1.07 1.36 2.7 2.24 4.47 2.24.58 0 1.14-.09 1.67-.25-.15.87-.58 1.64-1.21 2.21C10.55 9.82 8.6 8.74 7.03 6.9zM5.25 8.8c1.35 1.9 3.48 3.14 5.87 3.35-.47.55-.82 1.2-1.02 1.92-2.3-.28-4.35-1.4-5.85-3.27zm-.75 3.5c1.28 1.55 3.12 2.6 5.18 2.87.05.36.08.73.08 1.11 0 .55-.08 1.08-.22 1.59-2.87-.35-5.38-1.75-7.04-3.77.47-1.01 1.15-1.92 2-2.8zm3 4.95c1.42 1.05 3.17 1.67 5.07 1.67.9 0 1.76-.16 2.55-.45-.98 1.15-2.42 1.88-4.05 1.88-1.55 0-2.98-.67-3.97-1.74l.4-1.36zm6.22 1.36c.73.28 1.53.44 2.36.44 1.93 0 3.68-.82 4.91-2.13-1.07 1.36-2.7 2.24-4.47 2.24-.65 0-1.27-.11-1.86-.3l-.94 1.75z"/></svg>
+            </span>
+            Linux · zsh · <span class="hero__path">~/backend</span>
+          </p>
+          <p class="hero__subtitle" id="hero-stack">
+            <span class="hero__tech" data-index="0">Python</span>
+            <span class="hero__divider">|</span>
+            <span class="hero__tech" data-index="1">FastAPI</span>
+            <span class="hero__divider">|</span>
+            <span class="hero__tech" data-index="2">PostgreSQL</span>
+            <span class="hero__divider">|</span>
+            <span class="hero__tech" data-index="3">Docker</span>
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="hero__cta">Ver proyectos</a>
+            <a href="#contact" class="hero__cta hero__cta--secondary">Contacto</a>
+            <a href="assets/CV_Donovan_Agustin_Alvarez.pdf" class="hero__cta hero__cta--secondary" target="_blank" rel="noopener noreferrer">CV</a>
+          </div>
+        </div>
+
+        <aside class="code-terminal reveal" data-reveal>
+          <div class="code-terminal__header">
+            <span class="code-terminal__dot"></span>
+            <span class="code-terminal__dot"></span>
+            <span class="code-terminal__dot"></span>
+            <span class="code-terminal__title">nudrak@linux:~/backend</span>
+          </div>
+          <pre class="code-terminal__body"><code id="terminal-output"></code><span class="code-cursor code-cursor--terminal" aria-hidden="true"></span></pre>
+        </aside>
+      </div>
+      <div class="hero__accent-line" aria-hidden="true"></div>
+    </section>
+
+    <section class="section about reveal" id="about" data-reveal>
+      <div class="container">
+        <h2 class="section__title">About</h2>
+        <p class="about__meta">
+          Junior · Proyectos personales avanzados · Disponible para empleo y proyectos · Español · Inglés técnico (en estudio)
+        </p>
+        <div class="about__grid">
+          <div class="about__content">
+            <p>
+              Backend developer enfocado en el diseño e implementación de sistemas escalables, APIs
+              y arquitecturas modulares utilizando Python. Me especializo en construir servicios
+              backend desde cero, con enfoque en separación de responsabilidades, mantenibilidad
+              y diseño limpio de software.
+            </p>
+            <p>
+              Disfruto diseñar APIs robustas, sistemas de autenticación y arquitecturas orientadas
+              a servicios. Estructuro mis proyectos separando capa de rutas, lógica de negocio
+              y persistencia — buscando código limpio y escalable incluso en proyectos pequeños.
+            </p>
+            <p>
+              Mi enfoque no es solo escribir código funcional, sino estructurar sistemas que
+              puedan crecer de forma ordenada.
+            </p>
+          </div>
+          <div class="code-snippet reveal" data-reveal data-reveal-delay="120">
+            <div class="code-snippet__bar">
+              <span>architecture.py</span>
+              <span class="code-snippet__status"><span class="status-dot"></span> modular</span>
+            </div>
+            <pre class="code-snippet__body"><code><span class="tok-comment"># Separation of concerns</span>
+<span class="tok-keyword">routes</span>  → HTTP layer
+<span class="tok-keyword">services</span> → business logic
+<span class="tok-keyword">repos</span>   → data access
+
+<span class="tok-keyword">def</span> <span class="tok-fn">build_app</span>():
+    <span class="tok-keyword">return</span> create_api(
+        layers=[Routes, Services, Repositories]
+    )</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--skills skills reveal" id="skills" data-reveal>
+      <div class="container">
+        <div class="skills__head">
+          <h2 class="section__title">Skills</h2>
+          <p class="skills__intro">Stack técnico orientado a backend, infraestructura, flujo de trabajo con IA y arquitectura de software.</p>
+        </div>
+
+        <div class="skills__panel">
+          <div class="skills__panel-bar">
+            <span class="skills__panel-dot"></span>
+            <span class="skills__panel-dot"></span>
+            <span class="skills__panel-dot"></span>
+            <span class="skills__panel-path">~/nudrak/stack.config</span>
+            <span class="skills__panel-status"><span class="status-dot"></span> active</span>
+          </div>
+
+          <div class="skills__grid">
+            <div class="skills__group reveal" data-reveal data-reveal-delay="0">
+              <div class="skills__group-head">
+                <span class="skills__index">01</span>
+                <h3 class="skills__label">Backend</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill">Python</span>
+                <span class="badge badge--skill">FastAPI</span>
+                <span class="badge badge--skill">Flask</span>
+              </div>
+            </div>
+
+            <div class="skills__group reveal" data-reveal data-reveal-delay="80">
+              <div class="skills__group-head">
+                <span class="skills__index">02</span>
+                <h3 class="skills__label">Databases</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill">PostgreSQL</span>
+                <span class="badge badge--skill">SQLite</span>
+                <span class="badge badge--skill">Redis</span>
+              </div>
+            </div>
+
+            <div class="skills__group reveal" data-reveal data-reveal-delay="160">
+              <div class="skills__group-head">
+                <span class="skills__index">03</span>
+                <h3 class="skills__label">DevOps</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill">Docker</span>
+                <span class="badge badge--skill">GitHub Actions</span>
+                <span class="badge badge--skill">Alembic</span>
+              </div>
+            </div>
+
+            <div class="skills__group reveal" data-reveal data-reveal-delay="240">
+              <div class="skills__group-head">
+                <span class="skills__index">04</span>
+                <h3 class="skills__label">Security</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill">JWT</span>
+                <span class="badge badge--skill">bcrypt</span>
+                <span class="badge badge--skill">Sessions</span>
+              </div>
+            </div>
+
+            <div class="skills__group reveal" data-reveal data-reveal-delay="320">
+              <div class="skills__group-head">
+                <span class="skills__index">05</span>
+                <h3 class="skills__label">Environment</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill badge--linux">Linux</span>
+                <span class="badge badge--skill">Bash</span>
+                <span class="badge badge--skill">Nvim</span>
+                <span class="badge badge--skill">Git</span>
+              </div>
+            </div>
+
+            <div class="skills__group reveal" data-reveal data-reveal-delay="400">
+              <div class="skills__group-head">
+                <span class="skills__index">06</span>
+                <h3 class="skills__label">AI Workflow</h3>
+              </div>
+              <div class="skills__badges">
+                <span class="badge badge--skill">Cursor</span>
+                <span class="badge badge--skill">ChatGPT</span>
+                <span class="badge badge--skill">Claude</span>
+              </div>
+            </div>
+
+            <div class="skills__group skills__group--wide reveal" data-reveal data-reveal-delay="480">
+              <div class="skills__group-head">
+                <span class="skills__index">07</span>
+                <h3 class="skills__label">Architecture</h3>
+              </div>
+              <div class="skills__badges skills__badges--wide">
+                <span class="badge badge--skill">Clean Architecture</span>
+                <span class="badge badge--skill">Layered</span>
+                <span class="badge badge--skill">Repository Pattern</span>
+                <span class="badge badge--skill">REST API</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects reveal" id="projects" data-reveal>
+      <div class="container">
+        <h2 class="section__title">Projects</h2>
+        <div class="projects__grid">
+
+          <article class="project-card reveal" data-reveal data-reveal-delay="0">
+            <div class="project-card__code">
+              <code><span class="tok-keyword">POST</span> <span class="tok-string">/api/v1/orders</span> <span class="tok-comment"># JWT</span></code>
+            </div>
+            <h3 class="project-card__title">Ecommerce API</h3>
+            <p class="project-card__desc">
+              Backend completo de e-commerce listo para integración con frontend. Gestión de
+              productos, usuarios y órdenes con autenticación JWT, carrito, control de stock
+              y panel administrativo.
+            </p>
+            <div class="project-card__stack">
+              <span class="badge">FastAPI</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">Redis</span>
+              <span class="badge">Docker</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Donovan-Nudrak/E_commerce" class="project-card__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-reveal data-reveal-delay="100">
+            <div class="project-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/api/v1/tasks?team=</span> <span class="tok-comment"># RBAC</span></code>
+            </div>
+            <h3 class="project-card__title">Task Manager API</h3>
+            <p class="project-card__desc">
+              Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC),
+              soft delete, paginación, filtros y CI con GitHub Actions.
+            </p>
+            <div class="project-card__stack">
+              <span class="badge">FastAPI</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">JWT</span>
+              <span class="badge">Docker</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Donovan-Nudrak/Task_Manager" class="project-card__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-reveal data-reveal-delay="200">
+            <div class="project-card__code">
+              <code><span class="tok-keyword">POST</span> <span class="tok-string">/api/v1/query</span> <span class="tok-comment"># RAG</span></code>
+            </div>
+            <h3 class="project-card__title">RAG Core Service</h3>
+            <p class="project-card__desc">
+              Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración
+              con LLMs vía OpenRouter y recuperación semántica de información contextual.
+            </p>
+            <div class="project-card__stack">
+              <span class="badge">FastAPI</span>
+              <span class="badge">OpenRouter</span>
+              <span class="badge">SQLite</span>
+              <span class="badge">Pydantic</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Donovan-Nudrak/RAG_Core_Service" class="project-card__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-reveal data-reveal-delay="300">
+            <div class="project-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/notes/shared</span> <span class="tok-comment"># live</span><span class="status-dot status-dot--inline"></span></code>
+            </div>
+            <h3 class="project-card__title">Notes API</h3>
+            <p class="project-card__desc">
+              API de notas con autenticación por sesión, notas compartidas entre usuarios
+              y sistema de permisos básico. Desplegada en producción.
+            </p>
+            <div class="project-card__stack">
+              <span class="badge">Flask</span>
+              <span class="badge">SQLite</span>
+              <span class="badge">SQLAlchemy</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Donovan-Nudrak/Rest-Api-NOOTES_APP" class="project-card__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://rest-api-nootesapp-production.up.railway.app" class="project-card__link" target="_blank" rel="noopener noreferrer">Demo</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact reveal" id="contact" data-reveal>
+      <div class="container">
+        <div class="contact__header">
+          <h2 class="section__title">Contact</h2>
+          <p class="contact__status">
+            <span class="status-dot"></span>
+            Disponible para empleo y proyectos backend
+          </p>
+        </div>
+
+        <div class="contact__layout">
+          <div class="contact__channels">
+            <a href="mailto:Nudrak@protonmail.com" class="contact-card reveal" data-reveal data-reveal-delay="0">
+              <span class="contact-card__cmd">$ mail -s "Hello"</span>
+              <span class="contact-card__label">Email</span>
+              <span class="contact-card__value">Nudrak@protonmail.com</span>
+            </a>
+
+            <button type="button" class="contact-card contact-card--action reveal" data-reveal data-reveal-delay="80" data-copy="Nudrak@protonmail.com" aria-label="Copiar email">
+              <span class="contact-card__cmd">$ cp email ~/clipboard</span>
+              <span class="contact-card__label">Copiar email</span>
+              <span class="contact-card__value" data-copy-feedback>Click para copiar</span>
+            </button>
+
+            <a href="https://github.com/Donovan-Nudrak" class="contact-card reveal" data-reveal data-reveal-delay="160" target="_blank" rel="noopener noreferrer">
+              <span class="contact-card__cmd">$ git remote -v</span>
+              <span class="contact-card__label">GitHub</span>
+              <span class="contact-card__value">github.com/Donovan-Nudrak</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/donovan-a-a-83b7ba3a2" class="contact-card reveal" data-reveal data-reveal-delay="240" target="_blank" rel="noopener noreferrer">
+              <span class="contact-card__cmd">$ open linkedin</span>
+              <span class="contact-card__label">LinkedIn</span>
+              <span class="contact-card__value">donovan-a-a-83b7ba3a2</span>
+            </a>
+
+            <a href="assets/CV_Donovan_Agustin_Alvarez.pdf" class="contact-card reveal" data-reveal data-reveal-delay="320" target="_blank" rel="noopener noreferrer">
+              <span class="contact-card__cmd">$ cat CV.pdf</span>
+              <span class="contact-card__label">Curriculum</span>
+              <span class="contact-card__value">Descargar PDF</span>
+            </a>
+          </div>
+
+          <aside class="linux-panel reveal" data-reveal data-reveal-delay="120">
+            <div class="linux-panel__tux" aria-hidden="true">
+              <svg viewBox="0 0 64 80" width="48" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="72" rx="18" ry="4" fill="rgba(61,220,151,0.15)"/>
+                <path d="M32 8c-10 0-18 8-18 18 0 4 1 8 3 11l-2 8 7-3c3 2 6 3 10 3s7-1 10-3l7 3-2-8c2-3 3-7 3-11 0-10-8-18-18-18z" fill="#2a3140" stroke="rgba(61,220,151,0.3)" stroke-width="1"/>
+                <ellipse cx="32" cy="24" rx="14" ry="16" fill="#3a4455"/>
+                <ellipse cx="24" cy="20" rx="5" ry="6" fill="#2a3140"/>
+                <ellipse cx="40" cy="20" rx="5" ry="6" fill="#2a3140"/>
+                <circle cx="26" cy="28" r="2.5" fill="#0B0F14"/>
+                <circle cx="38" cy="28" r="2.5" fill="#0B0F14"/>
+                <circle cx="27" cy="27" r="0.8" fill="#3DDC97"/>
+                <circle cx="39" cy="27" r="0.8" fill="#3DDC97"/>
+                <ellipse cx="32" cy="34" rx="3" ry="2" fill="#FFA657"/>
+                <path d="M18 38c-4 6-6 14-6 22 0 8 6 14 14 14h4c8 0 14-6 14-14 0-8-2-16-6-22" fill="#2a3140" stroke="rgba(61,220,151,0.2)" stroke-width="1"/>
+                <ellipse cx="32" cy="58" rx="10" ry="12" fill="#f0f0f0" opacity="0.9"/>
+              </svg>
+            </div>
+            <div class="code-terminal__header">
+              <span class="code-terminal__dot"></span>
+              <span class="code-terminal__dot"></span>
+              <span class="code-terminal__dot"></span>
+              <span class="code-terminal__title">nudrak@linux ~/contact</span>
+            </div>
+            <pre class="linux-panel__body"><code id="contact-terminal-output"></code><span class="code-cursor code-cursor--terminal" aria-hidden="true"></span></pre>
+            <div class="linux-panel__info">
+              <div class="linux-panel__row"><span>OS</span><span>Linux x86_64</span></div>
+              <div class="linux-panel__row"><span>Shell</span><span>zsh</span></div>
+              <div class="linux-panel__row"><span>Editor</span><span>Nvim · Cursor</span></div>
+              <div class="linux-panel__row"><span>Host</span><span>nudrak-backend</span></div>
+            </div>
+            <div class="linux-bars" aria-hidden="true">
+              <span class="linux-bars__label">load avg</span>
+              <div class="linux-bars__grid">
+                <div class="linux-bars__track"><span class="linux-bars__fill" style="--load: 42%"></span></div>
+                <div class="linux-bars__track"><span class="linux-bars__fill" style="--load: 28%"></span></div>
+                <div class="linux-bars__track"><span class="linux-bars__fill" style="--load: 61%"></span></div>
+                <div class="linux-bars__track"><span class="linux-bars__fill" style="--load: 19%"></span></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2026 NUDRAK · Donovan Agustin Alvarez</p>
+      <p class="footer__shell"><span class="tok-comment">$</span> exit 0 <span class="tok-comment"># thanks for visiting</span></p>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/animations.js"></script>
+  <script src="scripts/title-effects.js"></script>
+</body>
+</html>
