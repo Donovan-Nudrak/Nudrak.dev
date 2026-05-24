@@ -65,6 +65,8 @@
     "$ ls ~/projects/",
     "$ systemctl status nudrak-api",
     "$ git push origin main",
+    "$ sudo apt update && sudo apt upgrade -y",
+    "$ hydra -l admin -P /etc/RockYou.txt ssh://192.168.1.100",
   ], { deleteSpeed: 22, typeSpeed: 45, pauseEnd: 1800, pauseStart: 500 });
 
   initTypewriter("contact-terminal-output", [
