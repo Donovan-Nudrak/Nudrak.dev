@@ -29,7 +29,6 @@
 
   document.querySelectorAll("[data-copy]").forEach(function (button) {
     const feedback = button.querySelector("[data-copy-feedback]");
-    const originalText = feedback ? feedback.textContent : "";
 
     button.addEventListener("click", function () {
       const value = button.getAttribute("data-copy");
@@ -38,12 +37,12 @@
       function onCopied() {
         button.classList.add("is-copied");
         if (feedback) {
-          feedback.textContent = "Copiado ✓";
+          feedback.textContent = window.I18n ? window.I18n.t("contactCopyDone") : "Copied ✓";
         }
         setTimeout(function () {
           button.classList.remove("is-copied");
           if (feedback) {
-            feedback.textContent = originalText;
+            feedback.textContent = window.I18n ? window.I18n.t("contactCopyHint") : "Click to copy";
           }
         }, 2000);
       }
