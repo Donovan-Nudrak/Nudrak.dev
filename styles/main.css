@@ -1001,6 +1001,7 @@ ul {
 .project-card:nth-child(2) .project-card__code::after { animation-delay: 0.5s; }
 .project-card:nth-child(3) .project-card__code::after { animation-delay: 1s; }
 .project-card:nth-child(4) .project-card__code::after { animation-delay: 1.5s; }
+.project-card:nth-child(5) .project-card__code::after { animation-delay: 2s; }
 
 @keyframes codeScan {
   0%, 100% { transform: translateX(-100%); }
