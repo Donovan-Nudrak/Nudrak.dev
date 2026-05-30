@@ -37,12 +37,14 @@
       skillsActive: "active",
       projectsTitle: "Projects",
       proj1Desc:
-        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
+        "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
       proj2Desc:
-        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
+        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
       proj3Desc:
-        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
       proj4Desc:
+        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+      proj5Desc:
         "Notes API with session authentication, shared notes between users and basic permission system. Deployed to production.",
       contactTitle: "Contact",
       contactStatus: "Available for backend employment and projects",
@@ -88,12 +90,14 @@
       skillsActive: "activo",
       projectsTitle: "Proyectos",
       proj1Desc:
-        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
+        "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
       proj2Desc:
-        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
+        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
       proj3Desc:
-        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
       proj4Desc:
+        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+      proj5Desc:
         "API de notas con autenticación por sesión, notas compartidas entre usuarios y sistema de permisos básico. Desplegada en producción.",
       contactTitle: "Contacto",
       contactStatus: "Disponible para empleo y proyectos backend",
