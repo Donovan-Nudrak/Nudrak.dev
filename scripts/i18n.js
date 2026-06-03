@@ -37,14 +37,16 @@
       skillsActive: "active",
       projectsTitle: "Projects",
       proj1Desc:
-        "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
+        "Event-driven backend that ingests Stripe webhooks, analyzes them with Google Gemini and a Rule Engine, and executes automated actions: PDF generation, S3 upload, and email delivery via Resend. Built with FastAPI, Celery, PostgreSQL, and Redis.",
       proj2Desc:
-        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
+        "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
       proj3Desc:
-        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
+        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
       proj4Desc:
-        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
       proj5Desc:
+        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+      proj6Desc:
         "Notes API with session authentication, shared notes between users and basic permission system. Deployed to production.",
       contactTitle: "Contact",
       contactStatus: "Available for backend employment and projects",
@@ -90,14 +92,16 @@
       skillsActive: "activo",
       projectsTitle: "Proyectos",
       proj1Desc:
-        "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
+        "Backend orientado a eventos que procesa webhooks de Stripe, los analiza con Google Gemini y un motor de reglas, y ejecuta acciones automatizadas: generación de PDF, subida a S3 y envío de email vía Resend. Construido con FastAPI, Celery, PostgreSQL y Redis.",
       proj2Desc:
-        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
+        "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
       proj3Desc:
-        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
+        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
       proj4Desc:
-        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
       proj5Desc:
+        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+      proj6Desc:
         "API de notas con autenticación por sesión, notas compartidas entre usuarios y sistema de permisos básico. Desplegada en producción.",
       contactTitle: "Contacto",
       contactStatus: "Disponible para empleo y proyectos backend",
