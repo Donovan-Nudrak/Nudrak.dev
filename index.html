@@ -283,10 +283,31 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
 
           <article class="project-card reveal" data-reveal data-reveal-delay="0">
             <div class="project-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/reports/event/{event_id}</span></code>
+            </div>
+            <h3 class="project-card__title">Business Automation Agent</h3>
+            <p class="project-card__desc" data-i18n="proj1Desc">
+              Event-driven backend that ingests Stripe webhooks, analyzes them with Google Gemini and a Rule Engine, and executes automated actions: PDF generation, S3 upload, and email delivery via Resend. Built with FastAPI, Celery, PostgreSQL, and Redis.
+            </p>
+            <div class="project-card__stack">
+              <span class="badge">FastAPI</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">Redis</span>
+              <span class="badge">Celery</span>
+              <span class="badge">Gemini</span>
+              <span class="badge">Stripe</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Donovan-Nudrak/Business_Automation_Agent" class="project-card__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-reveal data-reveal-delay="100">
+            <div class="project-card__code">
               <code><span class="tok-keyword">POST</span> <span class="tok-string">/api/v1/rag/query</span> <span class="tok-comment"># RAG</span></code>
             </div>
             <h3 class="project-card__title">E-Commerce API RAG</h3>
-            <p class="project-card__desc" data-i18n="proj1Desc">
+            <p class="project-card__desc" data-i18n="proj2Desc">
               Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.
             </p>
             <div class="project-card__stack">
@@ -302,12 +323,12 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             </div>
           </article>
 
-          <article class="project-card reveal" data-reveal data-reveal-delay="100">
+          <article class="project-card reveal" data-reveal data-reveal-delay="200">
             <div class="project-card__code">
               <code><span class="tok-keyword">POST</span> <span class="tok-string">/api/v1/orders</span> <span class="tok-comment"># JWT</span></code>
             </div>
             <h3 class="project-card__title">Ecommerce API</h3>
-            <p class="project-card__desc" data-i18n="proj2Desc">
+            <p class="project-card__desc" data-i18n="proj3Desc">
               Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.
             </p>
             <div class="project-card__stack">
@@ -321,12 +342,12 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             </div>
           </article>
 
-          <article class="project-card reveal" data-reveal data-reveal-delay="200">
+          <article class="project-card reveal" data-reveal data-reveal-delay="300">
             <div class="project-card__code">
               <code><span class="tok-keyword">GET</span> <span class="tok-string">/api/v1/tasks?team=</span> <span class="tok-comment"># RBAC</span></code>
             </div>
             <h3 class="project-card__title">Task Manager API</h3>
-            <p class="project-card__desc" data-i18n="proj3Desc">
+            <p class="project-card__desc" data-i18n="proj4Desc">
               Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.
             </p>
             <div class="project-card__stack">
@@ -340,12 +361,12 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             </div>
           </article>
 
-          <article class="project-card reveal" data-reveal data-reveal-delay="300">
+          <article class="project-card reveal" data-reveal data-reveal-delay="400">
             <div class="project-card__code">
               <code><span class="tok-keyword">POST</span> <span class="tok-string">/api/v1/query</span> <span class="tok-comment"># RAG</span></code>
             </div>
             <h3 class="project-card__title">RAG Core Service</h3>
-            <p class="project-card__desc" data-i18n="proj4Desc">
+            <p class="project-card__desc" data-i18n="proj5Desc">
               Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.
             </p>
             <div class="project-card__stack">
@@ -359,12 +380,12 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             </div>
           </article>
 
-          <article class="project-card reveal" data-reveal data-reveal-delay="400">
+          <article class="project-card reveal" data-reveal data-reveal-delay="500">
             <div class="project-card__code">
               <code><span class="tok-keyword">GET</span> <span class="tok-string">/notes/shared</span> <span class="tok-comment"># live</span><span class="status-dot status-dot--inline"></span></code>
             </div>
             <h3 class="project-card__title">Notes API</h3>
-            <p class="project-card__desc" data-i18n="proj5Desc">
+            <p class="project-card__desc" data-i18n="proj6Desc">
               Notes API with session authentication, shared notes between users and basic permission system. Deployed to production.
             </p>
             <div class="project-card__stack">
