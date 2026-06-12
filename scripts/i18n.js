@@ -43,10 +43,12 @@
       proj3Desc:
         "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
       proj4Desc:
-        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
+        "FinTrader Hub is a modular fintech backend built with FastAPI, PostgreSQL, Redis, Celery, and SQLAlchemy. It provides portfolio management, trade tracking, market data synchronization, risk analytics, automated alerts, JWT authentication, background workers, and Docker-based deployment.",
       proj5Desc:
-        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
       proj6Desc:
+        "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
+      proj7Desc:
         "Notes API with session authentication, shared notes between users and basic permission system. Deployed to production.",
       contactTitle: "Contact",
       contactStatus: "Available for backend employment and projects",
@@ -98,10 +100,12 @@
       proj3Desc:
         "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
       proj4Desc:
-        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
+        "FinTrader Hub es un backend fintech modular construido con FastAPI, PostgreSQL, Redis, Celery y SQLAlchemy. Ofrece gestión de portafolios, seguimiento de operaciones, sincronización de datos de mercado, analítica de riesgo, alertas automatizadas, autenticación JWT, workers en segundo plano y despliegue con Docker.",
       proj5Desc:
-        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
       proj6Desc:
+        "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
+      proj7Desc:
         "API de notas con autenticación por sesión, notas compartidas entre usuarios y sistema de permisos básico. Desplegada en producción.",
       contactTitle: "Contacto",
       contactStatus: "Disponible para empleo y proyectos backend",
