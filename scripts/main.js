@@ -3,6 +3,10 @@
   const navToggle = document.getElementById("nav-toggle");
   const navLinks = document.querySelectorAll(".header__link, .header__logo, .hero__cta");
 
+  const PRESSABLE_SELECTOR = ".lang-switch__btn, .header__toggle, a.hero__cta, button[data-copy]";
+  const TV_STATIC_MS = 320;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function closeNav() {
     header.classList.remove("nav-open");
     navToggle.setAttribute("aria-expanded", "false");
@@ -68,5 +72,40 @@
     document.execCommand("copy");
     document.body.removeChild(input);
     callback();
+  }
+
+  function triggerTvStatic(button) {
+    if (prefersReducedMotion) return;
+
+    button.classList.remove("is-tv-static");
+    button.querySelectorAll(".tv-static-burst").forEach(function (layer) {
+      layer.remove();
+    });
+
+    void button.offsetWidth;
+
+    button.classList.add("is-tv-static");
+
+    const layer = document.createElement("span");
+    layer.className = "tv-static-burst";
+    layer.setAttribute("aria-hidden", "true");
+    button.appendChild(layer);
+
+    function cleanup() {
+      layer.remove();
+      button.classList.remove("is-tv-static");
+    }
+
+    layer.addEventListener("animationend", cleanup, { once: true });
+    setTimeout(cleanup, TV_STATIC_MS);
+  }
+
+  if (!prefersReducedMotion) {
+    document.querySelectorAll(PRESSABLE_SELECTOR).forEach(function (button) {
+      button.classList.add("btn-pressable");
+      button.addEventListener("pointerdown", function () {
+        triggerTvStatic(button);
+      });
+    });
   }
 })();

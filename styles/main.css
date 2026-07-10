@@ -1450,41 +1450,144 @@ button.contact-card {
   color: var(--accent-detail);
 }
 
-/* ── Button press glitch (buttons only — not titles or cards) ── */
-.lang-switch__btn:active,
-.header__toggle:active,
-a.hero__cta:active {
-  animation: btnGlitchPress 0.3s steps(2, end) 1;
+/* ── Button press: TV static burst (all pressable buttons) ── */
+.btn-pressable {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-@keyframes btnGlitchPress {
+.btn-pressable.is-tv-static {
+  animation: tvSignalJitter 0.32s steps(7, end) forwards;
+}
+
+.tv-static-burst {
+  position: absolute;
+  inset: -2px;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(255, 255, 255, 0.55) 1px,
+      rgba(255, 255, 255, 0.55) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 229, 255, 0.35) 0px,
+      rgba(0, 229, 255, 0.35) 1px,
+      rgba(255, 45, 85, 0.3) 1px,
+      rgba(255, 45, 85, 0.3) 2px,
+      transparent 2px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 6px,
+      rgba(0, 0, 0, 0.25) 6px,
+      rgba(0, 0, 0, 0.25) 8px
+    );
+  background-size: 100% 3px, 6px 100%, 100% 14px;
+  mix-blend-mode: hard-light;
+  animation: tvStaticBurst 0.32s steps(8, end) forwards;
+}
+
+@keyframes tvStaticBurst {
   0% {
-    transform: translate(0);
-    text-shadow: none;
+    opacity: 0.95;
+    transform: translateY(0) translateX(0) scaleX(1);
+    background-position: 0 0, 0 0, 0 0;
     clip-path: inset(0 0 0 0);
+    filter: contrast(2.2) brightness(1.35);
   }
-  20% {
-    transform: translate(-3px, 1px) skewX(-4deg);
-    color: #00f5d4;
-    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
-    clip-path: inset(8% 0 82% 0);
+  10% {
+    opacity: 1;
+    transform: translateY(-14px) translateX(-6px) scaleX(1.06);
+    background-position: 0 -28px, -10px 0, 0 -12px;
+    clip-path: inset(8% 0 72% 0);
   }
-  40% {
-    transform: translate(3px, -2px) skewX(3deg);
-    clip-path: inset(65% 0 15% 0);
+  22% {
+    opacity: 0.45;
+    transform: translateY(18px) translateX(8px) scaleX(0.94);
+    background-position: 0 36px, 14px 0, 0 20px;
+    clip-path: inset(48% 0 18% 0);
+    filter: contrast(3) brightness(0.75);
   }
-  60% {
-    transform: translate(-2px, 0);
-    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
-    clip-path: inset(35% 0 50% 0);
+  34% {
+    opacity: 1;
+    transform: translateY(-10px) translateX(-12px) scaleX(1.1);
+    background-position: 0 -16px, -18px 0, 0 -8px;
+    clip-path: inset(0 0 58% 0);
+    filter: contrast(2.8) brightness(1.5);
   }
-  80% {
-    transform: translate(1px, 1px);
+  46% {
+    opacity: 0.35;
+    transform: translateY(12px) translateX(10px) scaleX(0.92);
+    background-position: 0 24px, 12px 0, 0 16px;
+    clip-path: inset(62% 0 0 0);
+  }
+  58% {
+    opacity: 0.9;
+    transform: translateY(-20px) translateX(4px) scaleX(1.04);
+    background-position: 0 -40px, 6px 0, 0 -24px;
+    clip-path: inset(22% 0 38% 0);
+    filter: contrast(2.5) brightness(1.2);
+  }
+  70% {
+    opacity: 0.55;
+    transform: translateY(8px) translateX(-8px) scaleX(1.08);
+    background-position: 0 14px, -8px 0, 0 10px;
+    clip-path: inset(75% 0 5% 0);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(-6px) translateX(6px) scaleX(0.98);
+    background-position: 0 -10px, 10px 0, 0 -6px;
+    clip-path: inset(12% 0 68% 0);
   }
   100% {
-    transform: translate(0);
-    text-shadow: none;
+    opacity: 0;
+    transform: translateY(0) translateX(0) scaleX(1);
+    background-position: 0 0, 0 0, 0 0;
     clip-path: inset(0 0 0 0);
+    filter: none;
+  }
+}
+
+@keyframes tvSignalJitter {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  14% {
+    transform: translate(-3px, 2px);
+    filter: brightness(1.25) contrast(1.15);
+  }
+  28% {
+    transform: translate(4px, -3px);
+    filter: brightness(0.8);
+  }
+  42% {
+    transform: translate(-4px, -1px);
+    filter: brightness(1.35);
+  }
+  56% {
+    transform: translate(3px, 3px);
+    filter: brightness(0.9) contrast(1.2);
+  }
+  70% {
+    transform: translate(-2px, -2px);
+    filter: brightness(1.2);
+  }
+  84% {
+    transform: translate(2px, 1px);
+    filter: brightness(0.95);
   }
 }
 
@@ -1524,7 +1627,9 @@ a.hero__cta:active {
 
   .lang-switch__btn:active,
   .header__toggle:active,
-  a.hero__cta:active {
+  a.hero__cta:active,
+  .btn-pressable.is-tv-static,
+  .tv-static-burst {
     animation: none;
   }
 
