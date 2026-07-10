@@ -1450,6 +1450,44 @@ button.contact-card {
   color: var(--accent-detail);
 }
 
+/* ── Button press glitch (buttons only — not titles or cards) ── */
+.lang-switch__btn:active,
+.header__toggle:active,
+a.hero__cta:active {
+  animation: btnGlitchPress 0.3s steps(2, end) 1;
+}
+
+@keyframes btnGlitchPress {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-3px, 1px) skewX(-4deg);
+    color: #00f5d4;
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+    clip-path: inset(8% 0 82% 0);
+  }
+  40% {
+    transform: translate(3px, -2px) skewX(3deg);
+    clip-path: inset(65% 0 15% 0);
+  }
+  60% {
+    transform: translate(-2px, 0);
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+    clip-path: inset(35% 0 50% 0);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: none;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1481,6 +1519,12 @@ button.contact-card {
   .hero__title.is-cyberpunk .hero__title-text,
   .hero__title.is-cyberpunk .hero__bracket--open,
   .hero__title.is-cyberpunk .hero__bracket--close {
+    animation: none;
+  }
+
+  .lang-switch__btn:active,
+  .header__toggle:active,
+  a.hero__cta:active {
     animation: none;
   }
 
