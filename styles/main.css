@@ -869,6 +869,20 @@ ul {
   background: var(--bg-elevated);
 }
 
+.code-terminal--shard .code-terminal__body.is-neofetch-output {
+  font-size: 0.42rem;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-height: 172px;
+  overflow: hidden;
+}
+
+.code-terminal--shard .code-terminal__body.is-neofetch-output code {
+  display: block;
+  white-space: pre;
+  overflow: hidden;
+}
+
 @media (max-width: 899px) {
   .code-terminal--shard {
     clip-path: polygon(

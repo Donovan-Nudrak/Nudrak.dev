@@ -58,6 +58,35 @@
     return;
   }
 
+  let archLogo = "";
+
+  fetch("scripts/arch.txt")
+    .then(function (res) {
+      return res.ok ? res.text() : Promise.reject();
+    })
+    .then(function (text) {
+      archLogo = text
+        .replace(/^\s*\n/, "")
+        .split("\n")
+        .map(function (line) {
+          return line.replace(/\s+$/, "");
+        })
+        .join("\n");
+    })
+    .catch(function () {
+      archLogo = "";
+    });
+
+  function getArchLogo() {
+    if (archLogo) return archLogo;
+    return "      /\\\n     /  \\\n    / arch \\\n   /________\\";
+  }
+
+  function setNeofetchMode(output, active) {
+    const body = output.closest(".code-terminal__body");
+    if (body) body.classList.toggle("is-neofetch-output", active);
+  }
+
   initTypewriter("terminal-output", [
     "$ uvicorn main:app --reload",
     "$ docker compose up -d",
@@ -78,7 +107,10 @@
       if (line === "$ neofetch") {
         el.textContent =
           line +
-          "\n       /\\\n      /  \\\n     / arch\\\n    /_______\\\nOS: Arch Linux x86_64\nShell: zsh · rolling release\nHost: nudrak-arch";
+          "\n" +
+          getArchLogo() +
+          "\nOS: Arch Linux x86_64 · zsh · rolling";
+        setNeofetchMode(el, true);
         return true;
       }
       if (line === "$ cat /etc/os-release") {
@@ -88,6 +120,9 @@
         return true;
       }
       return false;
+    },
+    multilinePause: function (line) {
+      return line === "$ neofetch" ? 3200 : 1800;
     },
   });
 
@@ -156,6 +191,9 @@
       const current = commands[commandIndex];
 
       if (showingMultiline) {
+        if (current === "$ neofetch") {
+          setNeofetchMode(output, false);
+        }
         showingMultiline = false;
         isDeleting = true;
         pauseUntil = now + pauseEnd;
@@ -170,7 +208,8 @@
       } else if (!isDeleting && charIndex > current.length) {
         if (options.onCompleteLine && options.onCompleteLine(current, output)) {
           showingMultiline = true;
-          pauseUntil = now + pauseEnd;
+          const hold = options.multilinePause ? options.multilinePause(current) : pauseEnd;
+          pauseUntil = now + hold;
         } else {
           isDeleting = true;
           pauseUntil = now + pauseEnd;
