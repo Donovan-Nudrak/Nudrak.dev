@@ -10,43 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/i18n.css">
-  <link rel="stylesheet" href="styles/industrial.css">
 </head>
 <body>
-
-  <div class="industrial-bg" aria-hidden="true">
-    <svg class="industrial-bg__svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <!-- PCB bus traces — orthogonal routing -->
-      <path class="industrial-bg__trace industrial-bg__trace--thick" d="M 80 0 V 220 H 340 V 140 H 520 V 380"/>
-      <path class="industrial-bg__trace" d="M 340 140 H 480 V 60 H 620"/>
-      <path class="industrial-bg__trace industrial-bg__trace--dim" d="M 520 380 V 560 H 280 V 720 H 120"/>
-      <path class="industrial-bg__trace industrial-bg__trace--thick" d="M 1360 900 V 640 H 1100 V 480 H 900 V 300"/>
-      <path class="industrial-bg__trace" d="M 1100 640 H 1240 V 760 H 1380"/>
-      <path class="industrial-bg__trace industrial-bg__trace--dim" d="M 900 300 H 720 V 180 H 560"/>
-      <path class="industrial-bg__trace" d="M 200 900 V 780 H 420 V 660 H 600"/>
-      <path class="industrial-bg__trace industrial-bg__trace--dim" d="M 1180 120 V 260 H 980 V 120 H 760"/>
-      <path class="industrial-bg__trace" d="M 60 420 H 200 V 300 H 60"/>
-      <path class="industrial-bg__trace industrial-bg__trace--dim" d="M 1320 420 H 1180 V 540 H 1320"/>
-
-      <!-- Pads & vias at junctions -->
-      <circle class="industrial-bg__pad" cx="340" cy="140" r="3.5"/>
-      <circle class="industrial-bg__pad" cx="520" cy="380" r="3.5"/>
-      <circle class="industrial-bg__pad" cx="1100" cy="640" r="3.5"/>
-      <circle class="industrial-bg__pad" cx="900" cy="300" r="3.5"/>
-      <circle class="industrial-bg__via" cx="480" cy="60" r="2.5"/>
-      <circle class="industrial-bg__via" cx="280" cy="720" r="2.5"/>
-      <circle class="industrial-bg__via" cx="720" cy="180" r="2.5"/>
-      <circle class="industrial-bg__via" cx="420" cy="660" r="2.5"/>
-      <circle class="industrial-bg__via" cx="1180" cy="540" r="2.5"/>
-
-      <!-- Industrial slots / mounting cuts -->
-      <rect class="industrial-bg__slot" x="600" y="40" width="48" height="8" rx="0"/>
-      <rect class="industrial-bg__slot" x="820" y="860" width="64" height="8" rx="0"/>
-      <rect class="industrial-bg__slot" x="1240" y="200" width="32" height="8" rx="0"/>
-      <path class="industrial-bg__slot" d="M 160 800 H 208 V 824 H 160 Z"/>
-      <path class="industrial-bg__slot" d="M 1040 40 H 1088 V 64 H 1040 Z"/>
-    </svg>
-  </div>
 
   <header class="header" id="header">
     <div class="container header__inner">
