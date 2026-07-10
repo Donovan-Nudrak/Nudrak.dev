@@ -1,0 +1,337 @@
+/* ── Industrial / PCB layer ── */
+
+.industrial-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.55;
+}
+
+.industrial-bg__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.industrial-bg__trace {
+  fill: none;
+  stroke: rgba(0, 229, 255, 0.09);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.industrial-bg__trace--thick {
+  stroke: rgba(0, 229, 255, 0.14);
+  stroke-width: 1.5;
+}
+
+.industrial-bg__trace--dim {
+  stroke: rgba(0, 229, 255, 0.05);
+}
+
+.industrial-bg__pad {
+  fill: rgba(103, 209, 23, 0.22);
+  stroke: rgba(103, 209, 23, 0.35);
+  stroke-width: 1;
+}
+
+.industrial-bg__via {
+  fill: rgba(255, 214, 10, 0.18);
+  stroke: rgba(255, 214, 10, 0.3);
+  stroke-width: 1;
+}
+
+.industrial-bg__slot {
+  fill: none;
+  stroke: rgba(255, 45, 85, 0.12);
+  stroke-width: 1;
+}
+
+/* Keep page content above PCB field */
+.header,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header bus rail ── */
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--accent) 0, var(--accent) 48px, transparent 48px),
+    linear-gradient(90deg, transparent 0, transparent calc(100% - 80px), var(--accent-complement) calc(100% - 80px), var(--accent-complement) calc(100% - 76px), transparent calc(100% - 76px));
+  opacity: 0.35;
+}
+
+.header__inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 2px;
+  height: 14px;
+  background: var(--accent);
+  opacity: 0.4;
+  box-shadow:
+    0 0 0 3px rgba(103, 209, 23, 0.15),
+    48px 0 0 -1px var(--accent),
+    48px 8px 0 0 var(--accent),
+    48px 8px 0 3px rgba(255, 214, 10, 0.2);
+}
+
+.header__inner {
+  position: relative;
+}
+
+/* ── Section industrial rail (vertical bus) ── */
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  left: max(0px, calc((100% - var(--max-width)) / 2 + 0.5rem));
+  top: clamp(2rem, 6vw, 3.5rem);
+  width: 1px;
+  height: calc(100% - clamp(4rem, 12vw, 7rem));
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 229, 255, 0.22) 8%,
+    rgba(0, 229, 255, 0.22) 92%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  left: max(0px, calc((100% - var(--max-width)) / 2 + 0.5rem));
+  top: clamp(2.5rem, 7vw, 4rem);
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.28;
+  box-shadow:
+    36px 0 0 0 rgba(0, 229, 255, 0.18),
+    36px 18px 0 0 var(--accent),
+    36px 18px 0 4px rgba(103, 209, 23, 0.2);
+  pointer-events: none;
+}
+
+/* ── Section title: bus spur + pad ── */
+.section__title {
+  position: relative;
+}
+
+.section__title::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: clamp(24px, 8vw, 72px);
+  height: 1px;
+  margin-left: 0.75rem;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.45;
+  box-shadow: 0 1px 0 0 rgba(0, 229, 255, 0.08);
+}
+
+/* ── Hero industrial frame ── */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 6%;
+  width: 120px;
+  height: 88px;
+  pointer-events: none;
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  border-right: none;
+  border-bottom: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 229, 255, 0.04),
+    -24px 0 0 -23px rgba(0, 229, 255, 0.18),
+    0 24px 0 -23px rgba(0, 229, 255, 0.18),
+    -24px 24px 0 0 rgba(103, 209, 23, 0.15);
+  opacity: 0.7;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 18%;
+  left: 4%;
+  width: 96px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.2;
+  box-shadow:
+    0 0 0 4px rgba(103, 209, 23, 0.12),
+    0 -20px 0 0 rgba(0, 229, 255, 0.15),
+    0 -20px 0 4px rgba(255, 214, 10, 0.1),
+    96px -20px 0 0 rgba(0, 229, 255, 0.12),
+    96px -20px 0 20px rgba(0, 229, 255, 0.08);
+  pointer-events: none;
+}
+
+/* ── Panel PCB bus spurs (cards & terminals) ── */
+.project-card,
+.contact-card,
+.code-terminal,
+.code-snippet,
+.skills__panel,
+.linux-panel {
+  background-image:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.14) 0, rgba(0, 229, 255, 0.14) 28px, transparent 28px),
+    linear-gradient(180deg, rgba(0, 229, 255, 0.1) 0, rgba(0, 229, 255, 0.1) 20px, transparent 20px);
+  background-size: 100% 1px, 1px 100%;
+  background-position: 0 0, 100% 0;
+  background-repeat: no-repeat;
+}
+
+.skills__panel,
+.code-terminal,
+.linux-panel {
+  background-image:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.16) 0, rgba(0, 229, 255, 0.16) 40px, transparent 40px),
+    linear-gradient(180deg, transparent calc(100% - 32px), rgba(0, 229, 255, 0.12) calc(100% - 32px), rgba(0, 229, 255, 0.12) calc(100% - 31px), transparent calc(100% - 31px)),
+    linear-gradient(180deg, rgba(0, 229, 255, 0.1) 0, rgba(0, 229, 255, 0.1) 24px, transparent 24px);
+  background-size: 100% 1px, 100% 1px, 1px 100%;
+  background-position: 0 0, 0 100%, 0 0;
+}
+
+/* Industrial mounting pads on panel corners (inner layer) */
+.project-card .project-card__code,
+.skills__panel-bar,
+.code-terminal__header {
+  position: relative;
+}
+
+.skills__panel-bar::before,
+.code-terminal__header::before {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translateY(-50%);
+  background: rgba(103, 209, 23, 0.25);
+  border: 1px solid rgba(103, 209, 23, 0.45);
+  box-shadow:
+    -14px 0 0 -3px rgba(255, 214, 10, 0.35),
+    -14px 0 0 -2px rgba(255, 214, 10, 0.5),
+    -28px 0 0 0 rgba(0, 229, 255, 0.2),
+    -28px 0 0 6px rgba(0, 229, 255, 0.08);
+}
+
+/* Skills grid: horizontal bus between cells */
+.skills__grid {
+  position: relative;
+}
+
+.skills__group {
+  position: relative;
+}
+
+.skills__group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  width: 1px;
+  height: 14px;
+  background: rgba(0, 229, 255, 0.2);
+  box-shadow: 14px 14px 0 0 rgba(0, 229, 255, 0.12);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Project card endpoint pad (via inset — avoids scan ::after) */
+.project-card__code {
+  box-shadow: inset -14px 0 0 -12px rgba(0, 229, 255, 0.22);
+}
+
+/* Footer industrial strip */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--max-width), 100%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 229, 255, 0.35) 20%,
+    rgba(255, 45, 85, 0.25) 50%,
+    rgba(0, 229, 255, 0.35) 80%,
+    transparent
+  );
+}
+
+.footer {
+  position: relative;
+}
+
+/* Contact layout bus connector */
+.contact__layout::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  right: 0;
+  width: 1px;
+  height: calc(100% + 2rem);
+  background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.18), transparent);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.contact__layout {
+  position: relative;
+}
+
+@media (max-width: 899px) {
+  .contact__layout::before {
+    display: none;
+  }
+
+  .hero::before,
+  .hero::after {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 768px) {
+  .section::before,
+  .section::after {
+    display: none;
+  }
+
+  .industrial-bg {
+    opacity: 0.3;
+  }
+
+  .header__inner::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industrial-bg {
+    opacity: 0.25;
+  }
+}
