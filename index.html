@@ -45,19 +45,19 @@
 <span class="tok-keyword">#!/bin/bash</span>
 <span class="tok-fn">cd</span> /home/nudrak/projects/api
 <span class="tok-fn">source</span> .venv/bin/activate
-<span class="tok-fn">export</span> ENV=production
 
+<span class="tok-fn">sudo</span> pacman -Syu --noconfirm
 <span class="tok-fn">systemctl</span> status nudrak-api
 <span class="tok-fn">journalctl</span> -u api -n 3 --no-pager
-<span class="tok-comment"># May 23 02:14:01 linux systemd[1]: Started API.</span>
+<span class="tok-comment"># rolling release · arch</span>
 
 <span class="tok-fn">ls</span> -la ~/projects/
 drwxr-xr-x  ecommerce-api
 drwxr-xr-x  task-manager
 drwxr-xr-x  rag-core
 
-<span class="tok-fn">uname</span> -sr
-Linux 6.x.x-amd64
+<span class="tok-fn">cat</span> /etc/os-release | grep PRETTY
+Arch Linux
 <span class="tok-fn">htop</span> <span class="tok-comment"># monitoring</span></code></pre>
       </div>
       <div class="hero__code-bg" aria-hidden="true">
@@ -101,7 +101,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             <span class="hero__env-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 1.5c1.66 0 3.17.57 4.37 1.52-.47.12-.97.19-1.49.19-1.93 0-3.68-.82-4.91-2.13C10.57 4.35 11.26 4.5 12 4.5zM7.03 6.9c1.07 1.36 2.7 2.24 4.47 2.24.58 0 1.14-.09 1.67-.25-.15.87-.58 1.64-1.21 2.21C10.55 9.82 8.6 8.74 7.03 6.9zM5.25 8.8c1.35 1.9 3.48 3.14 5.87 3.35-.47.55-.82 1.2-1.02 1.92-2.3-.28-4.35-1.4-5.85-3.27zm-.75 3.5c1.28 1.55 3.12 2.6 5.18 2.87.05.36.08.73.08 1.11 0 .55-.08 1.08-.22 1.59-2.87-.35-5.38-1.75-7.04-3.77.47-1.01 1.15-1.92 2-2.8zm3 4.95c1.42 1.05 3.17 1.67 5.07 1.67.9 0 1.76-.16 2.55-.45-.98 1.15-2.42 1.88-4.05 1.88-1.55 0-2.98-.67-3.97-1.74l.4-1.36zm6.22 1.36c.73.28 1.53.44 2.36.44 1.93 0 3.68-.82 4.91-2.13-1.07 1.36-2.7 2.24-4.47 2.24-.65 0-1.27-.11-1.86-.3l-.94 1.75z"/></svg>
             </span>
-            Linux · zsh · <span class="hero__path">~/backend</span>
+            Arch · zsh · <span class="hero__path">~/backend</span>
           </p>
           <p class="hero__subtitle" id="hero-stack">
             <span class="hero__tech" data-index="0">Python</span>
@@ -124,7 +124,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             <span class="code-terminal__dot"></span>
             <span class="code-terminal__dot"></span>
             <span class="code-terminal__dot"></span>
-            <span class="code-terminal__title">nudrak@linux:~/backend</span>
+            <span class="code-terminal__title">nudrak@arch:~/backend</span>
           </div>
           <pre class="code-terminal__body"><code id="terminal-output"></code><span class="code-cursor code-cursor--terminal" aria-hidden="true"></span></pre>
         </aside>
@@ -136,7 +136,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
       <div class="container">
         <h2 class="section__title" data-i18n="aboutTitle">About</h2>
         <p class="about__meta" data-i18n="aboutMeta">
-          Junior · Advanced personal projects · Available for employment and projects · Spanish · Technical English (learning)
+          Junior · Advanced personal projects · Arch Linux (rolling release) · Available for employment and projects · Spanish · Technical English (learning)
         </p>
         <div class="about__grid">
           <div class="about__content">
@@ -240,7 +240,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
                 <h3 class="skills__label" data-i18n="skillEnvironment">Environment</h3>
               </div>
               <div class="skills__badges">
-                <span class="badge badge--skill badge--linux">Linux</span>
+                <span class="badge badge--skill badge--linux">Arch Linux</span>
                 <span class="badge badge--skill">Bash</span>
                 <span class="badge badge--skill">Nvim</span>
                 <span class="badge badge--skill">Git</span>
@@ -403,7 +403,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
 
           <article class="project-card reveal" data-reveal data-reveal-delay="600">
             <div class="project-card__code">
-              <code><span class="tok-keyword">GET</span> <span class="tok-string">/notes/shared</span> <span class="tok-comment"># live</span><span class="status-dot status-dot--inline"></span></code>
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/notes/shared</span> <span class="tok-comment"># live · arch</span><span class="status-dot status-dot--inline"></span></code>
             </div>
             <h3 class="project-card__title">Notes API</h3>
             <p class="project-card__desc" data-i18n="proj7Desc">
@@ -488,14 +488,14 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
               <span class="code-terminal__dot"></span>
               <span class="code-terminal__dot"></span>
               <span class="code-terminal__dot"></span>
-              <span class="code-terminal__title">nudrak@linux ~/contact</span>
+              <span class="code-terminal__title">nudrak@arch ~/contact</span>
             </div>
             <pre class="linux-panel__body"><code id="contact-terminal-output"></code><span class="code-cursor code-cursor--terminal" aria-hidden="true"></span></pre>
             <div class="linux-panel__info">
-              <div class="linux-panel__row"><span>OS</span><span>Linux x86_64</span></div>
+              <div class="linux-panel__row"><span>OS</span><span>Arch Linux x86_64</span></div>
               <div class="linux-panel__row"><span>Shell</span><span>zsh</span></div>
               <div class="linux-panel__row"><span>Editor</span><span>Nvim · Cursor</span></div>
-              <div class="linux-panel__row"><span>Host</span><span>nudrak-backend</span></div>
+              <div class="linux-panel__row"><span>Host</span><span>nudrak-arch</span></div>
             </div>
             <div class="linux-bars" aria-hidden="true">
               <span class="linux-bars__label">load avg</span>
@@ -515,7 +515,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__copy">&copy; 2026 NUDRAK · Donovan Agustin Alvarez</p>
-      <p class="footer__shell"><span class="tok-comment">$</span> exit 0 <span class="tok-comment" data-i18n="footerNote"># thanks for visiting</span></p>
+      <p class="footer__shell"><span class="tok-comment">$</span> exit 0 <span class="tok-comment" data-i18n="footerNote"># rolling release · pacman -Syu ok</span></p>
     </div>
   </footer>
 
