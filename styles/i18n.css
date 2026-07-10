@@ -37,6 +37,8 @@
 .lang-switch__btn.is-active {
   color: var(--bg);
   background: var(--accent);
+  font-family: var(--font-cyber);
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
