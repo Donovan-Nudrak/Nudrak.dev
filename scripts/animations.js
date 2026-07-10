@@ -60,22 +60,15 @@
 
   let archLogo = "";
 
-  fetch("scripts/arch.txt")
-    .then(function (res) {
-      return res.ok ? res.text() : Promise.reject();
-    })
-    .then(function (text) {
-      archLogo = text
-        .replace(/^\s*\n/, "")
-        .split("\n")
-        .map(function (line) {
-          return line.replace(/\s+$/, "");
-        })
-        .join("\n");
-    })
-    .catch(function () {
-      archLogo = "";
-    });
+  function normalizeArchLogo(text) {
+    return text
+      .replace(/^\s*\n/, "")
+      .split("\n")
+      .map(function (line) {
+        return line.replace(/\s+$/, "");
+      })
+      .join("\n");
+  }
 
   function getArchLogo() {
     if (archLogo) return archLogo;
@@ -87,7 +80,19 @@
     if (body) body.classList.toggle("is-neofetch-output", active);
   }
 
-  initTypewriter("terminal-output", [
+  const archLogoReady = fetch("scripts/arch.txt")
+    .then(function (res) {
+      if (!res.ok) throw new Error("arch.txt missing");
+      return res.text();
+    })
+    .then(function (text) {
+      if (text.trim()) archLogo = normalizeArchLogo(text);
+    })
+    .catch(function () {
+      archLogo = "";
+    });
+
+  const heroCommands = [
     "$ uvicorn main:app --reload",
     "$ docker compose up -d",
     "$ pacman -Syu",
@@ -98,7 +103,9 @@
     "$ systemctl status nudrak-api",
     "$ git push origin main",
     "$ reflector --latest 5 --sort rate",
-  ], {
+  ];
+
+  const heroTypewriterOptions = {
     deleteSpeed: 22,
     typeSpeed: 45,
     pauseEnd: 1800,
@@ -124,6 +131,20 @@
     multilinePause: function (line) {
       return line === "$ neofetch" ? 3200 : 1800;
     },
+    onMultilineEnd: function (line, el) {
+      if (line === "$ neofetch") {
+        setNeofetchMode(el, false);
+      }
+    },
+  };
+
+  Promise.race([
+    archLogoReady,
+    new Promise(function (resolve) {
+      setTimeout(resolve, 600);
+    }),
+  ]).then(function () {
+    initTypewriter("terminal-output", heroCommands, heroTypewriterOptions);
   });
 
   initTypewriter("contact-terminal-output", [
@@ -191,9 +212,6 @@
       const current = commands[commandIndex];
 
       if (showingMultiline) {
-        if (current === "$ neofetch") {
-          setNeofetchMode(output, false);
-        }
         showingMultiline = false;
         isDeleting = true;
         pauseUntil = now + pauseEnd;
@@ -216,7 +234,11 @@
         }
       } else if (isDeleting && charIndex >= 0) {
         const lines = output.textContent.split("\n");
+        const hadMultiline = lines.length > 1;
         output.textContent = lines[0].slice(0, charIndex);
+        if (hadMultiline && options.onMultilineEnd) {
+          options.onMultilineEnd(current, output);
+        }
         charIndex--;
         pauseUntil = now + deleteSpeed;
       } else {
