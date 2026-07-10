@@ -53,7 +53,7 @@
   }
 
   if (prefersReducedMotion) {
-    setStaticTerminal("terminal-output", "$ uname -sr && uvicorn main:app --reload");
+    setStaticTerminal("terminal-output", "$ pacman -Syu && uvicorn main:app --reload");
     setStaticTerminal("contact-terminal-output", "$ cat contact.txt");
     return;
   }
@@ -61,17 +61,42 @@
   initTypewriter("terminal-output", [
     "$ uvicorn main:app --reload",
     "$ docker compose up -d",
-    "$ uname -sr",
+    "$ pacman -Syu",
+    "$ neofetch",
+    "$ cat /etc/os-release",
+    "$ yay -Qs fastapi",
     "$ ls ~/projects/",
     "$ systemctl status nudrak-api",
     "$ git push origin main",
-    "$ sudo apt update && sudo apt upgrade -y",
-    "$ hydra -l admin -P /usr/share/wordlist/rockyou.txt ssh://192.168.1.7",
-  ], { deleteSpeed: 22, typeSpeed: 45, pauseEnd: 1800, pauseStart: 500 });
+    "$ reflector --latest 5 --sort rate",
+  ], {
+    deleteSpeed: 22,
+    typeSpeed: 45,
+    pauseEnd: 1800,
+    pauseStart: 500,
+    onCompleteLine: function (line, el) {
+      if (line === "$ neofetch") {
+        el.textContent =
+          line +
+          "\n       /\\\n      /  \\\n     / arch\\\n    /_______\\\nOS: Arch Linux x86_64\nShell: zsh · rolling release\nHost: nudrak-arch";
+        return true;
+      }
+      if (line === "$ cat /etc/os-release") {
+        el.textContent =
+          line +
+          '\nNAME="Arch Linux"\nID=arch\nPRETTY_NAME="Arch Linux"';
+        return true;
+      }
+      return false;
+    },
+  });
 
   initTypewriter("contact-terminal-output", [
     "$ cat contact.txt",
     "$ echo $EMAIL",
+    "$ cat /etc/hostname",
+    "$ pacman -Qi python",
+    "$ curl -I wiki.archlinux.org",
     "$ ssh-keygen -lf ~/.ssh/id_ed25519.pub",
     "$ curl -I github.com/Donovan-Nudrak",
   ], {
@@ -86,6 +111,14 @@
       }
       if (line === "$ echo $EMAIL") {
         el.textContent = line + "\nNudrak@protonmail.com";
+        return true;
+      }
+      if (line === "$ cat /etc/hostname") {
+        el.textContent = line + "\nnudrak-arch";
+        return true;
+      }
+      if (line === "$ pacman -Qi python") {
+        el.textContent = line + "\nName        : python\nVersion     : 3.12.x-1\nInstalled By: pacman";
         return true;
       }
       return false;

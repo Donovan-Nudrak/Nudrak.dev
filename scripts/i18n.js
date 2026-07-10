@@ -16,7 +16,7 @@
       heroCtaContact: "Contact",
       aboutTitle: "About",
       aboutMeta:
-        "Junior · Advanced personal projects · Available for employment and projects · Spanish · Technical English (learning)",
+        "Junior · Advanced personal projects · Arch Linux (rolling release) · Available for employment and projects · Spanish · Technical English (learning)",
       aboutP1:
         "Backend developer focused on designing and implementing scalable systems, APIs and modular architectures using Python. I specialize in building backend services from scratch, with an emphasis on separation of concerns, maintainability and clean software design.",
       aboutP2:
@@ -57,7 +57,7 @@
       contactCopyDone: "Copied ✓",
       contactCurriculum: "Resume",
       contactDownloadCv: "Download PDF",
-      footerNote: "# thanks for visiting",
+      footerNote: "# rolling release · pacman -Syu ok",
     },
     es: {
       docTitle: "NUDRAK | Backend Engineer",
@@ -73,7 +73,7 @@
       heroCtaContact: "Contacto",
       aboutTitle: "Sobre mí",
       aboutMeta:
-        "Junior · Proyectos personales avanzados · Disponible para empleo y proyectos · Español · Inglés técnico (en estudio)",
+        "Junior · Proyectos personales avanzados · Arch Linux (rolling release) · Disponible para empleo y proyectos · Español · Inglés técnico (en estudio)",
       aboutP1:
         "Backend developer enfocado en el diseño e implementación de sistemas escalables, APIs y arquitecturas modulares utilizando Python. Me especializo en construir servicios backend desde cero, con enfoque en separación de responsabilidades, mantenibilidad y diseño limpio de software.",
       aboutP2:
@@ -114,7 +114,7 @@
       contactCopyDone: "Copiado ✓",
       contactCurriculum: "Curriculum",
       contactDownloadCv: "Descargar PDF",
-      footerNote: "# gracias por visitar",
+      footerNote: "# rolling release · pacman -Syu ok",
     },
   };
 
