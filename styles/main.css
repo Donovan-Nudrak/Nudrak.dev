@@ -411,6 +411,7 @@ ul {
   .hero__layout {
     grid-template-columns: 1fr minmax(280px, 360px);
     text-align: left;
+    align-items: start;
   }
 
   .hero__inner {
@@ -764,11 +765,20 @@ ul {
   word-break: break-word;
 }
 
-/* ── Hero terminal: cyberbrutalist shard ── */
-.code-terminal--shard {
+/* ── Hero shard stack (terminal + media panel) ── */
+.hero__shard-stack {
   --shard: 20px;
   --shard-sm: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+/* ── Hero terminal: cyberbrutalist shard ── */
+.code-terminal--shard {
   position: relative;
+  z-index: 2;
   background: var(--bg-elevated);
   border: none;
   overflow: hidden;
@@ -789,23 +799,28 @@ ul {
   filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.45));
 }
 
-.code-terminal--shard::before {
+.code-terminal--shard::before,
+.media-panel--shard::before {
   content: "";
   position: absolute;
   display: block;
-  top: 0;
-  left: var(--shard);
-  width: calc(100% - var(--shard) - 18px);
-  height: 1px;
   border: none;
-  background: var(--accent);
-  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5), 0 0 14px rgba(0, 229, 255, 0.18);
-  opacity: 0.7;
   pointer-events: none;
   z-index: 2;
 }
 
-.code-terminal--shard::after {
+.code-terminal--shard::before {
+  top: 0;
+  left: var(--shard);
+  width: calc(100% - var(--shard) - 18px);
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5), 0 0 14px rgba(0, 229, 255, 0.18);
+  opacity: 0.7;
+}
+
+.code-terminal--shard::after,
+.media-panel--shard::after {
   content: "";
   position: absolute;
   display: block;
@@ -883,12 +898,127 @@ ul {
   overflow: hidden;
 }
 
+/* ── Media panel (GIF viewport) ── */
+.media-panel {
+  margin: 0;
+}
+
+.media-panel--shard {
+  position: relative;
+  z-index: 1;
+  margin: -10px 0 0;
+  background: var(--bg-elevated);
+  border: none;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0,
+    var(--shard-sm) 0,
+    var(--shard) 10px,
+    calc(100% - 60px) 10px,
+    calc(100% - 52px) 0,
+    calc(100% - var(--shard-sm)) 0,
+    100% var(--shard-sm),
+    100% calc(100% - var(--shard-sm)),
+    calc(100% - var(--shard-sm)) 100%,
+    var(--shard-sm) 100%,
+    0 calc(100% - var(--shard))
+  );
+  filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.45));
+}
+
+.media-panel--shard::before {
+  top: 10px;
+  left: var(--shard);
+  width: calc(100% - var(--shard) - 60px);
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5), 0 0 14px rgba(0, 229, 255, 0.18);
+  opacity: 0.7;
+}
+
+.media-panel__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.875rem;
+  background: var(--bg-subtle);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 24px) 100%,
+    0 100%
+  );
+}
+
+.media-panel__header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 24px);
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5), 0 0 14px rgba(0, 229, 255, 0.18);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.media-panel__title {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--text-muted);
+}
+
+.media-panel__body {
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  background: var(--bg);
+}
+
+.media-panel__gif {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
 @media (max-width: 899px) {
   .code-terminal--shard {
     clip-path: polygon(
       0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px,
       100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%
     );
+  }
+
+  .media-panel--shard {
+    margin-top: -6px;
+    clip-path: polygon(
+      0 6px,
+      14px 0,
+      calc(100% - 14px) 0,
+      100% 6px,
+      100% calc(100% - 14px),
+      calc(100% - 14px) 100%,
+      14px 100%,
+      0 calc(100% - 14px)
+    );
+  }
+
+  .media-panel--shard::before {
+    top: 6px;
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-panel__gif {
+    opacity: 0.85;
   }
 }
 
