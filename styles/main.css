@@ -992,7 +992,7 @@ ul {
   padding-block: clamp(5rem, 12vw, 7rem);
   border-top: var(--border-weight) solid var(--border);
   border-bottom: var(--border-weight) solid var(--border);
-  background: linear-gradient(180deg, rgba(17, 24, 32, 0.45), transparent 40%, transparent 60%, rgba(17, 24, 32, 0.35));
+  background: linear-gradient(180deg, rgba(17, 24, 32, 0.45), transparent 100%, transparent 100%, rgba(17, 24, 32, 0.35));
 }
 
 .skills__head {
