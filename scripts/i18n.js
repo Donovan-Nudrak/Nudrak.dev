@@ -12,7 +12,7 @@
       navProjects: "Projects",
       navContact: "Contact",
       heroRole: "Backend Engineer",
-      heroCtaProjects: "View projects",
+      heroCtaProjects: "Projects",
       heroCtaContact: "Contact",
       aboutTitle: "About",
       aboutMeta:
@@ -55,7 +55,6 @@
       contactCopyLabel: "Copy email",
       contactCopyHint: "Click to copy",
       contactCopyDone: "Copied ✓",
-      contactCurriculum: "Resume",
       contactDownloadCv: "Download PDF",
       footerNote: "# rolling release · pacman -Syu ok",
     },
@@ -69,7 +68,7 @@
       navProjects: "Proyectos",
       navContact: "Contacto",
       heroRole: "Backend Engineer",
-      heroCtaProjects: "Ver proyectos",
+      heroCtaProjects: "Proyectos",
       heroCtaContact: "Contacto",
       aboutTitle: "Sobre mí",
       aboutMeta:
@@ -112,7 +111,6 @@
       contactCopyLabel: "Copiar email",
       contactCopyHint: "Click para copiar",
       contactCopyDone: "Copiado ✓",
-      contactCurriculum: "Curriculum",
       contactDownloadCv: "Descargar PDF",
       footerNote: "# rolling release · pacman -Syu ok",
     },
