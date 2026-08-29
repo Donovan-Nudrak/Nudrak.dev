@@ -55,6 +55,7 @@ html {
 
 body {
   position: relative;
+  isolation: isolate;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
@@ -68,6 +69,19 @@ body {
   background-size: 44px 44px, 44px 44px, auto, auto;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 75% 70% at 50% 42%, transparent 10%, rgba(11, 15, 20, 0.55) 100%),
+    url("../assets/BackGround1.png") center 38% / cover no-repeat;
+  opacity: 0.4;
+  mix-blend-mode: lighten;
 }
 
 body::before {
@@ -299,6 +313,7 @@ ul {
 .code-cursor--terminal {
   width: 0.5em;
   height: 0.9em;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.8), 0 0 16px rgba(0, 229, 255, 0.4);
 }
 
 @keyframes cursorBlink {
@@ -762,9 +777,18 @@ ul {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.65;
-  color: var(--text);
+  color: var(--accent);
+  text-shadow:
+    0 0 6px rgba(0, 229, 255, 0.85),
+    0 0 16px rgba(0, 229, 255, 0.45),
+    0 0 28px rgba(0, 229, 255, 0.25);
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.code-terminal__body code {
+  color: inherit;
+  text-shadow: inherit;
 }
 
 /* ── Hero terminal: cyberbrutalist shard ── */
@@ -937,10 +961,23 @@ ul {
 
 .code-snippet__body {
   padding: 1rem;
+  min-height: 168px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.7;
+  color: var(--accent);
+  text-shadow:
+    0 0 6px rgba(0, 229, 255, 0.85),
+    0 0 16px rgba(0, 229, 255, 0.45),
+    0 0 28px rgba(0, 229, 255, 0.25);
+  white-space: pre-wrap;
+  word-break: break-word;
   overflow-x: auto;
+}
+
+.code-snippet__body code {
+  color: inherit;
+  text-shadow: inherit;
 }
 
 .status-dot {
@@ -965,16 +1002,20 @@ ul {
 
 /* ── About ── */
 .about__meta {
-  max-width: 640px;
+  display: inline-block;
+  max-width: 100%;
   margin-bottom: 1.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-  padding: 0.625rem 0.875rem;
-  border: var(--border-weight) solid var(--border);
-  border-left: 3px solid var(--accent);
-  background: var(--bg-elevated);
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-cyber);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: var(--border-weight) solid var(--border-hover);
+  background: var(--accent-muted);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
 }
 
 .about__content {
@@ -986,7 +1027,7 @@ ul {
 
 .about__content p {
   font-size: 1.0625rem;
-  color: var(--text-muted);
+  color: #fff;
   line-height: 1.75;
 }
 
@@ -1280,7 +1321,11 @@ ul {
   padding: 1.5rem;
   background: var(--bg-elevated);
   border: var(--border-weight) solid var(--border);
-  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
+  transition:
+    border-color 90ms ease-out,
+    background 90ms ease-out,
+    box-shadow 90ms ease-out,
+    transform 90ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover {
@@ -1527,8 +1572,17 @@ button.contact-card {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.65;
-  color: var(--text);
+  color: var(--accent);
+  text-shadow:
+    0 0 6px rgba(0, 229, 255, 0.85),
+    0 0 16px rgba(0, 229, 255, 0.45),
+    0 0 28px rgba(0, 229, 255, 0.25);
   border-bottom: var(--border-weight) solid var(--border);
+}
+
+.linux-panel__body code {
+  color: inherit;
+  text-shadow: inherit;
 }
 
 .linux-panel__info {

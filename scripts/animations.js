@@ -20,6 +20,9 @@
       const delay = el.getAttribute("data-reveal-delay") || "0";
       el.style.transitionDelay = delay + "ms";
       el.classList.add("is-visible");
+      window.setTimeout(function () {
+        el.style.transitionDelay = "0ms";
+      }, Number(delay) + 700);
     }
 
     revealElements.forEach(function (el) {
@@ -52,9 +55,21 @@
     }, 2200);
   }
 
+  const architectureSource =
+    "# Separation of concerns\n" +
+    "routes  → HTTP layer\n" +
+    "services → business logic\n" +
+    "repos   → data access\n" +
+    "\n" +
+    "def build_app():\n" +
+    "    return create_api(\n" +
+    "        layers=[Routes, Services, Repositories]\n" +
+    "    )";
+
   if (prefersReducedMotion) {
     setStaticTerminal("terminal-output", "$ pacman -Syu && uvicorn main:app --reload");
     setStaticTerminal("contact-terminal-output", "$ cat contact.txt");
+    setStaticTerminal("about-snippet-output", architectureSource);
     return;
   }
 
@@ -180,6 +195,47 @@
       return false;
     },
   });
+
+  (function startAboutSnippetWhenVisible() {
+    const snippet = document.getElementById("about-snippet-output");
+    const host = snippet && snippet.closest(".code-snippet");
+    if (!snippet || !host) return;
+
+    function start() {
+      initTypewriter("about-snippet-output", ["$ cat architecture.py"], {
+        deleteSpeed: 14,
+        typeSpeed: 28,
+        pauseEnd: 900,
+        pauseStart: 500,
+        onCompleteLine: function (line, el) {
+          if (line === "$ cat architecture.py") {
+            el.textContent = line + "\n" + architectureSource;
+            return true;
+          }
+          return false;
+        },
+        multilinePause: function () {
+          return 3200;
+        },
+      });
+    }
+
+    const rect = host.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      start();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        if (!entries[0] || !entries[0].isIntersecting) return;
+        start();
+        observer.disconnect();
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(host);
+  })();
 
   animateLinuxBars();
 

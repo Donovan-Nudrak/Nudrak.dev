@@ -201,15 +201,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
               <span>architecture.py</span>
               <span class="code-snippet__status"><span class="status-dot"></span> <span data-i18n="snippetModular">modular</span></span>
             </div>
-            <pre class="code-snippet__body"><code><span class="tok-comment"># Separation of concerns</span>
-<span class="tok-keyword">routes</span>  → HTTP layer
-<span class="tok-keyword">services</span> → business logic
-<span class="tok-keyword">repos</span>   → data access
-
-<span class="tok-keyword">def</span> <span class="tok-fn">build_app</span>():
-    <span class="tok-keyword">return</span> create_api(
-        layers=[Routes, Services, Repositories]
-    )</code></pre>
+            <pre class="code-snippet__body"><code id="about-snippet-output"></code><span class="code-cursor code-cursor--terminal" aria-hidden="true"></span></pre>
           </div>
         </div>
       </div>
