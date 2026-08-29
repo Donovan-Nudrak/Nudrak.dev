@@ -3,55 +3,78 @@
 
   const content = {
     en: {
-      docTitle: "NUDRAK | Backend Engineer",
+      docTitle: "NUDRAK | Full-Stack Developer",
       metaDescription:
-        "NUDRAK — Donovan Agustin Alvarez. Backend Engineer. Python, FastAPI, scalable APIs and modular architecture.",
+        "NUDRAK — Donovan Agustín Alvarez. Full-Stack Developer with a backend focus. Python, FastAPI, PostgreSQL, React, TypeScript, Docker.",
       navMenu: "Open menu",
       navAbout: "About",
       navSkills: "Skills",
       navProjects: "Projects",
       navContact: "Contact",
-      heroRole: "Backend Engineer",
+      heroRole: "Full-Stack Developer",
+      heroFocus: "Backend-focused",
       heroCtaProjects: "Projects",
       heroCtaContact: "Contact",
       aboutTitle: "About",
       aboutMeta:
-        "Junior · Advanced personal projects · Arch Linux (rolling release) · Available for employment and projects · Spanish · Technical English (learning)",
-      aboutP1:
-        "Backend developer focused on designing and implementing scalable systems, APIs and modular architectures using Python. I specialize in building backend services from scratch, with an emphasis on separation of concerns, maintainability and clean software design.",
-      aboutP2:
-        "I enjoy designing robust APIs, authentication systems and service-oriented architectures. I structure my projects separating routes, business logic and persistence — seeking clean, scalable code even in small projects.",
-      aboutP3:
-        "My approach is not just writing functional code, but structuring systems that can grow in an orderly way.",
+        "Full-Stack · Backend-focused · Arch Linux (rolling release) · Spanish · Technical English",
+      aboutWhoTitle: "What I am",
+      aboutWhoBody:
+        "Full-Stack Developer with a backend focus. I build complete applications — from the API and the data layer to the frontend that consumes them.",
+      aboutDoTitle: "What I build",
+      aboutDoBody:
+        "Web applications and REST APIs: authentication and access control (RBAC), payments and webhooks, integrations with external services, business automation, administrative systems, AI/RAG services, and frontends connected to those backends.",
+      aboutEngTitle: "How they are engineered",
+      aboutEngBody:
+        "Modular architectures with clear separation between transport, business logic and data access. I prioritize maintainability, explicit validation, traceability, predictable error handling and controlled behavior when external services fail — systems designed to grow in an orderly way.",
+      aboutWorkTitle: "How I work",
+      aboutWorkBody:
+        "Every solution goes through the same cycle before, during and after implementation.",
+      processAnalysis: "Analysis",
+      processPlanning: "Planning",
+      processImplementation: "Implementation",
+      processValidation: "Validation",
+      processTesting: "Testing",
+      processReview: "Review",
+      aboutLearnTitle: "Learning",
+      aboutLearnBody:
+        "Structured self-taught learning: I analyze existing systems and reverse-engineer their patterns, architecture and design decisions, then validate them through my own projects.",
+      aboutCertMeta: "University of Helsinki · 5 ECTS · July 2026",
       snippetModular: "modular",
       skillsTitle: "Skills",
       skillsIntro:
-        "Technical stack focused on backend, infrastructure, AI workflow and software architecture.",
+        "Technical stack focused on backend engineering, frontend integration and infrastructure.",
+      skillCore: "Core Stack",
       skillBackend: "Backend",
-      skillDatabases: "Databases",
-      skillDevops: "DevOps",
-      skillSecurity: "Security",
-      skillEnvironment: "Environment",
-      skillAiWorkflow: "AI Workflow",
-      skillArchitecture: "Architecture",
+      skillFrontend: "Frontend",
+      skillDatabases: "Databases & Cache",
+      skillInfra: "Infrastructure / DevOps",
+      skillSecurity: "Auth & Security",
+      skillIntegrations: "Integrations",
       skillsActive: "active",
+      skillsDiagramAria:
+        "Stack architecture: core, frontend, backend, auth, data, integrations and infrastructure",
       projectsTitle: "Projects",
-      proj1Desc:
+      projectsFeatured: "Featured",
+      projectsOther: "Other projects",
+      projCyberwareDesc:
+        "Full-stack e-commerce platform: catalog, search, cart, orders, inventory and a separate admin console. Cookie-based JWT auth with refresh tokens and RBAC, Stripe payments with signed webhooks and refunds, AWS S3, transactional emails via Resend, and Gemini-powered semantic search and chatbot. Reproducible local environment with Docker Compose and Alembic.",
+      projAgentDesc:
         "Event-driven backend that ingests Stripe webhooks, analyzes them with Google Gemini and a Rule Engine, and executes automated actions: PDF generation, S3 upload, and email delivery via Resend. Built with FastAPI, Celery, PostgreSQL, and Redis.",
-      proj2Desc:
+      projTasksDesc:
+        "Backend system for multi-team task management with JWT authentication and a hierarchical RBAC from viewer to owner. Layered architecture (routers, services, repositories), soft delete, entity auditing, pagination, filters, health checks, readiness probes and CI with GitHub Actions.",
+      projEcomRagDesc:
         "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
-      proj3Desc:
-        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
-      proj4Desc:
+      projFintraderDesc:
         "FinTrader Hub is a modular fintech backend built with FastAPI, PostgreSQL, Redis, Celery, and SQLAlchemy. It provides portfolio management, trade tracking, market data synchronization, risk analytics, automated alerts, JWT authentication, background workers, and Docker-based deployment.",
-      proj5Desc:
-        "Backend system for multi-team task management with roles and permissions (RBAC), soft delete, pagination, filters and CI with GitHub Actions.",
-      proj6Desc:
+      projRagCoreDesc:
         "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
-      proj7Desc:
+      projEcomDesc:
+        "Full e-commerce backend ready for frontend integration. Product, user and order management with JWT authentication, cart, stock control and admin panel.",
+      projNotesDesc:
         "Notes API with session authentication, shared notes between users and basic permission system. Deployed to production.",
       contactTitle: "Contact",
-      contactStatus: "Available for backend employment and projects",
+      contactStatus: "Available for professional opportunities and freelance projects",
       contactCopyLabel: "Copy email",
       contactCopyHint: "Click to copy",
       contactCopyDone: "Copied ✓",
@@ -59,55 +82,78 @@
       footerNote: "# rolling release · pacman -Syu ok",
     },
     es: {
-      docTitle: "NUDRAK | Backend Engineer",
+      docTitle: "NUDRAK | Full-Stack Developer",
       metaDescription:
-        "NUDRAK — Donovan Agustin Alvarez. Backend Engineer. Python, FastAPI, APIs escalables y arquitectura modular.",
+        "NUDRAK — Donovan Agustín Alvarez. Full-Stack Developer con enfoque en backend. Python, FastAPI, PostgreSQL, React, TypeScript, Docker.",
       navMenu: "Abrir menú",
       navAbout: "Sobre mí",
       navSkills: "Tecnologías",
       navProjects: "Proyectos",
       navContact: "Contacto",
-      heroRole: "Backend Engineer",
+      heroRole: "Full-Stack Developer",
+      heroFocus: "Enfoque en backend",
       heroCtaProjects: "Proyectos",
       heroCtaContact: "Contacto",
       aboutTitle: "Sobre mí",
       aboutMeta:
-        "Junior · Proyectos personales avanzados · Arch Linux (rolling release) · Disponible para empleo y proyectos · Español · Inglés técnico (en estudio)",
-      aboutP1:
-        "Backend developer enfocado en el diseño e implementación de sistemas escalables, APIs y arquitecturas modulares utilizando Python. Me especializo en construir servicios backend desde cero, con enfoque en separación de responsabilidades, mantenibilidad y diseño limpio de software.",
-      aboutP2:
-        "Disfruto diseñar APIs robustas, sistemas de autenticación y arquitecturas orientadas a servicios. Estructuro mis proyectos separando capa de rutas, lógica de negocio y persistencia — buscando código limpio y escalable incluso en proyectos pequeños.",
-      aboutP3:
-        "Mi enfoque no es solo escribir código funcional, sino estructurar sistemas que puedan crecer de forma ordenada.",
+        "Full-Stack · Enfoque en backend · Arch Linux (rolling release) · Español · Inglés técnico",
+      aboutWhoTitle: "Qué soy",
+      aboutWhoBody:
+        "Full-Stack Developer con enfoque en backend. Construyo aplicaciones completas — desde la API y la capa de datos hasta el frontend que las consume.",
+      aboutDoTitle: "Qué construyo",
+      aboutDoBody:
+        "Aplicaciones web y APIs REST: autenticación y control de acceso (RBAC), pagos y webhooks, integraciones con servicios externos, automatización de procesos, sistemas administrativos, servicios de IA/RAG y frontends conectados a esos backends.",
+      aboutEngTitle: "Cómo se construyen",
+      aboutEngBody:
+        "Arquitecturas modulares con separación clara entre transporte, lógica de negocio y acceso a datos. Priorizo mantenibilidad, validación explícita, trazabilidad, manejo predecible de errores y comportamiento controlado ante fallos de servicios externos — sistemas diseñados para crecer de forma ordenada.",
+      aboutWorkTitle: "Cómo trabajo",
+      aboutWorkBody:
+        "Cada solución pasa por el mismo ciclo antes, durante y después de la implementación.",
+      processAnalysis: "Análisis",
+      processPlanning: "Planificación",
+      processImplementation: "Implementación",
+      processValidation: "Validación",
+      processTesting: "Pruebas",
+      processReview: "Revisión",
+      aboutLearnTitle: "Aprendizaje",
+      aboutLearnBody:
+        "Aprendizaje autodidacta estructurado: analizo sistemas existentes y aplico ingeniería inversa a sus patrones, arquitectura y decisiones de diseño, validándolos después en mis propios proyectos.",
+      aboutCertMeta: "University of Helsinki · 5 ECTS · Julio 2026",
       snippetModular: "modular",
       skillsTitle: "Tecnologías",
       skillsIntro:
-        "Stack técnico orientado a backend, infraestructura, flujo de trabajo con IA y arquitectura de software.",
+        "Stack técnico orientado a ingeniería backend, integración frontend e infraestructura.",
+      skillCore: "Stack principal",
       skillBackend: "Backend",
-      skillDatabases: "Bases de datos",
-      skillDevops: "DevOps",
-      skillSecurity: "Seguridad",
-      skillEnvironment: "Entorno",
-      skillAiWorkflow: "Flujo con IA",
-      skillArchitecture: "Arquitectura",
+      skillFrontend: "Frontend",
+      skillDatabases: "Bases de datos y caché",
+      skillInfra: "Infraestructura / DevOps",
+      skillSecurity: "Autenticación y seguridad",
+      skillIntegrations: "Integraciones",
       skillsActive: "activo",
+      skillsDiagramAria:
+        "Arquitectura del stack: core, frontend, backend, autenticación, datos, integraciones e infraestructura",
       projectsTitle: "Proyectos",
-      proj1Desc:
+      projectsFeatured: "Destacados",
+      projectsOther: "Otros proyectos",
+      projCyberwareDesc:
+        "Plataforma e-commerce full-stack: catálogo, búsqueda, carrito, órdenes, inventario y consola administrativa independiente. Autenticación JWT por cookies con refresh tokens y RBAC, pagos con Stripe con webhooks firmados y reembolsos, AWS S3, emails transaccionales vía Resend, y búsqueda semántica y chatbot con Gemini. Entorno local reproducible con Docker Compose y Alembic.",
+      projAgentDesc:
         "Backend orientado a eventos que procesa webhooks de Stripe, los analiza con Google Gemini y un motor de reglas, y ejecuta acciones automatizadas: generación de PDF, subida a S3 y envío de email vía Resend. Construido con FastAPI, Celery, PostgreSQL y Redis.",
-      proj2Desc:
+      projTasksDesc:
+        "Sistema backend para gestión de tareas multi-equipo con autenticación JWT y RBAC jerárquico de viewer a owner. Arquitectura por capas (routers, servicios, repositorios), soft delete, auditoría de entidades, paginación, filtros, health checks, readiness probes y CI con GitHub Actions.",
+      projEcomRagDesc:
         "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
-      proj3Desc:
-        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
-      proj4Desc:
+      projFintraderDesc:
         "FinTrader Hub es un backend fintech modular construido con FastAPI, PostgreSQL, Redis, Celery y SQLAlchemy. Ofrece gestión de portafolios, seguimiento de operaciones, sincronización de datos de mercado, analítica de riesgo, alertas automatizadas, autenticación JWT, workers en segundo plano y despliegue con Docker.",
-      proj5Desc:
-        "Sistema backend para gestión de tareas multi-equipo con roles y permisos (RBAC), soft delete, paginación, filtros y CI con GitHub Actions.",
-      proj6Desc:
+      projRagCoreDesc:
         "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
-      proj7Desc:
+      projEcomDesc:
+        "Backend completo de e-commerce listo para integración con frontend. Gestión de productos, usuarios y órdenes con autenticación JWT, carrito, control de stock y panel administrativo.",
+      projNotesDesc:
         "API de notas con autenticación por sesión, notas compartidas entre usuarios y sistema de permisos básico. Desplegada en producción.",
       contactTitle: "Contacto",
-      contactStatus: "Disponible para empleo y proyectos backend",
+      contactStatus: "Disponible para oportunidades profesionales y proyectos freelance",
       contactCopyLabel: "Copiar email",
       contactCopyHint: "Click para copiar",
       contactCopyDone: "Copiado ✓",
