@@ -67,6 +67,8 @@
         "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
       projFintraderDesc:
         "FinTrader Hub is a modular fintech backend built with FastAPI, PostgreSQL, Redis, Celery, and SQLAlchemy. It provides portfolio management, trade tracking, market data synchronization, risk analytics, automated alerts, JWT authentication, background workers, and Docker-based deployment.",
+      projMomoRamenDesc:
+        "Frontend demo of a fictional Japanese restaurant: identity, dishes and house story as a warm pastel kawaii SPA with React, Vite, Tailwind and HashRouter. Browse the menu and a client-only reservation flow; no real orders, bookings or payments. Ready to extend with a backend, database and notifications later.",
       projRagCoreDesc:
         "Retrieval-Augmented Generation service with embeddings pipeline, LLM integration via OpenRouter and semantic retrieval of contextual information.",
       projEcomDesc:
@@ -146,6 +148,8 @@
         "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
       projFintraderDesc:
         "FinTrader Hub es un backend fintech modular construido con FastAPI, PostgreSQL, Redis, Celery y SQLAlchemy. Ofrece gestión de portafolios, seguimiento de operaciones, sincronización de datos de mercado, analítica de riesgo, alertas automatizadas, autenticación JWT, workers en segundo plano y despliegue con Docker.",
+      projMomoRamenDesc:
+        "Demo frontend de un restaurante japonés ficticio: identidad, platos e historia de la casa en una SPA visual cálida, pastel y kawaii, con React, Vite, Tailwind y HashRouter. Permite recorrer el menú y un flujo de reservas solo en cliente; no procesa pedidos, reservas ni pagos reales. La estructura puede ampliarse con backend, base de datos y notificaciones.",
       projRagCoreDesc:
         "Servicio de Retrieval-Augmented Generation con pipeline de embeddings, integración con LLMs vía OpenRouter y recuperación semántica de información contextual.",
       projEcomDesc:
