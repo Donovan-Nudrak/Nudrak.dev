@@ -65,6 +65,8 @@
         "Backend system for multi-team task management with JWT authentication and a hierarchical RBAC from viewer to owner. Layered architecture (routers, services, repositories), soft delete, entity auditing, pagination, filters, health checks, readiness probes and CI with GitHub Actions.",
       projEcomRagDesc:
         "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
+      projKairoDesc:
+        "Conceptual landing for a fictional watch brand: a single-product promotional page with editorial dark aesthetics, built in React 19, TypeScript and Vite with no router, global store or backend. Custom CSS and Framer Motion handle staggered reveals, hero orbits and finish selection; accessible keyboard modal, reduced-motion support, and GitHub Pages deploy.",
       projFintraderDesc:
         "FinTrader Hub is a modular fintech backend built with FastAPI, PostgreSQL, Redis, Celery, and SQLAlchemy. It provides portfolio management, trade tracking, market data synchronization, risk analytics, automated alerts, JWT authentication, background workers, and Docker-based deployment.",
       projMomoRamenDesc:
@@ -146,6 +148,8 @@
         "Sistema backend para gestión de tareas multi-equipo con autenticación JWT y RBAC jerárquico de viewer a owner. Arquitectura por capas (routers, servicios, repositorios), soft delete, auditoría de entidades, paginación, filtros, health checks, readiness probes y CI con GitHub Actions.",
       projEcomRagDesc:
         "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
+      projKairoDesc:
+        "Landing conceptual para una marca ficticia de relojería: experiencia promocional de un solo producto, estética editorial oscura, en React 19, TypeScript y Vite, sin router, store ni backend. CSS propio y Framer Motion controlan revelados, órbitas del hero y el selector de acabados; modal accesible por teclado, movimiento reducido y despliegue en GitHub Pages.",
       projFintraderDesc:
         "FinTrader Hub es un backend fintech modular construido con FastAPI, PostgreSQL, Redis, Celery y SQLAlchemy. Ofrece gestión de portafolios, seguimiento de operaciones, sincronización de datos de mercado, analítica de riesgo, alertas automatizadas, autenticación JWT, workers en segundo plano y despliegue con Docker.",
       projMomoRamenDesc:
