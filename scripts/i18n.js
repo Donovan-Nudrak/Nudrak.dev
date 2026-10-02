@@ -65,6 +65,10 @@
         "Backend system for multi-team task management with JWT authentication and a hierarchical RBAC from viewer to owner. Layered architecture (routers, services, repositories), soft delete, entity auditing, pagination, filters, health checks, readiness probes and CI with GitHub Actions.",
       projEcomRagDesc:
         "Production-oriented e-commerce REST API featuring JWT authentication, Redis caching, PostgreSQL, pgvector semantic search, and Gemini-powered RAG. A well-structured, fully tested API with semantic product search via Retrieval-Augmented Generation.",
+      projImpactFrameDesc:
+        "Interactive bilingual landing for a conceptual mechanical keyboard. Industrial aesthetic, layered product imagery, scroll-tied GSAP motion and visual customization to present architecture, materials and how it works.",
+      projLowHoursDesc:
+        "Bilingual landing for a fictional late-night café with editorial identity and a lo-fi mood. Rainy-night photography, smooth motion, menu, gallery and a music player built around the line «Stay a little longer».",
       projKairoDesc:
         "Conceptual landing for a fictional watch brand: a single-product promotional page with editorial dark aesthetics, built in React 19, TypeScript and Vite with no router, global store or backend. Custom CSS and Framer Motion handle staggered reveals, hero orbits and finish selection; accessible keyboard modal, reduced-motion support, and GitHub Pages deploy.",
       projFintraderDesc:
@@ -148,6 +152,10 @@
         "Sistema backend para gestión de tareas multi-equipo con autenticación JWT y RBAC jerárquico de viewer a owner. Arquitectura por capas (routers, servicios, repositorios), soft delete, auditoría de entidades, paginación, filtros, health checks, readiness probes y CI con GitHub Actions.",
       projEcomRagDesc:
         "API REST de e-commerce orientada a producción con autenticación JWT, caché Redis, PostgreSQL, búsqueda semántica con pgvector y RAG potenciado por Gemini. API bien estructurada y completamente testeada con búsqueda semántica de productos mediante Retrieval-Augmented Generation.",
+      projImpactFrameDesc:
+        "Landing interactiva y bilingüe para un teclado mecánico conceptual. Estética industrial, imágenes por capas, animaciones ligadas al scroll y controles de personalización visual para presentar arquitectura, materiales y funcionamiento.",
+      projLowHoursDesc:
+        "Landing bilingüe para una cafetería nocturna ficticia, con identidad editorial y ambiente lo-fi. Fotografía de noches lluviosas, animaciones suaves, menú, galería y un reproductor musical alrededor de «Stay a little longer».",
       projKairoDesc:
         "Landing conceptual para una marca ficticia de relojería: experiencia promocional de un solo producto, estética editorial oscura, en React 19, TypeScript y Vite, sin router, store ni backend. CSS propio y Framer Motion controlan revelados, órbitas del hero y el selector de acabados; modal accesible por teclado, movimiento reducido y despliegue en GitHub Pages.",
       projFintraderDesc:
