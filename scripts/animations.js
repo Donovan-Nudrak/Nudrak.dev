@@ -177,11 +177,11 @@
     pauseStart: 600,
     onCompleteLine: function (line, el) {
       if (line === "$ cat contact.txt") {
-        el.textContent = line + "\nemail: Nudrak@protonmail.com\ngithub: Donovan-Nudrak";
+        el.textContent = line + "\nemail: donovannud@gmail.com  # primary\nemail: Nudrak@protonmail.com  # secondary\ngithub: Donovan-Nudrak";
         return true;
       }
       if (line === "$ echo $EMAIL") {
-        el.textContent = line + "\nNudrak@protonmail.com";
+        el.textContent = line + "\ndonovannud@gmail.com";
         return true;
       }
       if (line === "$ cat /etc/hostname") {
