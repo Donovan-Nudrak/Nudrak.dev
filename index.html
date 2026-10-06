@@ -36,8 +36,7 @@
         <a href="#skills" class="header__link" data-i18n="navSkills">Skills</a>
         <a href="#projects" class="header__link" data-i18n="navProjects">Projects</a>
         <a href="#contact" class="header__link" data-i18n="navContact">Contact</a>
-        <a href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="header__link" target="_blank" rel="noopener noreferrer">CV-ES</a>
-        <a href="assets/CV-EN-Donovan-Agustin-Alvarez.pdf" class="header__link" target="_blank" rel="noopener noreferrer">CV-EN</a>
+        <a href="#cv" class="header__link">CV</a>
       </nav>
     </div>
   </header>
@@ -123,15 +122,9 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             <span class="hero__tech" data-index="5">Docker</span>
           </p>
           <div class="hero__actions">
-            <div class="hero__actions-row">
-              <a href="#services" class="hero__cta" data-i18n="heroCtaServices">View services</a>
-              <a href="#projects" class="hero__cta" data-i18n="heroCtaProjects">Projects</a>
-              <a href="#contact" class="hero__cta" data-i18n="heroCtaContact">Contact</a>
-            </div>
-            <div class="hero__actions-row">
-              <a href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="hero__cta" target="_blank" rel="noopener noreferrer">CV-ES</a>
-              <a href="assets/CV-EN-Donovan-Agustin-Alvarez.pdf" class="hero__cta" target="_blank" rel="noopener noreferrer">CV-EN</a>
-            </div>
+            <a href="#services" class="hero__cta" data-i18n="heroCtaServices">View services</a>
+            <a href="#projects" class="hero__cta" data-i18n="heroCtaProjects">Projects</a>
+            <a href="#contact" class="hero__cta" data-i18n="heroCtaContact">Contact</a>
           </div>
         </div>
 
@@ -831,7 +824,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
               <span class="contact-card__value">donovan-a-83b7ba3a2</span>
             </a>
 
-            <a href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="contact-card reveal" data-reveal data-reveal-delay="320" target="_blank" rel="noopener noreferrer">
+            <a id="cv" href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="contact-card reveal" data-reveal data-reveal-delay="320" target="_blank" rel="noopener noreferrer">
               <span class="contact-card__cmd">$ cat CV-ES.pdf</span>
               <span class="contact-card__label">CV-ES</span>
               <span class="contact-card__value" data-i18n="contactDownloadCv">Download PDF</span>
