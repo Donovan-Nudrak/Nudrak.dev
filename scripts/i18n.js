@@ -14,8 +14,6 @@
       navContact: "Contact",
       heroRole: "Full-Stack Developer",
       heroFocus: "Backend-focused",
-      heroLead:
-        "I develop websites, frontend interfaces and backend systems. I can build a complete application or work on one part of your project.",
       heroCtaServices: "View services",
       heroCtaProjects: "Projects",
       heroCtaContact: "Contact",
@@ -42,7 +40,7 @@
       processReview: "Review",
       aboutLearnTitle: "Learning",
       aboutLearnBody:
-        "Structured self-taught learning: I analyze existing systems and reverse-engineer their patterns, architecture and design decisions, then validate them through my own projects.",
+        "Structured learning: I analyze existing systems and reverse-engineer their patterns, architecture and design decisions, then validate them through my own projects.",
       aboutCertMeta: "University of Helsinki · 5 ECTS · July 2026",
       snippetModular: "modular",
       servicesTitle: "What I can build for you",
@@ -152,8 +150,6 @@
       inquiryMessage: "What do you need built?",
       inquirySubmit: "Send inquiry",
       inquirySending: "Sending…",
-      inquiryNote:
-        "I use this information to reply to your inquiry. Formspree processes the submission. Cloudflare Turnstile verifies it.",
       inquiryCopy: "Copy",
       inquiryCopied: "Copied",
       inquiryCopyFail: "Could not copy",
@@ -189,8 +185,6 @@
       navContact: "Contacto",
       heroRole: "Full-Stack Developer",
       heroFocus: "Enfoque en backend",
-      heroLead:
-        "Desarrollo páginas web, interfaces frontend y sistemas backend. Puedo crear una aplicación completa o trabajar en una parte de tu proyecto.",
       heroCtaServices: "Ver servicios",
       heroCtaProjects: "Proyectos",
       heroCtaContact: "Contacto",
@@ -217,7 +211,7 @@
       processReview: "Revisión",
       aboutLearnTitle: "Aprendizaje",
       aboutLearnBody:
-        "Aprendizaje autodidacta estructurado: analizo sistemas existentes y aplico ingeniería inversa a sus patrones, arquitectura y decisiones de diseño, validándolos después en mis propios proyectos.",
+        "Aprendizaje estructurado: analizo sistemas existentes y aplico ingeniería inversa a sus patrones, arquitectura y decisiones de diseño, validándolos después en mis propios proyectos.",
       aboutCertMeta: "University of Helsinki · 5 ECTS · Julio 2026",
       snippetModular: "modular",
       servicesTitle: "Qué puedo desarrollar para ti",
@@ -327,8 +321,6 @@
       inquiryMessage: "¿Qué necesitas desarrollar?",
       inquirySubmit: "Enviar consulta",
       inquirySending: "Enviando…",
-      inquiryNote:
-        "Utilizo estos datos para responder la consulta. Formspree procesa el envío. Cloudflare Turnstile lo verifica.",
       inquiryCopy: "Copiar",
       inquiryCopied: "Copiado",
       inquiryCopyFail: "No se pudo copiar",

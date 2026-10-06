@@ -700,13 +700,6 @@ ul {
   color: var(--accent-highlight);
 }
 
-.hero__lead {
-  max-width: 38rem;
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  color: #fff;
-}
-
 .hero__cta {
   display: inline-flex;
   align-items: center;
@@ -1972,14 +1965,6 @@ ul {
 .inquiry__mail-fallback:hover,
 .inquiry__mail-fallback:focus-visible {
   border-bottom-color: var(--accent);
-}
-
-.inquiry__note {
-  margin-top: 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.55;
-  color: var(--text-muted);
 }
 
 .contact__layout {
