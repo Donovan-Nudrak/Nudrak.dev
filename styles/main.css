@@ -1873,6 +1873,39 @@ ul {
   color: var(--red);
 }
 
+.inquiry__turnstile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1.15rem;
+}
+
+.inquiry__turnstile-label {
+  margin: 0;
+  font-family: var(--font-cyber);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.inquiry__turnstile-widget {
+  min-height: 65px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.inquiry__turnstile-widget:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.inquiry__turnstile-widget[aria-invalid="true"] {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 .inquiry__status {
   min-height: 1.4em;
   margin: 1rem 0 0.75rem;

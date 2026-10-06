@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.simpleicons.org">
+  <link rel="preconnect" href="https://challenges.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/i18n.css">
@@ -778,13 +779,26 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             </div>
           </div>
 
+          <div class="inquiry__turnstile">
+            <p class="inquiry__turnstile-label" id="inquiry-turnstile-label" data-i18n="inquiryTurnstileLabel">Verification</p>
+            <div
+              id="inquiry-turnstile"
+              class="inquiry__turnstile-widget"
+              tabindex="-1"
+              role="group"
+              aria-labelledby="inquiry-turnstile-label"
+              aria-describedby="inquiry-turnstile-error"
+            ></div>
+            <p class="inquiry__field-error" id="inquiry-turnstile-error" hidden></p>
+          </div>
+
           <p class="inquiry__status" id="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
           <div class="inquiry__submit-row">
             <button type="submit" class="inquiry__submit" id="inquiry-submit" data-i18n="inquirySubmit">Send inquiry</button>
             <a class="inquiry__mail-fallback" id="inquiry-mail-fallback" hidden href="mailto:donovannud@gmail.com" data-i18n="inquiryEmailFallback">Email instead</a>
           </div>
-          <p class="inquiry__note" data-i18n="inquiryNote">I use this information to reply to your inquiry. Formspree processes the submission.</p>
+          <p class="inquiry__note" data-i18n="inquiryNote">I use this information to reply to your inquiry. Formspree processes the submission. Cloudflare Turnstile verifies it.</p>
         </form>
 
         <div class="contact__layout">
@@ -882,6 +896,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
 
   <script src="scripts/i18n.js"></script>
   <script src="scripts/inquiry.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onNudrakTurnstileLoad" async defer></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/animations.js"></script>
   <script src="scripts/title-effects.js"></script>

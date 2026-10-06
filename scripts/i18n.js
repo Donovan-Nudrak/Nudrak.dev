@@ -153,7 +153,7 @@
       inquirySubmit: "Send inquiry",
       inquirySending: "Sending…",
       inquiryNote:
-        "I use this information to reply to your inquiry. Formspree processes the submission.",
+        "I use this information to reply to your inquiry. Formspree processes the submission. Cloudflare Turnstile verifies it.",
       inquiryCopy: "Copy",
       inquiryCopied: "Copied",
       inquiryCopyFail: "Could not copy",
@@ -161,6 +161,12 @@
       inquiryAnnounceService: "Service selected. Continue in the inquiry form.",
       inquiryRequired: "This field is required.",
       inquiryEmailInvalid: "Enter a valid email address.",
+      inquiryTurnstileLabel: "Verification",
+      inquiryTurnstilePending: "Wait until verification finishes.",
+      inquiryTurnstileMissing: "Complete the verification before sending.",
+      inquiryTurnstileError: "Verification failed. Try again.",
+      inquiryTurnstileExpired: "Verification expired. Complete it again.",
+      inquiryTurnstileLoadError: "Could not load verification. Use the email link.",
       inquirySuccess: "Inquiry sent. I will reply to the email you provided.",
       inquiryErrorGeneric:
         "The inquiry could not be sent. Try again later or use the email link.",
@@ -322,7 +328,7 @@
       inquirySubmit: "Enviar consulta",
       inquirySending: "Enviando…",
       inquiryNote:
-        "Utilizo estos datos para responder la consulta. Formspree procesa el envío.",
+        "Utilizo estos datos para responder la consulta. Formspree procesa el envío. Cloudflare Turnstile lo verifica.",
       inquiryCopy: "Copiar",
       inquiryCopied: "Copiado",
       inquiryCopyFail: "No se pudo copiar",
@@ -330,6 +336,12 @@
       inquiryAnnounceService: "Servicio seleccionado. Continúa en el formulario de consulta.",
       inquiryRequired: "Este campo es obligatorio.",
       inquiryEmailInvalid: "Introduce un correo válido.",
+      inquiryTurnstileLabel: "Verificación",
+      inquiryTurnstilePending: "Espera a que termine la verificación.",
+      inquiryTurnstileMissing: "Completa la verificación antes de enviar.",
+      inquiryTurnstileError: "La verificación falló. Inténtalo de nuevo.",
+      inquiryTurnstileExpired: "La verificación caducó. Complétala de nuevo.",
+      inquiryTurnstileLoadError: "No se pudo cargar la verificación. Usa el enlace de correo.",
       inquirySuccess: "Consulta enviada. Responderé al correo que indicaste.",
       inquiryErrorGeneric:
         "No se pudo enviar la consulta. Inténtalo más tarde o usa el enlace de correo.",
