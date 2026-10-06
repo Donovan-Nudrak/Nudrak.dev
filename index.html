@@ -31,6 +31,7 @@
 
       <nav class="header__nav" id="nav">
         <a href="#about" class="header__link" data-i18n="navAbout">About</a>
+        <a href="#services" class="header__link" data-i18n="navServices">Services</a>
         <a href="#skills" class="header__link" data-i18n="navSkills">Skills</a>
         <a href="#projects" class="header__link" data-i18n="navProjects">Projects</a>
         <a href="#contact" class="header__link" data-i18n="navContact">Contact</a>
@@ -120,11 +121,13 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
             <span class="hero__divider">|</span>
             <span class="hero__tech" data-index="5">Docker</span>
           </p>
+          <p class="hero__lead" data-i18n="heroLead">I develop websites, frontend interfaces and backend systems. I can build a complete application or work on one part of your project.</p>
           <div class="hero__actions">
-            <a href="#projects" class="hero__cta" data-i18n="heroCtaProjects">Projects</a>
+            <a href="#services" class="hero__cta" data-i18n="heroCtaServices">View services</a>
             <a href="#contact" class="hero__cta" data-i18n="heroCtaContact">Contact</a>
-            <a href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="hero__cta" target="_blank" rel="noopener noreferrer">CV-ES</a>
-            <a href="assets/CV-EN-Donovan-Agustin-Alvarez.pdf" class="hero__cta" target="_blank" rel="noopener noreferrer">CV-EN</a>
+            <a href="#projects" class="hero__cta hero__cta--secondary" data-i18n="heroCtaProjects">Projects</a>
+            <a href="assets/CV-ES-Donovan-Agustin-Alvarez.pdf" class="hero__cta hero__cta--secondary" target="_blank" rel="noopener noreferrer">CV-ES</a>
+            <a href="assets/CV-EN-Donovan-Agustin-Alvarez.pdf" class="hero__cta hero__cta--secondary" target="_blank" rel="noopener noreferrer">CV-EN</a>
           </div>
         </div>
 
@@ -207,10 +210,129 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
       </div>
     </section>
 
+    <section class="section services reveal" id="services" data-reveal>
+      <div class="container">
+        <h2 class="section__title" data-i18n="servicesTitle">What I can build for you</h2>
+        <p class="services__intro" data-i18n="servicesIntro">Available for new projects and for existing applications — websites, frontend, backend, or a complete product.</p>
+
+        <div class="services__grid">
+          <article class="service-card reveal" data-reveal data-reveal-delay="0">
+            <div class="service-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/#web</span> <span class="tok-comment"># pages</span></code>
+            </div>
+            <h3 class="service-card__title" data-i18n="serviceWebTitle">Websites</h3>
+            <p class="service-card__desc" data-i18n="serviceWebDesc">Landing pages, portfolios and sites for businesses, services or products. Content presentation, mobile-ready layouts and contact paths.</p>
+            <p class="service-card__examples-label" data-i18n="servicesExamplesLabel">Examples of work you can hire</p>
+            <ul class="service-card__examples">
+              <li data-i18n="serviceWebEx1">A product or service landing</li>
+              <li data-i18n="serviceWebEx2">A personal or studio portfolio</li>
+              <li data-i18n="serviceWebEx3">A small business site with contact</li>
+            </ul>
+            <div class="service-card__actions">
+              <button type="button" class="service-card__consult" data-inquiry-service="web" data-i18n="servicesConsult">Ask about this service</button>
+              <a href="https://lowhours.nudrak.dev" class="service-card__related" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="servicesRefDemo">Conceptual demo</span>
+                <span>LOW HOURS</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-reveal data-reveal-delay="100">
+            <div class="service-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/#ui</span> <span class="tok-comment"># frontend</span></code>
+            </div>
+            <h3 class="service-card__title" data-i18n="serviceFrontendTitle">Frontend development</h3>
+            <p class="service-card__desc" data-i18n="serviceFrontendDesc">Design implementation, responsive interfaces, interactive components and connection to APIs.</p>
+            <p class="service-card__examples-label" data-i18n="servicesExamplesLabel">Examples of work you can hire</p>
+            <ul class="service-card__examples">
+              <li data-i18n="serviceFrontendEx1">Implementing an existing design</li>
+              <li data-i18n="serviceFrontendEx2">Interactive components and client-side flows</li>
+              <li data-i18n="serviceFrontendEx3">Connecting a frontend to an API</li>
+            </ul>
+            <div class="service-card__actions">
+              <button type="button" class="service-card__consult" data-inquiry-service="frontend" data-i18n="servicesConsult">Ask about this service</button>
+              <a href="https://momo-ramen.nudrak.dev" class="service-card__related" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="servicesRefDemo">Conceptual demo</span>
+                <span>Momo Ramen</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-reveal data-reveal-delay="200">
+            <div class="service-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/#api</span> <span class="tok-comment"># backend</span></code>
+            </div>
+            <h3 class="service-card__title" data-i18n="serviceBackendTitle">Backend development</h3>
+            <p class="service-card__desc" data-i18n="serviceBackendDesc">APIs, databases, authentication, permissions, integrations and automations.</p>
+            <p class="service-card__examples-label" data-i18n="servicesExamplesLabel">Examples of work you can hire</p>
+            <ul class="service-card__examples">
+              <li data-i18n="serviceBackendEx1">REST APIs and data models</li>
+              <li data-i18n="serviceBackendEx2">Authentication, roles and access control</li>
+              <li data-i18n="serviceBackendEx3">Webhooks, email and third-party integrations</li>
+            </ul>
+            <div class="service-card__actions">
+              <button type="button" class="service-card__consult" data-inquiry-service="backend" data-i18n="servicesConsult">Ask about this service</button>
+              <a href="https://github.com/Donovan-Nudrak/Task_Manager" class="service-card__related" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="servicesRefRepo">Repository</span>
+                <span>Task Manager API</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-reveal data-reveal-delay="300">
+            <div class="service-card__code">
+              <code><span class="tok-keyword">GET</span> <span class="tok-string">/#app</span> <span class="tok-comment"># full-stack</span></code>
+            </div>
+            <h3 class="service-card__title" data-i18n="serviceFullstackTitle">Full-stack applications</h3>
+            <p class="service-card__desc" data-i18n="serviceFullstackDesc">Integrated frontend and backend for applications with users, data and their own processes.</p>
+            <p class="service-card__examples-label" data-i18n="servicesExamplesLabel">Examples of work you can hire</p>
+            <ul class="service-card__examples">
+              <li data-i18n="serviceFullstackEx1">An application with accounts, data and workflows</li>
+              <li data-i18n="serviceFullstackEx2">An admin console connected to an API</li>
+              <li data-i18n="serviceFullstackEx3">End-to-end features across client and server</li>
+            </ul>
+            <div class="service-card__actions">
+              <button type="button" class="service-card__consult" data-inquiry-service="fullstack" data-i18n="servicesConsult">Ask about this service</button>
+              <a href="https://github.com/Donovan-Nudrak/CyberWare" class="service-card__related" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="servicesRefRepo">Repository</span>
+                <span>CyberWare</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="services__quote" data-i18n="servicesQuote">Each project is quoted according to its scope and complexity. I am also available for hourly collaborations.</p>
+
+        <h3 class="services__subtitle" data-i18n="servicesProcessTitle">How we work</h3>
+        <ol class="services__process">
+          <li data-i18n="servicesProcess1">You tell me your idea or need.</li>
+          <li data-i18n="servicesProcess2">We define scope, deliverables, price and timeline.</li>
+          <li data-i18n="servicesProcess3">I develop with agreed reviews.</li>
+          <li data-i18n="servicesProcess4">Delivery as specified in the proposal.</li>
+        </ol>
+
+        <h3 class="services__subtitle" data-i18n="servicesFaqTitle">Questions</h3>
+        <div class="services__faq">
+          <details>
+            <summary data-i18n="servicesFaq1Q">Can you improve an existing site or application?</summary>
+            <p data-i18n="servicesFaq1A">Yes. I can review the project and propose improvements, new features or integrations according to its current state and your needs.</p>
+          </details>
+          <details>
+            <summary data-i18n="servicesFaq2Q">How are price and timeline determined?</summary>
+            <p data-i18n="servicesFaq2A">They depend on scope, complexity and the material available. They are agreed before work begins.</p>
+          </details>
+          <details>
+            <summary data-i18n="servicesFaq3Q">What does delivery include?</summary>
+            <p data-i18n="servicesFaq3A">The proposal will specify code, publishing, documentation and support when they apply. External costs such as domain, hosting or third-party services will be listed separately.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--skills skills reveal" id="skills" data-reveal>
       <div class="container">
         <div class="skills__head">
-          <h2 class="section__title" data-i18n="skillsTitle"> Skills</h2>
+          <h2 class="section__title" data-i18n="skillsTitle">Skills</h2>
           <p class="skills__intro" data-i18n="skillsIntro">Technical stack focused on backend engineering, frontend integration and infrastructure.</p>
         </div>
 
@@ -606,23 +728,80 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
           <h2 class="section__title" data-i18n="contactTitle">Contact</h2>
           <p class="contact__status">
             <span class="status-dot"></span>
-            <span data-i18n="contactStatus">Available for backend employment and projects</span>
+            <span data-i18n="contactStatus">Available for professional opportunities and freelance projects</span>
           </p>
         </div>
 
+        <form class="inquiry reveal" id="inquiry" data-reveal novalidate>
+          <h3 class="inquiry__title" data-i18n="inquiryTitle">Project inquiry</h3>
+          <p class="inquiry__intro" data-i18n="inquiryIntro">Send a short description of what you need. I reply to the email you provide.</p>
+
+          <noscript>
+            <p class="inquiry__noscript">JavaScript is required to send from this page. Email <a href="mailto:donovannud@gmail.com">donovannud@gmail.com</a>. · Se necesita JavaScript para enviar desde esta página.</p>
+          </noscript>
+
+          <div class="inquiry__gotcha" aria-hidden="true">
+            <label for="inquiry-gotcha">Do not fill this field</label>
+            <input type="text" id="inquiry-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="language" id="inquiry-language" value="en">
+          <input type="hidden" name="service_label" id="inquiry-service-label" value="">
+          <input type="hidden" name="subject" id="inquiry-subject" value="">
+
+          <div class="inquiry__grid">
+            <div class="inquiry__field">
+              <label for="inquiry-name" data-i18n="inquiryName">Name</label>
+              <input type="text" id="inquiry-name" name="name" autocomplete="name" required maxlength="120" aria-describedby="inquiry-name-error">
+              <p class="inquiry__field-error" id="inquiry-name-error" hidden></p>
+            </div>
+            <div class="inquiry__field">
+              <label for="inquiry-email" data-i18n="inquiryEmail">Email</label>
+              <input type="email" id="inquiry-email" name="email" autocomplete="email" required maxlength="254" aria-describedby="inquiry-email-error">
+              <p class="inquiry__field-error" id="inquiry-email-error" hidden></p>
+            </div>
+            <div class="inquiry__field inquiry__field--full">
+              <label for="inquiry-service" data-i18n="inquiryService">Service of interest</label>
+              <select id="inquiry-service" name="service" required aria-describedby="inquiry-service-error">
+                <option value="" data-i18n="inquiryServicePlaceholder">Select an option</option>
+                <option value="web" data-i18n="inquiryServiceWeb">Websites</option>
+                <option value="frontend" data-i18n="inquiryServiceFrontend">Frontend development</option>
+                <option value="backend" data-i18n="inquiryServiceBackend">Backend development</option>
+                <option value="fullstack" data-i18n="inquiryServiceFullstack">Full-stack applications</option>
+                <option value="guidance" data-i18n="inquiryServiceGuidance">I need guidance</option>
+              </select>
+              <p class="inquiry__field-error" id="inquiry-service-error" hidden></p>
+            </div>
+            <div class="inquiry__field inquiry__field--full">
+              <label for="inquiry-message" data-i18n="inquiryMessage">What do you need built?</label>
+              <textarea id="inquiry-message" name="message" required rows="6" maxlength="4000" aria-describedby="inquiry-message-error"></textarea>
+              <p class="inquiry__field-error" id="inquiry-message-error" hidden></p>
+            </div>
+          </div>
+
+          <p class="inquiry__status" id="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+          <div class="inquiry__submit-row">
+            <button type="submit" class="inquiry__submit" id="inquiry-submit" data-i18n="inquirySubmit">Send inquiry</button>
+            <a class="inquiry__mail-fallback" id="inquiry-mail-fallback" hidden href="mailto:donovannud@gmail.com" data-i18n="inquiryEmailFallback">Email instead</a>
+          </div>
+          <p class="inquiry__note" data-i18n="inquiryNote">I use this information to reply to your inquiry. Formspree processes the submission.</p>
+        </form>
+
         <div class="contact__layout">
           <div class="contact__channels">
-            <a href="mailto:donovannud@gmail.com" class="contact-card reveal" data-reveal data-reveal-delay="0">
+            <div class="contact-card contact-card--email reveal" data-reveal data-reveal-delay="0">
               <span class="contact-card__cmd">$ mail -s "Hello" --primary</span>
               <span class="contact-card__label" data-i18n="contactEmailPrimary">Email · primary</span>
-              <span class="contact-card__value">donovannud@gmail.com</span>
-            </a>
+              <a href="mailto:donovannud@gmail.com" class="contact-card__value">donovannud@gmail.com</a>
+              <button type="button" class="contact-card__copy" data-copy-email="donovannud@gmail.com" data-i18n="inquiryCopy">Copy</button>
+            </div>
 
-            <a href="mailto:Nudrak@protonmail.com" class="contact-card reveal" data-reveal data-reveal-delay="80">
+            <div class="contact-card contact-card--email reveal" data-reveal data-reveal-delay="80">
               <span class="contact-card__cmd">$ mail -s "Hello" --secondary</span>
               <span class="contact-card__label" data-i18n="contactEmailSecondary">Email · secondary</span>
-              <span class="contact-card__value">Nudrak@protonmail.com</span>
-            </a>
+              <a href="mailto:Nudrak@protonmail.com" class="contact-card__value">Nudrak@protonmail.com</a>
+              <button type="button" class="contact-card__copy" data-copy-email="Nudrak@protonmail.com" data-i18n="inquiryCopy">Copy</button>
+            </div>
 
             <a href="https://github.com/Donovan-Nudrak" class="contact-card reveal" data-reveal data-reveal-delay="160" target="_blank" rel="noopener noreferrer">
               <span class="contact-card__cmd">$ git remote -v</span>
@@ -702,6 +881,7 @@ app.include_router(router, prefix=<span class="tok-string">"/api/v1"</span>)
   </footer>
 
   <script src="scripts/i18n.js"></script>
+  <script src="scripts/inquiry.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/animations.js"></script>
   <script src="scripts/title-effects.js"></script>
