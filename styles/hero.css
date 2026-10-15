@@ -254,6 +254,29 @@ html.stage-ready .intro [data-intro-reveal="5"] {
   }
 }
 
+@media(max-width:900px) {
+  .intro__identity {
+    font-size:1.125rem;
+    font-weight:600;
+    line-height:1.5;
+  }
+  .intro__lead {
+    font-size:clamp(1.1875rem,1.65vw,1.5625rem);
+  }
+  .intro__context {
+    grid-template-columns:1fr;
+    gap:1.25rem;
+  }
+  .intro__context p {
+    font-size:1rem;
+    line-height:1.75;
+  }
+  .intro__context p + p {
+    padding-left:0;
+    border-left:0;
+  }
+}
+
 @media(max-width:760px) {
   .intro__layout {
     padding-top:76px;
@@ -289,11 +312,10 @@ html.stage-ready .intro [data-intro-reveal="5"] {
   }
   .intro__identity {
     max-width:26ch;
-    font-size:13px;
-    margin-bottom:14px;
+    margin-bottom:1rem;
   }
   .intro__lead {
-    font-size:clamp(20px,5.2vw,26px);
+    font-size:clamp(1.25rem,5.2vw,1.625rem);
     line-height:var(--stage-leading-lead);
     max-width:28ch;
   }
@@ -316,18 +338,8 @@ html.stage-ready .intro [data-intro-reveal="5"] {
     font-size:9px;
   }
   .intro__context {
-    grid-template-columns:1fr;
-    gap:17px;
     margin-top:33px;
     padding-top:25px;
-  }
-  .intro__context p {
-    font-size:13px;
-    line-height:1.8;
-  }
-  .intro__context p + p {
-    padding-left:0;
-    border-left:0;
   }
 }
 
