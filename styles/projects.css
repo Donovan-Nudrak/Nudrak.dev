@@ -1,0 +1,450 @@
+/* Project catalogue and accessible detail sheets. All cards reuse the stage palette. */
+.work-showcase__toolbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:18px 24px;
+  margin:32px 0;
+}
+
+.work-filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.work-filter {
+  position:relative;
+  isolation:isolate;
+  min-height:44px;
+  min-width:100px;
+  padding:10px 22px;
+  border:0;
+  color:var(--stage-white);
+  background:transparent;
+  cursor:pointer;
+  font:500 14px/1.4 var(--stage-font);
+}
+
+.work-filter::before,.work-filter::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  clip-path:polygon(11px 0,calc(100% - 11px) 0,100% 11px,100% calc(100% - 11px),calc(100% - 11px) 100%,11px 100%,0 calc(100% - 11px),0 11px);
+}
+
+.work-filter::before {
+  background:var(--stage-line);
+}
+
+.work-filter::after {
+  inset:1px;
+  background:rgba(3,8,12,.91);
+}
+
+.work-filter[aria-pressed="true"] {
+  color:var(--stage-black);
+}
+
+.work-filter[aria-pressed="true"]::before,.work-filter[aria-pressed="true"]::after {
+  background:var(--stage-cyan);
+}
+
+.work-filter:hover::before {
+  background:var(--stage-cyan);
+}
+
+.work-showcase__count {
+  color:var(--stage-muted);
+  font:400 11px/1.5 var(--stage-mono);
+}
+
+.work-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px;
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+.work-card {
+  --panel-tl:22px;
+  --panel-tr:12px;
+  --panel-br:22px;
+  --panel-bl:8px;
+  --panel-fill:var(--stage-surface);
+  --panel-line:var(--stage-line);
+  --panel-accent:var(--stage-cyan);
+  --panel-accent-size:36px;
+  position:relative;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  border:1px solid transparent;
+  background:transparent;
+  transition:transform var(--stage-duration) var(--stage-ease);
+}
+
+.work-card[hidden] {
+  display:none;
+}
+
+.work-card:hover,.work-card:focus-within {
+  --panel-line:var(--stage-line-active);
+}
+
+.work-card__media {
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--stage-line-soft);
+  background:linear-gradient(140deg,rgba(3,8,12,.7),rgba(9,41,52,.22));
+  /* Clip presentation media only; the card and all interactive controls stay unclipped. */
+  clip-path:polygon(calc(var(--panel-tl) - 1px) 0,calc(100% - var(--panel-tr) + 1px) 0,100% calc(var(--panel-tr) - 1px),100% 100%,0 100%,0 calc(var(--panel-tl) - 1px));
+}
+
+.work-card__media img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:720/390;
+  object-fit:cover;
+  object-position:center top;
+}
+
+.work-card__body {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:24px;
+}
+
+.work-card__meta {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:16px;
+  color:var(--stage-cyan);
+  font:400 11px/1.5 var(--stage-mono);
+  letter-spacing:.07em;
+}
+
+.work-card__meta > span:first-child {
+  --panel-tl:4px;
+  --panel-tr:0px;
+  --panel-br:4px;
+  --panel-bl:0px;
+  --panel-fill:transparent;
+  --panel-line:var(--stage-line-active);
+  --panel-accent:transparent;
+  --panel-accent-size:0px;
+  padding:3px 8px;
+  border:1px solid transparent;
+}
+
+.work-card h3 {
+  margin:0 0 14px;
+  color:var(--stage-white);
+  font:600 clamp(20px,1.6vw,26px)/1.25 var(--stage-font);
+  letter-spacing:-.04em;
+  overflow-wrap:anywhere;
+}
+
+.work-card__description {
+  margin:0 0 22px;
+  color:var(--stage-muted);
+  font:400 15px/1.7 var(--stage-font);
+  text-wrap:pretty;
+}
+
+.work-card__stack {
+  margin:auto 0 0;
+  padding-bottom:18px;
+  color:var(--stage-muted);
+  font:400 10px/1.7 var(--stage-mono);
+  overflow-wrap:anywhere;
+}
+
+.work-card__actions {
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--stage-line-soft);
+}
+
+.work-card__actions .stage-button {
+  width:100%;
+  min-height:48px;
+  padding:12px 18px;
+  gap:14px;
+  font-size:13px;
+}
+
+.work-card__actions .stage-button svg {
+  width:23px;
+}
+
+.work-card__links,.work-detail__links {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px 22px;
+}
+
+.work-card__links {
+  margin-top:12px;
+}
+
+.work-card__links a,.work-detail__links a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:44px;
+  color:var(--stage-white);
+  font:500 12px/1.4 var(--stage-font);
+  text-decoration:none;
+  text-underline-offset:5px;
+}
+
+.work-card__links a:hover,.work-detail__links a:hover {
+  color:var(--stage-cyan);
+  text-decoration:underline;
+}
+
+.work-card__links svg,.work-detail__links svg {
+  width:15px;
+  height:15px;
+}
+
+.work-showcase button:focus-visible,.work-showcase a:focus-visible {
+  outline:2px solid var(--stage-white);
+  outline-offset:5px;
+}
+
+body.project-dialog-open {
+  overflow:hidden;
+}
+
+.work-detail {
+  width:min(780px,calc(100% - 48px));
+  max-height:calc(100dvh - 48px);
+  padding:0;
+  margin:auto;
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-color:var(--stage-cyan) transparent;
+  border:1px solid transparent;
+  color:var(--stage-white);
+  background:transparent;
+}
+
+/* The full-height inner surface owns its contour. The native dialog keeps scrolling,
+   so its existing scroll reset, sticky toolbar and keyboard behaviour stay intact. */
+.work-detail__surface.angular-surface {
+  --panel-tl:22px;
+  --panel-tr:12px;
+  --panel-br:22px;
+  --panel-bl:8px;
+  --panel-inset:0px;
+  --panel-fill:var(--stage-surface-overlay);
+  --panel-line:var(--stage-line-active);
+  --panel-accent:var(--stage-cyan);
+  --panel-accent-size:44px;
+  border:0;
+}
+
+.work-detail::backdrop {
+  background:rgba(1,5,8,.76);
+  backdrop-filter:blur(7px);
+}
+
+.work-detail__bar {
+  isolation:isolate;
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 26px;
+  border-bottom:1px solid var(--stage-line-soft);
+  background:transparent;
+}
+
+.work-detail__bar::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:var(--stage-surface-overlay);
+  clip-path:polygon(22px 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%,0 22px);
+}
+
+.work-detail__surface.angular-surface::after {
+  /* Keep the hairline visible over the sticky toolbar without intercepting input. */
+  z-index:3;
+}
+
+.work-detail__close {
+  --panel-tl:6px;
+  --panel-tr:0px;
+  --panel-br:6px;
+  --panel-bl:0px;
+  --panel-fill:transparent;
+  --panel-line:var(--stage-line);
+  --panel-accent:transparent;
+  --panel-accent-size:0px;
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  color:var(--stage-white);
+  background:transparent;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+
+.work-detail__close:hover {
+  --panel-line:var(--stage-cyan);
+  color:var(--stage-cyan);
+}
+
+.work-detail__close svg {
+  width:24px;
+  height:24px;
+}
+
+.work-detail__body {
+  padding:30px;
+}
+
+.work-detail h3 {
+  margin:0 0 26px;
+  font:600 clamp(28px,4vw,44px)/1.2 var(--stage-font);
+  letter-spacing:-.04em;
+  overflow-wrap:anywhere;
+}
+
+.work-detail figure {
+  --panel-tl:10px;
+  --panel-tr:0px;
+  --panel-br:10px;
+  --panel-bl:0px;
+  --panel-fill:rgba(3,8,12,.36);
+  --panel-line:var(--stage-line-soft);
+  --panel-accent:transparent;
+  --panel-accent-size:0px;
+  margin:0 0 34px;
+  border:1px solid transparent;
+  background:transparent;
+}
+
+.work-detail figure img {
+  display:block;
+  width:100%;
+  height:auto;
+  clip-path:polygon(9px 0,100% 0,100% 100%,0 100%,0 9px);
+}
+
+.work-detail figcaption {
+  padding:10px 14px;
+  border-top:1px solid var(--stage-line-soft);
+  color:var(--stage-muted);
+  font:400 10px/1.6 var(--stage-mono);
+}
+
+.work-detail h4 {
+  margin:28px 0 14px;
+  color:var(--stage-cyan);
+  font:500 13px/1.5 var(--stage-mono);
+}
+
+.work-detail__body p,.work-detail__body li {
+  color:var(--stage-muted);
+  font:400 15px/1.8 var(--stage-font);
+}
+
+.work-detail__body p {
+  margin:0;
+}
+
+.work-detail__body ul {
+  margin:0;
+  padding-left:20px;
+  list-style:disc;
+}
+
+.work-detail__body li + li {
+  margin-top:10px;
+}
+
+.work-detail__body li::marker {
+  color:var(--stage-cyan);
+}
+
+.work-detail__links {
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid var(--stage-line-soft);
+}
+
+@media(min-width:1101px) {
+  .work-card:hover {
+    transform:translateY(-4px);
+  }
+}
+
+@media(max-width:1100px) {
+  .work-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+  }
+}
+
+@media(max-width:640px) {
+  .work-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:28px;
+  }
+  .work-filters {
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .work-filter {
+    min-width:0;
+  }
+  .work-showcase__toolbar {
+    gap:14px;
+    margin:26px 0;
+  }
+  .work-card__body {
+    padding:22px;
+  }
+  .work-card__description {
+    font-size:14px;
+  }
+  .work-detail {
+    width:calc(100% - 24px);
+    max-height:calc(100dvh - 24px);
+  }
+  .work-detail__bar {
+    padding:10px 18px;
+  }
+  .work-detail__body {
+    padding:24px 20px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .work-card {
+    transition:none;
+  }
+  .work-card:hover {
+    transform:none;
+  }
+}

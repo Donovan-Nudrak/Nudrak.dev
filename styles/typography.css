@@ -1,0 +1,351 @@
+/* Shared reading hierarchy and persistent affordances.
+   Loaded after component styles. Hero-specific typography lives in hero.css.
+   rem sizes respect the reader's font preference; surfaces grow with content. */
+:root {
+  --type-section: clamp(1.75rem,4.4vw,4rem);
+  --type-service-heading: clamp(1.5rem,2.5vw,2.375rem);
+  --type-block: clamp(1.75rem,2.7vw,2.5rem);
+  --type-card: clamp(1.5rem,1.9vw,1.75rem);
+  --type-subheading: 1.25rem;
+  --type-body: 1.125rem;
+  --type-label: .9375rem;
+  --type-meta: .875rem;
+  --type-action: 1rem;
+  --type-leading: 1.7;
+  --type-reading-width: 65ch;
+  --type-secondary: #e1e8ed;
+  --type-control-line: rgba(214,235,242,.72);
+}
+
+/* Hierarchy comes from size, weight, rhythm and measure, not light effects. */
+:is(.service-hub,.page-section) {
+  --stage-muted: var(--type-secondary);
+}
+:is(.service-hub__title,.page-section__title) {
+  font-size:var(--type-section);
+  line-height:1.15;
+  gap:clamp(12px,1.7vw,24px);
+  flex-wrap:wrap;
+  overflow-wrap:anywhere;
+}
+:is(.service-hub,.page-section) .stage-kicker {
+  font-size:var(--type-meta);
+  font-weight:500;
+  letter-spacing:.1em;
+  line-height:1.6;
+}
+/* Section names are readable immediately; the glow stays static. */
+.service-hub__header > .stage-kicker,.page-section__header > .stage-kicker {
+  color:#70efff;
+  font-size:clamp(1.125rem,1.3vw,1.375rem);
+  font-weight:500;
+  line-height:1.5;
+  letter-spacing:.1em;
+  text-shadow:0 0 10px rgba(0,229,255,.4),0 0 24px rgba(0,229,255,.16);
+}
+:is(.service-hub,.page-section) :is(.stage-copy,.service-hub__intro) {
+  font-size:var(--type-body);
+  line-height:var(--type-leading);
+  max-width:var(--type-reading-width);
+}
+:is(.service-hub__lead,.page-section__lead) {
+  max-width:60ch;
+  line-height:1.6;
+}
+.service-hub__heading .stage-title,
+.page-section :is(.profile-block-heading h3,.contact-intro h3),
+.work-detail h3 {
+  font:600 var(--type-block)/1.25 var(--stage-font);
+  letter-spacing:-.025em;
+  text-wrap:balance;
+}
+.service-hub :is(.offer-card__title,.agency-offer h4,.service-mode h5,.service-collab__intro h4),
+.page-section :is(.work-card h3,.method-step__title,.profile-card__heading h3) {
+  color:var(--stage-white);
+  font:600 var(--type-card)/1.3 var(--stage-font);
+  letter-spacing:-.02em;
+  text-wrap:pretty;
+  overflow-wrap:anywhere;
+}
+.service-hub :is(.service-collab__list h5,.service-modes__audience),
+.page-section :is(.method-panel__label,.method-team h3,.profile-education__title),
+.work-detail h4 {
+  color:var(--stage-white);
+  font:600 var(--type-subheading)/1.4 var(--stage-font);
+  letter-spacing:0;
+}
+.service-hub :is(.offer-card__description,.offer-card__example,.agency-offer p,
+  .agency-offer__example,.service-collab__list p,.service-mode p,.service-faq__item p),
+.page-section :is(.work-card__description,.method-step__summary),
+.work-detail__body :is(p,li),
+.inquiry--services .inquiry__intro {
+  color:var(--type-secondary);
+  font:400 var(--type-body)/var(--type-leading) var(--stage-font);
+  max-width:var(--type-reading-width);
+  text-wrap:pretty;
+}
+
+/* Short metadata stays quieter, but is still readable at rest. */
+.service-hub :is(.offer-card__example-label,.service-hub__index),
+.page-section :is(.work-card__meta,.work-card__stack,.work-showcase__count,
+  .profile-card__label,.profile-cv__format,.contact-context p,.contact-channel__label),
+.work-detail figcaption {
+  color:var(--type-secondary);
+  font:400 var(--type-label)/1.6 var(--stage-mono);
+  letter-spacing:.025em;
+}
+.service-hub .offer-card__example-label {
+  color:var(--stage-white);
+  font-weight:500;
+  letter-spacing:.07em;
+  margin-bottom:10px;
+}
+.service-hub :is(.offer-card__number,.agency-offer__number,.service-mode__number,.service-faq__number),
+.page-section .profile-card__index,
+.service-hub__jump a > span:first-child {
+  font-size:var(--type-meta);
+  line-height:1.5;
+}
+.page-section .profile-card__more {
+  font-size:var(--type-body);
+  line-height:var(--type-leading);
+}
+.work-card__meta { flex-wrap:wrap; gap:8px 18px; }
+.work-card__stack { padding-bottom:22px; }
+.work-detail h4 { margin:32px 0 14px; }
+.work-detail__body li + li { margin-top:14px; }
+
+/* Technologies and categories are information, not miniature controls.
+   Keep the angular icon; remove the surrounding button-like container. */
+.tech-chips li,
+.work-card__meta > span:first-child {
+  border:0;
+  background:none;
+  padding:0;
+  min-height:0;
+}
+.tech-chips li::before,.tech-chips li::after,
+.work-card__meta > span:first-child::before,.work-card__meta > span:first-child::after {
+  content:none;
+}
+.tech-chips { gap:16px 20px; }
+.tech-chips li {
+  align-items:flex-start;
+  font-size:var(--type-label);
+  line-height:1.6;
+}
+.tech-chip__icon { flex-shrink:0; margin-top:1px; }
+.profile-card:hover {
+  --panel-fill:var(--stage-surface);
+  --panel-line:var(--stage-line);
+}
+.profile-card__projects { padding-top:32px; }
+.profile-card__label { margin-bottom:16px; }
+.profile-block-heading { align-items:flex-start; }
+.profile-block-heading h3 { min-width:0; overflow-wrap:anywhere; }
+.profile-card__heading h3 { min-width:0; }
+
+/* A text link advertises its action before hover; framed buttons retain their
+   own shape. Channel labels stay static while their destination is underlined. */
+:is(.service-hub,.page-section) a:not(.stage-button):not(.contact-channel--link):not(.service-hub__jump a) {
+  text-decoration-line:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.22em;
+  text-decoration-skip-ink:auto;
+}
+.contact-channel--link .contact-channel__value {
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.22em;
+}
+:is(.service-hub,.page-section,.site-footer) .stage-button,
+.page-section :is(.work-filter,.contact-copy),
+.service-hub .inquiry__retry {
+  font:600 var(--type-action)/1.4 var(--stage-font);
+  min-height:48px;
+  white-space:normal;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+:is(.service-hub,.page-section,.site-footer) .stage-button > span { min-width:0; }
+:is(.service-hub,.page-section) :is(.agency-offer__link,.service-modes__ask,
+  .service-inquiry__email,.inquiry__mail-fallback,.work-card__links a,
+  .work-detail__links a,.profile-project,.profile-certificate),
+.service-hub__jump a {
+  font:500 var(--type-action)/1.55 var(--stage-font);
+  min-height:44px;
+  overflow-wrap:anywhere;
+}
+.inquiry__mail-fallback { border-bottom:0; }
+.service-hub__jump a {
+  color:var(--stage-white);
+  font-size:1.125rem;
+  font-weight:600;
+  min-height:48px;
+  text-decoration:none;
+  gap:14px;
+}
+.service-hub__jump a > span:first-child {
+  color:var(--stage-cyan);
+  font-size:1.125rem;
+  font-weight:500;
+}
+.service-hub__jump a:hover,.service-hub__jump a:focus-visible { color:var(--stage-cyan); }
+.work-filter::before { background:var(--type-control-line); }
+.work-filter[aria-pressed="true"] {
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:.22em;
+}
+.contact-copy {
+  --panel-line:var(--type-control-line);
+  --panel-fill:rgba(0,229,255,.08);
+  color:var(--stage-white);
+  padding:10px 16px;
+}
+.work-detail__close { --panel-line:var(--type-control-line); flex-shrink:0; }
+.work-detail__bar { gap:16px; }
+.contact-channel__value { font-size:var(--type-body); line-height:1.6; }
+
+/* Disclosure headings and their actions are distinct from static metadata. */
+.service-faq__item summary {
+  font:600 var(--type-body)/1.55 var(--stage-font);
+}
+.service-faq__item summary > [data-i18n] {
+  text-decoration:none;
+}
+.service-faq__number { flex-shrink:0; }
+.service-faq__item[open] summary { color:var(--stage-white); }
+.service-faq__item[open] { background:rgba(0,229,255,.035); }
+.method-step { --panel-line:var(--type-control-line); }
+.method-step__action {
+  font:600 var(--type-action)/1.5 var(--stage-font);
+  text-transform:none;
+  letter-spacing:0;
+}
+.method-step__action > span {
+  text-decoration:underline;
+  text-underline-offset:.22em;
+}
+.method-step[aria-expanded="true"] .method-step__action { font-weight:700; }
+
+/* Form labels, help and errors keep separate roles without shrinking input. */
+.inquiry--services :is(.inquiry__field label,.inquiry__turnstile-label) {
+  font:600 var(--type-action)/1.5 var(--stage-font);
+}
+.inquiry--services :is(input,select,textarea) {
+  font-size:var(--type-action);
+  line-height:1.6;
+  border-color:var(--type-control-line);
+}
+.inquiry--services :is(.inquiry__hint,.inquiry__field-error) {
+  font:400 var(--type-label)/1.6 var(--stage-font);
+}
+.inquiry--services .inquiry__status { font-size:var(--type-body); line-height:1.65; }
+.inquiry--services ::placeholder { color:var(--type-secondary); opacity:1; }
+.inquiry--services .inquiry__grid { gap:28px 24px; }
+.inquiry--services .inquiry__field { gap:10px; }
+
+/* Navigation and footer use the same action/secondary distinction. */
+.masthead__link {
+  font-size:.9375rem;
+  font-weight:500;
+  text-decoration:none;
+}
+.locale-button {
+  font-size:.9375rem;
+  min-height:44px;
+  border-bottom:1px solid var(--type-control-line);
+}
+.locale-button[aria-pressed="true"] { border-bottom:2px solid var(--stage-cyan); font-weight:700; }
+.site-footer__identity p {
+  color:var(--type-secondary);
+  font-size:var(--type-body);
+  line-height:var(--type-leading);
+}
+.site-footer__copyright { color:var(--type-secondary); font-size:var(--type-meta); }
+
+/* Grow/reflow text, never clip the host or its focus outline. */
+.service-hub__heading {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:first baseline;
+  gap:20px;
+  margin-bottom:26px;
+}
+/* Crisp letterforms with a restrained static halo, shared by all five headings. */
+.service-hub__heading .stage-title {
+  color:var(--stage-cyan);
+  font:700 var(--type-service-heading)/1.35 "Orbitron",var(--stage-font);
+  letter-spacing:.01em;
+  text-shadow:0 0 12px rgba(0,229,255,.28),0 0 28px rgba(0,229,255,.1);
+}
+.service-hub .service-hub__heading .service-hub__index {
+  color:var(--stage-cyan);
+  font:700 var(--type-service-heading)/1.35 "Orbitron",var(--stage-font);
+  letter-spacing:.01em;
+  padding-top:0;
+  text-shadow:0 0 12px rgba(0,229,255,.35);
+}
+/* The number and the first line of the title share typography and baseline.
+   An intrinsic number column also accommodates the larger "01 /" label. */
+.service-hub .agency-offer {
+  grid-template-columns:max-content minmax(0,1fr);
+  align-items:first baseline;
+}
+.service-hub .agency-offer__number {
+  font:600 var(--type-card)/1.3 var(--stage-font);
+  letter-spacing:-.02em;
+}
+.agency-offer > div { min-width:0; }
+.service-hub__intro { margin-bottom:36px; }
+.service-hub__heading .stage-title,
+.service-hub__title > span,.page-section__title > span { min-width:0; overflow-wrap:anywhere; }
+.service-hub :is(.offer-card,.service-mode,.agency-offer,.service-inquiry__intro),
+.page-section :is(.profile-cv,.profile-education,.contact-intro) { min-width:0; }
+.offer-card { row-gap:20px; }
+.offer-card__graphic { align-self:start; }
+.service-collab__list p { margin-top:12px; }
+.service-modes__audience { margin-bottom:24px; }
+.service-collab__list li,.method-panel__grid > div { min-width:0; }
+
+@media(max-width:1180px) {
+  /* In narrower cards, use the full measure for descriptions. */
+  .offer-card__graphic { grid-row:1; }
+  .offer-card__description { grid-column:1 / -1; }
+  .offer-card { grid-template-rows:auto 1fr auto auto; }
+}
+@media(min-width:901px) and (max-width:1100px) {
+  .masthead__link { padding-inline:12px; }
+  .masthead__link::after { left:12px; right:12px; }
+}
+@media(max-width:900px) {
+  .masthead__link { font-size:var(--type-body); text-decoration:none; }
+  .service-mode h5 { margin:0; }
+}
+@media(max-width:700px) {
+  :root {
+    --type-section:clamp(1.625rem,6.6vw,2.5rem);
+    --type-body:1.0625rem;
+  }
+  .service-mode h5 { margin:14px 0 18px; }
+  .work-detail__body { padding:28px 22px; }
+  .work-card__body { padding:26px 22px; }
+  .service-hub__heading { gap:12px; }
+  .service-hub__jump a { font-size:1.0625rem; }
+}
+@media(max-width:560px) {
+  .profile-card__heading { grid-template-columns:40px minmax(0,1fr); }
+  .profile-card__index { grid-column:2; grid-row:1; justify-self:end; }
+  .profile-card__heading > svg { grid-row:1; }
+  .profile-card__heading h3 { grid-column:1 / -1; grid-row:2; }
+  .tech-chips { grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr)); }
+  .profile-cv__links .stage-button { gap:16px; }
+  .method-step { grid-template-columns:1.75rem minmax(0,1fr); gap:10px 14px; }
+}
+@media(max-width:380px) {
+  .offer-card { grid-template-columns:52px minmax(0,1fr); column-gap:14px; }
+  .offer-card__graphic { width:52px; }
+  .service-hub__heading { flex-wrap:wrap; gap:8px 12px; }
+  .service-hub__heading .stage-title { flex-basis:100%; }
+}

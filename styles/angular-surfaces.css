@@ -1,0 +1,64 @@
+/* Shared panel geometry. Only decorative layers are cut: content and focus
+   rings remain outside the clipping context. Cuts are measured in CSS pixels,
+   so long panels and narrow cards keep the same 45-degree bevels. */
+:where(.angular-surface) {
+  --panel-tl:0px;
+  --panel-tr:0px;
+  --panel-br:0px;
+  --panel-bl:0px;
+  --panel-inset:-1px;
+  --panel-fill:var(--stage-surface);
+  --panel-line:var(--stage-line);
+  --panel-tl-line:var(--panel-line);
+  --panel-br-line:var(--panel-line);
+  --panel-tl-width:1.2px;
+  --panel-br-width:1.2px;
+  --panel-accent:transparent;
+  --panel-accent-size:0px;
+  --panel-accent-width:2px;
+  --panel-shape:polygon(var(--panel-tl) 0,calc(100% - var(--panel-tr)) 0,100% var(--panel-tr),100% calc(100% - var(--panel-br)),calc(100% - var(--panel-br)) 100%,var(--panel-bl) 100%,0 calc(100% - var(--panel-bl)),0 var(--panel-tl));
+}
+
+.angular-surface {
+  position:relative;
+  isolation:isolate;
+  border:1px solid transparent;
+  background:transparent;
+  box-shadow:none;
+}
+
+.angular-surface::before,.angular-surface::after {
+  content:"";
+  position:absolute;
+  inset:var(--panel-inset);
+  width:auto;
+  height:auto;
+  border:0;
+  margin:0;
+  transform:none;
+  pointer-events:none;
+}
+
+.angular-surface::before {
+  z-index:-1;
+  background:var(--panel-fill);
+  clip-path:var(--panel-shape);
+}
+
+/* Eight segments trace the exact polygon, without an opaque inner cutout.
+   The two short accents attach to an edge instead of floating past it. */
+.angular-surface::after {
+  z-index:1;
+  background:
+    linear-gradient(135deg,transparent calc(50% - var(--panel-tl-width) / 2),var(--panel-tl-line) calc(50% - var(--panel-tl-width) / 2),var(--panel-tl-line) calc(50% + var(--panel-tl-width) / 2),transparent calc(50% + var(--panel-tl-width) / 2)) left top / var(--panel-tl) var(--panel-tl),
+    linear-gradient(45deg,transparent calc(50% - .6px),var(--panel-line) calc(50% - .6px),var(--panel-line) calc(50% + .6px),transparent calc(50% + .6px)) right top / var(--panel-tr) var(--panel-tr),
+    linear-gradient(135deg,transparent calc(50% - var(--panel-br-width) / 2),var(--panel-br-line) calc(50% - var(--panel-br-width) / 2),var(--panel-br-line) calc(50% + var(--panel-br-width) / 2),transparent calc(50% + var(--panel-br-width) / 2)) right bottom / var(--panel-br) var(--panel-br),
+    linear-gradient(45deg,transparent calc(50% - .6px),var(--panel-line) calc(50% - .6px),var(--panel-line) calc(50% + .6px),transparent calc(50% + .6px)) left bottom / var(--panel-bl) var(--panel-bl),
+    linear-gradient(var(--panel-accent),var(--panel-accent)) left var(--panel-tl) top / var(--panel-accent-size) var(--panel-accent-width),
+    linear-gradient(var(--panel-accent),var(--panel-accent)) right var(--panel-br) bottom / var(--panel-accent-size) var(--panel-accent-width),
+    linear-gradient(var(--panel-line),var(--panel-line)) left var(--panel-tl) top / calc(100% - var(--panel-tl) - var(--panel-tr)) 1px,
+    linear-gradient(var(--panel-line),var(--panel-line)) right top var(--panel-tr) / 1px calc(100% - var(--panel-tr) - var(--panel-br)),
+    linear-gradient(var(--panel-line),var(--panel-line)) left var(--panel-bl) bottom / calc(100% - var(--panel-bl) - var(--panel-br)) 1px,
+    linear-gradient(var(--panel-line),var(--panel-line)) left top var(--panel-tl) / 1px calc(100% - var(--panel-tl) - var(--panel-bl));
+  background-repeat:no-repeat;
+}

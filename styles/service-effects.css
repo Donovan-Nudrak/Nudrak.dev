@@ -1,0 +1,223 @@
+/* Finite, progressive effects for the ten direct-client service cards only.
+   Geometry remains in angular-surfaces.css; JS adds the decorative layers. */
+.service-hub {
+  --offer-light-width:240px;
+  --offer-light-height:180px;
+  --offer-light-strength:.075;
+  --offer-edge-radius:210px;
+  --offer-follow-time:75ms;
+  --offer-follow-settle:.3;
+  --offer-rest-line:rgba(193,221,227,.32);
+  --offer-rest-accent:rgba(0,229,255,.5);
+  --offer-edge-strength:.46;
+  --offer-focus-edge-strength:.64;
+  --offer-local-strength:.92;
+  --offer-sweep-strength:.8;
+  --offer-edge-width:1.1px;
+  --offer-local-width:1.8px;
+  --offer-sweep-width:1.8px;
+  --offer-glow-radius:3px;
+  --offer-glow-strength:.55;
+  --offer-entry-duration:420ms;
+  --offer-entry-distance:12px;
+  --offer-entry-stagger:55ms;
+  --offer-entry-max-delay:110ms;
+  --offer-sweep-duration:650ms;
+  --offer-state-duration:240ms;
+  --offer-pulse-duration:420ms;
+  --offer-pulse-size:480px;
+  --offer-pulse-white-strength:.3;
+  --offer-pulse-cyan-strength:.22;
+  --offer-button-light-strength:.12;
+}
+
+.offer-card--effects {
+  --panel-line:var(--offer-rest-line);
+  --panel-tl-line:var(--offer-rest-accent);
+  --panel-br-line:var(--offer-rest-accent);
+  --panel-accent:var(--offer-rest-accent);
+  opacity:1;
+  transform:none;
+}
+.offer-card--effects:focus-within { --panel-line:var(--offer-rest-line); }
+
+.offer-card--effects > .offer-light {
+  position:absolute;
+  inset:-1px;
+  z-index:-1;
+  pointer-events:none;
+  clip-path:var(--panel-shape);
+  background:radial-gradient(
+    ellipse calc(var(--offer-light-width) / 2) calc(var(--offer-light-height) / 2)
+    at var(--offer-light-x,50%) var(--offer-light-y,50%),
+    rgba(0,229,255,var(--offer-light-strength)) 0%,
+    rgba(0,229,255,calc(var(--offer-light-strength) * .62)) 38%,
+    rgba(0,229,255,0) 100%
+  );
+  opacity:0;
+  transition:opacity var(--offer-state-duration) var(--stage-ease);
+}
+
+.offer-card--effects > .offer-contour {
+  position:absolute;
+  inset:-1px;
+  z-index:2;
+  width:calc(100% + 2px);
+  height:calc(100% + 2px);
+  clip-path:var(--panel-shape);
+  pointer-events:none;
+  fill:none;
+}
+
+.offer-contour__edge,.offer-contour__local,.offer-contour__sweep {
+  fill:none;
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:0;
+}
+.offer-contour__edge {
+  stroke:var(--stage-cyan);
+  stroke-width:var(--offer-edge-width);
+  transition:opacity var(--offer-state-duration) var(--stage-ease);
+}
+.offer-contour__local {
+  /* JS assigns a radial SVG gradient in the card's actual pixel coordinates. */
+  stroke-width:var(--offer-local-width);
+  transition:opacity var(--offer-state-duration) var(--stage-ease);
+}
+.offer-contour__local,.offer-contour__sweep {
+  filter:drop-shadow(0 0 var(--offer-glow-radius) rgba(0,229,255,var(--offer-glow-strength)));
+}
+.offer-contour__sweep {
+  /* The path has pathLength=1000, keeping one pass independent of card size. */
+  stroke-width:var(--offer-sweep-width);
+  stroke-dasharray:120 880;
+  stroke-dashoffset:1000;
+}
+
+.offer-card--effects:focus-within > .offer-light { opacity:1; }
+.offer-card--effects:focus-within .offer-contour__edge { opacity:var(--offer-focus-edge-strength); }
+.offer-card--effects:focus-within .offer-contour__local { opacity:var(--offer-local-strength); }
+.offer-card--effects:focus-within:not(.is-pointer-lit) > .offer-light {
+  --offer-light-x:50%;
+  --offer-light-y:50%;
+}
+
+@media(hover:hover) and (pointer:fine) {
+  .offer-card--effects.is-pointer-lit > .offer-light { opacity:1; }
+  .offer-card--effects.is-pointer-lit .offer-contour__edge { opacity:var(--offer-edge-strength); }
+  .offer-card--effects.is-pointer-lit .offer-contour__local { opacity:var(--offer-local-strength); }
+  .offer-card__button--effects:hover > .offer-button-light::after { opacity:1; }
+}
+
+.offer-card--effects.is-entering {
+  animation:offer-card-enter var(--offer-entry-duration) var(--stage-ease) var(--offer-entry-delay,0ms) both;
+}
+.offer-card--effects.is-entering .offer-contour__sweep {
+  animation:offer-contour-pass var(--offer-sweep-duration) ease-in-out var(--offer-entry-delay,0ms) both;
+}
+@keyframes offer-card-enter {
+  from { opacity:.5;transform:translateY(var(--offer-entry-distance)); }
+  to { opacity:1;transform:none; }
+}
+@keyframes offer-contour-pass {
+  0% { opacity:0;stroke-dashoffset:1000; }
+  16% { opacity:var(--offer-sweep-strength); }
+  78% { opacity:var(--offer-sweep-strength); }
+  100% { opacity:0;stroke-dashoffset:-120; }
+}
+
+/* Replace the shared button's movement only for these service-card buttons.
+   The halo and the single pulse are clipped decorative layers behind the text. */
+.offer-card__button--effects,
+.offer-card__button--effects:hover {
+  transform:none;
+  filter:none;
+  transition:none;
+}
+.offer-card__button--effects > span[data-i18n],
+.offer-card__button--effects > svg {
+  position:relative;
+  z-index:1;
+}
+.offer-card__button--effects > svg,
+.offer-card__button--effects:hover > svg {
+  transform:none;
+  transition:none;
+}
+.offer-card__button--effects:focus-visible {
+  outline:2px solid var(--stage-white);
+  outline-offset:5px;
+}
+.offer-card__button--effects > .offer-button-light {
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  clip-path:var(--stage-button-shape);
+}
+.offer-button-light::before {
+  content:"";
+  position:absolute;
+  left:var(--offer-pulse-x,50%);
+  top:var(--offer-pulse-y,50%);
+  width:var(--offer-pulse-size);
+  height:var(--offer-pulse-size);
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(
+    circle,
+    rgba(247,250,252,var(--offer-pulse-white-strength)) 0%,
+    rgba(0,229,255,var(--offer-pulse-cyan-strength)) 24%,
+    rgba(0,229,255,0) 72%
+  );
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.08);
+}
+.offer-button-light::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,rgba(0,229,255,var(--offer-button-light-strength)),rgba(0,229,255,0) 82%);
+  opacity:0;
+  transition:opacity var(--offer-state-duration) var(--stage-ease);
+}
+.offer-card__button--effects:focus-visible > .offer-button-light::after { opacity:1; }
+.offer-card__button--effects:active > .offer-button-light::after { opacity:1; }
+.offer-card__button--effects.is-pulsing > .offer-button-light::before {
+  animation:offer-button-pulse var(--offer-pulse-duration) cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes offer-button-pulse {
+  from { opacity:1;transform:translate(-50%,-50%) scale(.08); }
+  to { opacity:0;transform:translate(-50%,-50%) scale(1); }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .offer-card--effects,
+  .offer-card--effects.is-entering,
+  .offer-card__button--effects,
+  .offer-card__button--effects:hover,
+  .offer-card__button--effects > svg,
+  .offer-card__button--effects:hover > svg {
+    animation:none;
+    transition:none;
+    opacity:1;
+    transform:none;
+  }
+  .offer-card--effects > .offer-light,
+  .offer-contour__local,
+  .offer-contour__sweep,
+  .offer-card--effects.is-entering .offer-contour__sweep,
+  .offer-button-light::before,
+  .offer-card__button--effects.is-pulsing > .offer-button-light::before {
+    display:none;
+    animation:none;
+    transition:none;
+  }
+  .offer-contour__edge,.offer-button-light::after { transition:none; }
+}
+@media(prefers-reduced-motion:reduce) and (hover:hover) and (pointer:fine) {
+  .offer-card--effects:hover .offer-contour__edge { opacity:var(--offer-edge-strength); }
+}

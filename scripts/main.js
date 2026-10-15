@@ -1,68 +1,14 @@
-(function () {
-  const header = document.getElementById("header");
-  const navToggle = document.getElementById("nav-toggle");
-  const navLinks = document.querySelectorAll(".header__link, .header__logo, .hero__cta");
+import { initNavigation } from './navigation.js';
+import { initHeroMotion } from './hero-motion.js';
+import { initProjects } from './projects.js';
+import { initSections } from './sections.js';
 
-  const PRESSABLE_SELECTOR = ".lang-switch__btn, .header__toggle, a.hero__cta";
-  const TV_STATIC_MS = 320;
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Each section shares the existing language and inquiry controllers.
+initProjects();
+initSections();
+initNavigation();
+initHeroMotion();
+document.documentElement.classList.add('stage-ready');
 
-  function closeNav() {
-    header.classList.remove("nav-open");
-    navToggle.setAttribute("aria-expanded", "false");
-  }
-
-  navToggle.addEventListener("click", function () {
-    const isOpen = header.classList.toggle("nav-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      const href = link.getAttribute("href");
-      if (!href || !href.startsWith("#")) return;
-
-      event.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
-      }
-      closeNav();
-    });
-  });
-
-  function triggerTvStatic(button) {
-    if (prefersReducedMotion) return;
-
-    button.classList.remove("is-tv-static");
-    button.querySelectorAll(".tv-static-burst").forEach(function (layer) {
-      layer.remove();
-    });
-
-    void button.offsetWidth;
-
-    button.classList.add("is-tv-static");
-
-    const layer = document.createElement("span");
-    layer.className = "tv-static-burst";
-    layer.setAttribute("aria-hidden", "true");
-    button.appendChild(layer);
-
-    function cleanup() {
-      layer.remove();
-      button.classList.remove("is-tv-static");
-    }
-
-    layer.addEventListener("animationend", cleanup, { once: true });
-    setTimeout(cleanup, TV_STATIC_MS);
-  }
-
-  if (!prefersReducedMotion) {
-    document.querySelectorAll(PRESSABLE_SELECTOR).forEach(function (button) {
-      button.classList.add("btn-pressable");
-      button.addEventListener("pointerdown", function () {
-        triggerTvStatic(button);
-      });
-    });
-  }
-})();
+// A failed optional effects module must not prevent navigation or reading the catalogue.
+import('./service-effects.js').then(({ initServiceEffects }) => initServiceEffects()).catch(() => {});

@@ -1,0 +1,69 @@
+/* One viewport-sized scene for the entire document. Never size it to document height. */
+body {
+  background:var(--stage-black);
+}
+
+/* Retire the former industrial backdrop and scanline overlay. */
+body::before,body::after {
+  content:none;
+}
+
+.stage-backdrop {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+  background:var(--stage-black);
+}
+
+.stage-backdrop__image {
+  position:absolute;
+  inset:0;
+  background:url("../assets/hero-cityscape.png") 60% top/cover no-repeat;
+  transform-origin:65% 65%;
+}
+
+/* A continuous veil keeps text readable without a new opaque strip per section. */
+.stage-backdrop::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(2,6,9,.88) 0%,rgba(2,6,9,.61) 35%,rgba(2,6,9,.18) 75%),
+    linear-gradient(180deg,rgba(3,8,12,.4),transparent 45%,rgba(3,8,12,.3));
+}
+
+.stage-backdrop__image.is-drifting {
+  animation:stage-city-breathe 18s ease-in-out infinite alternate;
+}
+
+.stage-backdrop__image.is-paused {
+  animation-play-state:paused;
+}
+
+@keyframes stage-city-breathe {
+  from { transform:scale(1); }
+  to { transform:scale(1.025); }
+}
+
+@media(max-width:760px) {
+  .stage-backdrop {
+    /* The large viewport is stable as mobile browser controls collapse/expand. */
+    bottom:auto;
+    height:100vh;
+    height:100lvh;
+  }
+  .stage-backdrop__image {
+    background-position:63% top;
+  }
+  .stage-backdrop::after {
+    background:linear-gradient(180deg,rgba(3,8,12,.86) 0%,rgba(3,8,12,.7) 22%,rgba(3,8,12,.32) 58%,rgba(3,8,12,.48) 100%);
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .stage-backdrop__image.is-drifting {
+    animation:none;
+  }
+}

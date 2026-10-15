@@ -1,0 +1,314 @@
+/* The surface follows the three levels of the decorative SVG contour. */
+.masthead {
+  --masthead-rule-inset:20px;
+  --masthead-rule-height:42px;
+  --masthead-rule-drop:23px;
+  --masthead-rule-span:calc(100% - 2 * var(--masthead-rule-inset));
+  position:sticky;
+  top:0;
+  z-index:10100;
+  height:var(--stage-header-height);
+  color:var(--stage-white);
+  font-family:var(--stage-font);
+  background:transparent;
+}
+
+.masthead::before {
+  content:"";
+  position:absolute;
+  inset:0 0 calc(-1 * var(--masthead-rule-drop));
+  z-index:0;
+  pointer-events:none;
+  background:var(--stage-surface-header);
+  backdrop-filter:blur(16px);
+  /* Match the SVG's 1400 x 52 viewBox: (260,7), (297,34), (510,34), (536,52).
+     Only the surface is clipped; navigation and focus outlines remain unrestricted. */
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    calc(var(--masthead-rule-inset) + var(--masthead-rule-span) * 536 / 1400) 100%,
+    calc(var(--masthead-rule-inset) + var(--masthead-rule-span) * 510 / 1400) calc(100% - var(--masthead-rule-height) * 18 / 52),
+    calc(var(--masthead-rule-inset) + var(--masthead-rule-span) * 297 / 1400) calc(100% - var(--masthead-rule-height) * 18 / 52),
+    calc(var(--masthead-rule-inset) + var(--masthead-rule-span) * 260 / 1400) calc(100% - var(--masthead-rule-height) * 45 / 52),
+    0 calc(100% - var(--masthead-rule-height) * 45 / 52)
+  );
+}
+
+.masthead__inner {
+  position:relative;
+  z-index:2;
+  height:100%;
+  max-width:1920px;
+  margin-inline:auto;
+  padding-inline:var(--stage-gutter);
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.masthead__brand {
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.masthead__brand img {
+  display:block;
+  width:51px;
+  height:46px;
+}
+
+.masthead__nav {
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+}
+
+.masthead__link {
+  padding:12px 22px;
+  color:var(--stage-white);
+  font-size:14px;
+  line-height:1.2;
+  position:relative;
+  transition:color .2s;
+}
+
+.masthead__link + .masthead__link::before {
+  content:"";
+  position:absolute;
+  top:13px;
+  bottom:13px;
+  left:0;
+  width:1px;
+  background:var(--stage-line);
+}
+
+.masthead__link::after {
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:0;
+  height:2px;
+  background:var(--stage-cyan);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .25s var(--stage-ease);
+}
+
+.masthead__link:hover,.masthead__link[aria-current="location"] {
+  color:var(--stage-cyan);
+}
+
+.masthead__link:hover::after,.masthead__link[aria-current="location"]::after {
+  transform:scaleX(1);
+}
+
+.masthead__locale {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+
+.masthead__locale > span {
+  font-size:14px;
+  color:var(--stage-muted);
+}
+
+.locale-button {
+  border:0;
+  background:transparent;
+  color:var(--stage-white);
+  cursor:pointer;
+  font:500 14px var(--stage-font);
+  padding:12px 5px;
+  transition:color .2s;
+}
+
+.locale-button.is-active,.locale-button:hover {
+  color:var(--stage-cyan);
+}
+
+.masthead__rule {
+  position:absolute;
+  z-index:1;
+  inset:auto var(--masthead-rule-inset) calc(-1 * var(--masthead-rule-drop));
+  height:var(--masthead-rule-height);
+  width:var(--masthead-rule-span);
+  pointer-events:none;
+  overflow:visible;
+}
+
+.masthead__rule path {
+  vector-effect:non-scaling-stroke;
+}
+
+.masthead__toggle,.masthead__menu-caption {
+  display:none;
+}
+
+@media(max-width:1000px) {
+  .masthead__inner {
+    gap:14px;
+  }
+  .masthead__link {
+    font-size:13px;
+    padding-inline:14px;
+  }
+  .masthead__link::after {
+    left:14px;
+    right:14px;
+  }
+}
+
+/* The mobile menu scrolls inside its decorative frame. The frame and focus
+   rings are not clipped when the viewport is short. Desktop stays inline. */
+.masthead__nav-scroll { display:contents; }
+@media(min-width:901px) {
+  .masthead__nav.angular-surface { border:0; }
+  .masthead__nav.angular-surface::before,.masthead__nav.angular-surface::after { display:none; }
+}
+
+@media(max-width:900px) {
+  .masthead {
+    --masthead-rule-inset:12px;
+  }
+  .masthead__inner {
+    gap:16px;
+  }
+  .masthead__brand img {
+    width:41px;
+    height:37px;
+  }
+  .masthead__locale {
+    margin-left:auto;
+    gap:6px;
+  }
+  .locale-button {
+    font-size:14px;
+    padding:12px 4px;
+  }
+  .masthead__toggle {
+    display:grid;
+    align-content:center;
+    gap:5px;
+    width:44px;
+    height:44px;
+    border:0;
+    background:transparent;
+    padding:8px;
+    cursor:pointer;
+  }
+  .masthead__toggle span {
+    display:block;
+    height:2px;
+    width:27px;
+    background:var(--stage-cyan);
+    transition:transform .2s,opacity .2s;
+  }
+  .masthead.is-open .masthead__toggle span:nth-child(1) {
+    transform:translateY(7px) rotate(45deg);
+  }
+  .masthead.is-open .masthead__toggle span:nth-child(2) {
+    opacity:0;
+  }
+  .masthead.is-open .masthead__toggle span:nth-child(3) {
+    transform:translateY(-7px) rotate(-45deg);
+  }
+  .masthead__nav {
+    --panel-tl:18px;
+    --panel-br:18px;
+    --panel-fill:var(--stage-surface-overlay);
+    --panel-line:var(--stage-cyan);
+    position:absolute;
+    top:calc(100% + 19px);
+    inset-inline:16px;
+    margin:0;
+    padding:0;
+    max-height:calc(100dvh - var(--stage-header-height) - 35px);
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    visibility:hidden;
+    opacity:0;
+    transform:translateY(-8px);
+    transition:opacity .2s,transform .2s;
+  }
+  .masthead__nav-scroll {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    padding:22px;
+    max-height:calc(100dvh - var(--stage-header-height) - 37px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-color:var(--stage-cyan) transparent;
+  }
+  .masthead.is-open .masthead__nav {
+    visibility:visible;
+    opacity:1;
+    transform:none;
+  }
+  .masthead__menu-caption {
+    display:block;
+    font:10px var(--stage-mono);
+    letter-spacing:.18em;
+    padding:6px 10px 18px;
+    color:var(--stage-muted);
+  }
+  .masthead__link {
+    padding:16px 10px;
+    font-size:17px;
+  }
+  .masthead__link + .masthead__link::before {
+    display:none;
+  }
+  .masthead__link::after {
+    left:10px;
+    right:10px;
+  }
+  /* On touch, only the current section keeps the cyan marker; a retained
+     hover after tapping must not suggest that two sections are active. */
+  .masthead__link:not([aria-current="location"]) {
+    color:var(--stage-white);
+  }
+  .masthead__link:not([aria-current="location"])::after {
+    transform:scaleX(0);
+  }
+  html:not(.stage-ready) .masthead__nav {
+    position:static;
+    visibility:visible;
+    opacity:1;
+    transform:none;
+  }
+  html:not(.stage-ready) .masthead {
+    height:auto;
+    min-height:var(--stage-header-height);
+  }
+  html:not(.stage-ready) .masthead__inner {
+    flex-wrap:wrap;
+    padding-block:16px;
+  }
+  html:not(.stage-ready) .masthead__nav {
+    flex-basis:100%;
+    flex-direction:row;
+    flex-wrap:wrap;
+    padding:0;
+    border:0;
+    box-shadow:none;
+  }
+  html:not(.stage-ready) .masthead__nav-scroll { display:contents; }
+  html:not(.stage-ready) .masthead__nav::before,html:not(.stage-ready) .masthead__nav::after { display:none; }
+  html:not(.stage-ready) .masthead__toggle,html:not(.stage-ready) .masthead__menu-caption {
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .masthead *,.masthead *::after {
+    transition:none !important;
+  }
+}
