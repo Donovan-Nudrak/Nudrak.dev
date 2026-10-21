@@ -1,4 +1,4 @@
-// Content from the Atlas and docs/Nudrak-Donovan.md. No invented URLs or results.
+// Content from the Atlas, docs/Nudrak-Donovan.md and project details supplied by the owner.
 export const projectTranslations = {
   "en": {
     "pjKicker": "03 / SELECTED WORK",
@@ -21,6 +21,15 @@ export const projectTranslations = {
     "pjDetailsFor": "View details: ",
     "pjImageAlt": "Illustration of the project: ",
     "pjImageScreenshot": "Project screenshot",
+    "pj_daily-club_summary": "A fictional everyday fashion brand with an editorial presentation, interactive catalogue and demo cart.",
+    "pj_daily-club_purpose": "A conceptual website for a fictional everyday fashion brand. It combines an editorial presentation with an interactive catalogue and a demo cart. Products and prices are fictional; it does not process orders or payments.",
+    "pj_daily-club_technical": "React 19, TypeScript, Vite 8 and CSS Modules. A single-page frontend with anchor navigation, a local TypeScript catalogue and Context API for language and cart state. Stored cart data is validated, with an in-memory fallback if localStorage fails. Native dialogs, focus management, keyboard support and reduced motion guide interactions. WebP images, lazy loading and a shared IntersectionObserver support resource loading and CSS animations. GitHub Actions publishes the static site to GitHub Pages.",
+    "pj_daily-club_open": "View details: DAILY CLUB",
+    "pj_daily-club_feature_0": "Twelve products across four categories, with filters and product details showing photography, description, colour and prices in MXN.",
+    "pj_daily-club_feature_1": "Three interactive looks with photo hotspots and expandable garment lists.",
+    "pj_daily-club_feature_2": "A cart with an item counter, quantity controls, product removal and subtotal calculation.",
+    "pj_daily-club_feature_3": "Spanish and English interface, with the cart and selected language saved between visits.",
+    "pj_daily-club_feature_4": "Responsive layouts, mobile navigation, entrance animations and interaction effects.",
     "pj_low-hours_summary": "A website for a late-night café: menu, gallery and music in an editorial experience.",
     "pj_low-hours_purpose": "Presents the atmosphere and offering of a fictional late-night café. Brand content, photography, a menu and music let visitors explore the place before visiting.",
     "pj_low-hours_technical": "React 19, TypeScript and Vite 8. GSAP, ScrollTrigger and Lenis coordinate animation and scrolling.",
@@ -140,6 +149,15 @@ export const projectTranslations = {
     "pjDetailsFor": "Ver detalles: ",
     "pjImageAlt": "Ilustración del proyecto: ",
     "pjImageScreenshot": "Captura del proyecto",
+    "pj_daily-club_summary": "Una marca ficticia de moda cotidiana con presentación editorial, catálogo interactivo y carrito de demostración.",
+    "pj_daily-club_purpose": "Web conceptual de una marca ficticia de moda cotidiana. Combina una presentación editorial con un catálogo interactivo y un carrito de demostración. Los productos y precios son ficticios; no procesa pedidos ni pagos.",
+    "pj_daily-club_technical": "React 19, TypeScript, Vite 8 y CSS Modules. Frontend de una sola página con navegación por anclas, catálogo local en TypeScript y Context API para el idioma y el carrito. Valida los datos guardados del carrito y mantiene el estado en memoria si falla localStorage. Las interacciones contemplan diálogos nativos, gestión del foco, teclado y movimiento reducido. Imágenes WebP, carga diferida y un IntersectionObserver compartido apoyan la carga de recursos y las animaciones CSS. GitHub Actions publica el sitio estático en GitHub Pages.",
+    "pj_daily-club_open": "Ver detalles: DAILY CLUB",
+    "pj_daily-club_feature_0": "Doce productos en cuatro categorías, con filtros y fichas con fotografía, descripción, color y precios en MXN.",
+    "pj_daily-club_feature_1": "Tres looks interactivos con puntos sobre las fotografías y listas desplegables de prendas.",
+    "pj_daily-club_feature_2": "Carrito con contador, modificación de cantidades, eliminación de productos y cálculo de subtotal.",
+    "pj_daily-club_feature_3": "Interfaz en español e inglés, con conservación del carrito y del idioma entre visitas.",
+    "pj_daily-club_feature_4": "Diseño adaptable, navegación móvil, animaciones de entrada y efectos de interacción.",
     "pj_low-hours_summary": "Una web para una cafetería nocturna: menú, galería y música en una experiencia editorial.",
     "pj_low-hours_purpose": "Presenta el ambiente y la oferta de una cafetería nocturna ficticia. Reúne contenido de marca, fotografías, menú y música para explorar el lugar antes de visitarlo.",
     "pj_low-hours_technical": "React 19, TypeScript y Vite 8. GSAP, ScrollTrigger y Lenis coordinan las animaciones y el desplazamiento.",
