@@ -471,8 +471,10 @@
       return;
     }
 
+    const finishMeasurement = window.InquiryMeasurement?.attempt();
     const challenge = validateTurnstile();
     if (!challenge.ok) {
+      finishMeasurement?.('verification');
       if (turnstileHost) turnstileHost.focus();
       return;
     }
@@ -495,6 +497,7 @@
     })
       .then(function (response) {
         if (response.ok) {
+          finishMeasurement?.();
           form.reset();
           filterServices();
           clearFieldErrors();
@@ -505,13 +508,16 @@
           return;
         }
         if (response.status === 429) {
+          finishMeasurement?.('rate_limit');
           setStatus("error-limit", t("inquiryErrorLimit"));
         } else {
+          finishMeasurement?.('provider');
           setStatus("error", t("inquiryErrorGeneric"));
         }
         updateMailFallback();
       })
       .catch(function () {
+        finishMeasurement?.(controller.signal.aborted ? 'timeout' : 'network');
         if (controller.signal.aborted) {
           setStatus("error-timeout", t("inquiryErrorTimeout"));
         } else {
