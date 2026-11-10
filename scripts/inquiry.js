@@ -125,6 +125,36 @@
     setTurnstileError("");
   }
 
+  function applyProviderErrors(body) {
+    const errors = new Map();
+    let unknown = false;
+    if (!body || !Array.isArray(body.errors) || !body.errors.length) {
+      return { firstInvalid: null, complete: false };
+    }
+    body.errors.forEach(function (error) {
+      let key = "";
+      if (error && typeof error.field === "string" && Object.hasOwn(fields, error.field)) {
+        if (error.code === "REQUIRED_FIELD_MISSING" || error.code === "REQUIRED_FIELD_EMPTY") {
+          key = "inquiryRequired";
+        } else if (error.field === "email" && error.code === "TYPE_EMAIL") {
+          key = "inquiryEmailInvalid";
+        } else if ((error.field === "name" || error.field === "message") && error.code === "TYPE_TEXT") {
+          key = "inquiryTextInvalid";
+        }
+      }
+      if (!key) unknown = true;
+      else if (!errors.has(error.field)) errors.set(error.field, key);
+    });
+    let firstInvalid = null;
+    // Use form order, independent of the order of errors returned by the provider.
+    Object.keys(fields).forEach(function (name) {
+      if (!errors.has(name)) return;
+      setFieldError(name, errors.get(name));
+      firstInvalid = firstInvalid || fields[name];
+    });
+    return { firstInvalid: firstInvalid, complete: !!firstInvalid && !unknown };
+  }
+
   function validate() {
     let ok = true;
     let firstInvalid = null;
@@ -183,6 +213,7 @@
   function isErrorKind(kind) {
     return (
       kind === "error" ||
+      kind === "error-validation" ||
       kind === "error-network" ||
       kind === "error-timeout" ||
       kind === "error-limit" ||
@@ -201,6 +232,7 @@
 
   function refreshTranslatedUi() {
     if (statusKind === "success") setStatus("success", t("inquirySuccess"));
+    else if (statusKind === "error-validation") setStatus("error-validation", t("inquiryErrorValidation"));
     else if (statusKind === "error-network") setStatus("error-network", t("inquiryErrorNetwork"));
     else if (statusKind === "error-timeout") setStatus("error-timeout", t("inquiryErrorTimeout"));
     else if (statusKind === "error-limit") setStatus("error-limit", t("inquiryErrorLimit"));
@@ -488,6 +520,7 @@
     setStatus("", "");
 
     const controller = new AbortController();
+    let providerFirstInvalid = null;
     const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
     fetch(ENDPOINT, {
       method: "POST",
@@ -495,7 +528,7 @@
       body: formData,
       headers: { Accept: "application/json" },
     })
-      .then(function (response) {
+      .then(async function (response) {
         if (response.ok) {
           finishMeasurement?.();
           form.reset();
@@ -507,7 +540,20 @@
           statusEl.focus();
           return;
         }
-        if (response.status === 429) {
+        if (response.status === 400 || response.status === 422) {
+          let body = null;
+          try {
+            body = await response.json();
+          } catch (error) {
+            // Unreadable provider errors still get our fallback; an abort stays a timeout.
+            if (controller.signal.aborted) throw error;
+          }
+          const validation = applyProviderErrors(body);
+          providerFirstInvalid = validation.firstInvalid;
+          finishMeasurement?.('provider');
+          setStatus(validation.complete ? "error-validation" : "error",
+            t(validation.complete ? "inquiryErrorValidation" : "inquiryErrorGeneric"));
+        } else if (response.status === 429) {
           finishMeasurement?.('rate_limit');
           setStatus("error-limit", t("inquiryErrorLimit"));
         } else {
@@ -530,6 +576,7 @@
         setSubmitting(false);
         if (widgetLanguage !== currentLang()) renderTurnstile();
         else resetTurnstile();
+        if (providerFirstInvalid) providerFirstInvalid.focus();
       });
   });
 
