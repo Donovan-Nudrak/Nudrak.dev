@@ -52,7 +52,7 @@
       <a href="#hero" class="masthead__brand" aria-label="NUDRAK - Home" data-i18n-aria="brandHome">
         <img src="assets/nudrak-mark.svg" alt="" width="72" height="64">
       </a>
-      <nav class="masthead__nav angular-surface" id="nav" aria-label="Main navigation" data-i18n-aria="mainNavigation"><div class="masthead__nav-scroll">
+      <nav class="masthead__nav angular-surface" id="nav" popover="auto" aria-label="Main navigation" data-i18n-aria="mainNavigation"><div class="masthead__nav-scroll">
         <span class="masthead__menu-caption" aria-hidden="true" data-i18n="menuCaption">EXPLORE NUDRAK</span>
         <a href="#hero" class="masthead__link" data-i18n="navHome">Home</a>
         <a href="#services" class="masthead__link" data-i18n="navServices">Services</a>
@@ -66,7 +66,7 @@
         <span aria-hidden="true">/</span>
         <button type="button" class="locale-button is-active" data-set-lang="en" aria-pressed="true">EN</button>
       </div>
-      <button type="button" class="masthead__toggle" id="nav-toggle" aria-controls="nav" aria-label="Open menu" data-i18n-aria="navMenu" aria-expanded="false">
+      <button type="button" class="masthead__toggle" id="nav-toggle" popovertarget="nav" aria-controls="nav" aria-label="Open menu" data-i18n-aria="navMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -709,6 +709,7 @@
   <script src="scripts/i18n.js"></script>
   <script src="scripts/measurement.js"></script>
   <script src="scripts/inquiry.js"></script>
+  <script type="module" src="scripts/navigation.js"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onNudrakTurnstileLoad" async defer></script>
   <script type="module" src="scripts/main.js"></script>
 </body>

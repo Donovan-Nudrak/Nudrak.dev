@@ -60,7 +60,18 @@
 }
 
 .masthead__nav {
-  margin-left:auto;
+  /* A closed popover remains an ordinary inline nav on desktop. On mobile,
+     native disclosure controls it without waiting for JavaScript. */
+  position:static;
+  inset:auto;
+  width:auto;
+  height:auto;
+  margin:0 0 0 auto;
+  padding:0;
+  border:0;
+  color:inherit;
+  background:transparent;
+  overflow:visible;
   display:flex;
   align-items:center;
 }
@@ -169,6 +180,16 @@
 @media(min-width:901px) {
   .masthead__nav.angular-surface { border:0; }
   .masthead__nav.angular-surface::before,.masthead__nav.angular-surface::after { display:none; }
+  /* Resizing an open native menu before JS arrives must not put it over the
+     header. The enhancement closes it on resize; this also works without JS. */
+  .masthead__nav:popover-open {
+    position:fixed;
+    inset:calc(var(--stage-header-height) + 19px) 16px auto;
+    margin:0;
+    padding:16px;
+    justify-content:center;
+    background:var(--stage-surface-overlay);
+  }
 }
 
 @media(max-width:900px) {
@@ -208,13 +229,13 @@
     background:var(--stage-cyan);
     transition:transform .2s,opacity .2s;
   }
-  .masthead.is-open .masthead__toggle span:nth-child(1) {
+  .masthead:has(.masthead__nav:popover-open) .masthead__toggle span:nth-child(1) {
     transform:translateY(7px) rotate(45deg);
   }
-  .masthead.is-open .masthead__toggle span:nth-child(2) {
+  .masthead:has(.masthead__nav:popover-open) .masthead__toggle span:nth-child(2) {
     opacity:0;
   }
-  .masthead.is-open .masthead__toggle span:nth-child(3) {
+  .masthead:has(.masthead__nav:popover-open) .masthead__toggle span:nth-child(3) {
     transform:translateY(-7px) rotate(-45deg);
   }
   .masthead__nav {
@@ -222,20 +243,17 @@
     --panel-br:18px;
     --panel-fill:var(--stage-surface-overlay);
     --panel-line:var(--stage-cyan);
-    position:absolute;
-    top:calc(100% + 19px);
+    position:fixed;
+    top:calc(var(--stage-header-height) + 19px);
+    bottom:auto;
     inset-inline:16px;
     margin:0;
     padding:0;
     max-height:calc(100dvh - var(--stage-header-height) - 35px);
     overflow:visible;
-    display:flex;
+    display:none;
     flex-direction:column;
     align-items:stretch;
-    visibility:hidden;
-    opacity:0;
-    transform:translateY(-8px);
-    transition:opacity .2s,transform .2s;
   }
   .masthead__nav-scroll {
     display:flex;
@@ -247,10 +265,8 @@
     overscroll-behavior:contain;
     scrollbar-color:var(--stage-cyan) transparent;
   }
-  .masthead.is-open .masthead__nav {
-    visibility:visible;
-    opacity:1;
-    transform:none;
+  .masthead__nav:popover-open {
+    display:flex;
   }
   .masthead__menu-caption {
     display:block;
@@ -277,33 +293,6 @@
   }
   .masthead__link:not([aria-current="location"])::after {
     transform:scaleX(0);
-  }
-  html:not(.stage-ready) .masthead__nav {
-    position:static;
-    visibility:visible;
-    opacity:1;
-    transform:none;
-  }
-  html:not(.stage-ready) .masthead {
-    height:auto;
-    min-height:var(--stage-header-height);
-  }
-  html:not(.stage-ready) .masthead__inner {
-    flex-wrap:wrap;
-    padding-block:16px;
-  }
-  html:not(.stage-ready) .masthead__nav {
-    flex-basis:100%;
-    flex-direction:row;
-    flex-wrap:wrap;
-    padding:0;
-    border:0;
-    box-shadow:none;
-  }
-  html:not(.stage-ready) .masthead__nav-scroll { display:contents; }
-  html:not(.stage-ready) .masthead__nav::before,html:not(.stage-ready) .masthead__nav::after { display:none; }
-  html:not(.stage-ready) .masthead__toggle,html:not(.stage-ready) .masthead__menu-caption {
-    display:none;
   }
 }
 

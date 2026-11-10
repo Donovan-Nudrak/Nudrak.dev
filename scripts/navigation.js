@@ -1,35 +1,43 @@
-export function initNavigation() {
+function initNavigation() {
   const header = document.querySelector('.masthead');
   const toggle = header?.querySelector('[aria-controls="nav"]');
   const nav = document.getElementById('nav');
   if (!header || !toggle || !nav) return;
   const mobile = window.matchMedia('(max-width: 900px)');
   const links = [...nav.querySelectorAll('a')];
-  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
-  function setOpen(open, returnFocus = false) {
-    header.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
+  const isOpen = () => nav.matches(':popover-open');
+  function syncLabel() {
+    const open = isOpen();
     toggle.setAttribute('data-i18n-aria', open ? 'navClose' : 'navMenu');
-    toggle.setAttribute('aria-label', window.I18n.t(open ? 'navClose' : 'navMenu'));
-    nav.inert = mobile.matches && !open;
-    if (open && mobile.matches) links[0]?.focus();
-    if (returnFocus) toggle.focus();
+    if (window.I18n?.t) toggle.setAttribute('aria-label', window.I18n.t(open ? 'navClose' : 'navMenu'));
   }
-  toggle.addEventListener('click', () => setOpen(!isOpen()));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && mobile.matches && isOpen()) setOpen(false, true);
+  function close(returnFocus = false) {
+    if (isOpen()) nav.hidePopover();
+    if (returnFocus) toggle.focus({ preventScroll: true });
+  }
+  // HTML owns disclosure, Escape and light dismiss, including before this module loads.
+  // Do not duplicate the browser's expanded state with aria-expanded or another flag.
+  nav.addEventListener('toggle', () => {
+    syncLabel();
+    if (isOpen() && mobile.matches) links[0]?.focus({ preventScroll: true });
   });
-  document.addEventListener('pointerdown', event => {
-    if (mobile.matches && isOpen() && !header.contains(event.target)) setOpen(false);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mobile.matches && isOpen()) close(true);
   });
   document.addEventListener('focusin', event => {
-    if (mobile.matches && isOpen() && !header.contains(event.target)) setOpen(false);
+    if (mobile.matches && isOpen() && !header.contains(event.target)) close();
   });
   links.forEach(link => link.addEventListener('click', () => {
-    if (mobile.matches) setOpen(false, true);
+    if (mobile.matches) close(true);
   }));
-  mobile.addEventListener('change', () => setOpen(false));
-  setOpen(false);
+  mobile.addEventListener('change', () => {
+    const focusInNav = nav.contains(document.activeElement);
+    const focusOnToggle = document.activeElement === toggle;
+    close();
+    if (mobile.matches && focusInNav) toggle.focus({ preventScroll: true });
+    if (!mobile.matches && (focusOnToggle || document.activeElement === toggle)) links[0]?.focus({ preventScroll: true });
+  });
+  syncLabel();
   const sections = links.map(link => document.querySelector(link.getAttribute('href')))
     .filter(Boolean).sort((a, b) => a.offsetTop - b.offsetTop);
   const updateCurrent = () => {
@@ -48,3 +56,5 @@ export function initNavigation() {
   }, { passive: true });
   updateCurrent();
 }
+
+initNavigation();
