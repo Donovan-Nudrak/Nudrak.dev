@@ -1,0 +1,102 @@
+/* Standalone error page; shared foundations preserve the site's visual identity. */
+.not-found {
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  min-height:100svh;
+}
+
+.not-found__header,.not-found__footer {
+  margin-inline:var(--stage-gutter);
+  padding-block:24px;
+}
+
+.not-found__header {
+  border-bottom:1px solid var(--stage-line);
+}
+
+.not-found__brand {
+  display:inline-flex;
+  align-items:center;
+  gap:18px;
+  min-height:48px;
+}
+
+.not-found__brand img:first-child { width:48px; height:auto; }
+.not-found__brand img:last-child { width:152px; height:auto; }
+
+.not-found__main {
+  display:grid;
+  align-content:center;
+  flex:1;
+  width:100%;
+  max-width:1440px;
+  margin-inline:auto;
+  padding:clamp(40px,6vw,88px) var(--stage-gutter);
+}
+
+.not-found__panel {
+  --panel-tl:24px;
+  --panel-br:24px;
+  --panel-accent:var(--stage-cyan);
+  --panel-accent-size:64px;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:center;
+  gap:clamp(32px,5vw,80px);
+  padding:clamp(32px,4vw,64px);
+}
+
+.not-found__code {
+  color:var(--stage-cyan);
+  font:900 clamp(80px,12vw,176px)/1 "Orbitron",var(--stage-font);
+  letter-spacing:-.06em;
+  text-shadow:0 0 32px rgba(0,229,255,.18);
+}
+
+.not-found__content { min-width:0; }
+.not-found__content h1 {
+  margin-top:16px;
+  font:700 clamp(28px,3.3vw,48px)/1.2 var(--stage-font);
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+
+.not-found__message {
+  max-width:42ch;
+  margin-top:20px;
+  color:var(--stage-muted);
+  font-size:1.125rem;
+}
+
+.not-found__links {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px;
+  margin-top:32px;
+}
+
+.not-found__links .stage-button { gap:24px; }
+.not-found__contact {
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  min-height:48px;
+  padding:12px 8px;
+  text-decoration:underline;
+  text-underline-offset:.25em;
+}
+.not-found__contact:hover { color:var(--stage-cyan); }
+.not-found__footer {
+  color:var(--stage-muted);
+  font:400 12px/1.6 var(--stage-mono);
+  letter-spacing:.1em;
+}
+
+@media(max-width:760px) {
+  .not-found__panel { grid-template-columns:minmax(0,1fr); gap:28px; padding:32px 24px; }
+  .not-found__code { font-size:clamp(72px,22vw,136px); }
+  .not-found__links { flex-direction:column; align-items:stretch; }
+  .not-found__contact { align-self:flex-start; }
+}

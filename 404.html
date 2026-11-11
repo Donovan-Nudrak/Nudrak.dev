@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>404 — Página no encontrada | NUDRAK</title>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/site.css">
+  <link rel="stylesheet" href="/styles/hito-base.css">
+  <link rel="stylesheet" href="/styles/angular-surfaces.css">
+  <link rel="stylesheet" href="/styles/background.css">
+  <link rel="stylesheet" href="/styles/404.css">
+</head>
+<body class="not-found">
+  <div class="stage-backdrop" aria-hidden="true">
+    <div class="stage-backdrop__image"></div>
+  </div>
+  <a class="stage-skip" href="#main-content">Saltar al contenido</a>
+  <header class="not-found__header">
+    <a href="/" class="not-found__brand" aria-label="NUDRAK — Inicio">
+      <img src="/assets/nudrak-mark.svg" alt="" width="72" height="64">
+      <img src="/assets/nudrak-wordmark.svg" alt="NUDRAK" width="980" height="132">
+    </a>
+  </header>
+  <main class="not-found__main" id="main-content" tabindex="-1">
+    <section class="not-found__panel angular-surface" aria-labelledby="not-found-title">
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <div class="not-found__content">
+        <p class="stage-kicker">RUTA NO ENCONTRADA</p>
+        <h1 id="not-found-title"><span class="stage-sr-only">Error 404. </span>Esta página no existe.</h1>
+        <p class="not-found__message">Puede que el enlace haya cambiado. Elige dónde continuar.</p>
+        <nav class="not-found__links" aria-label="Continuar en Nudrak">
+          <a class="stage-button stage-button--primary" href="/">Volver al inicio <span aria-hidden="true">→</span></a>
+          <a class="stage-button" href="/#projects">Ver proyectos <span aria-hidden="true">→</span></a>
+          <a class="not-found__contact" href="/#contact">Contacto <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </section>
+  </main>
+  <footer class="not-found__footer"><p>NUDRAK / DESARROLLO WEB</p></footer>
+</body>
+</html>
