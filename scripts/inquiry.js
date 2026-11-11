@@ -323,7 +323,7 @@
         theme: "dark",
         size: "flexible",
         language: currentLang() === "es" ? "es" : "en",
-        appearance: "always",
+        appearance: "interaction-only",
         "refresh-expired": "manual",
         callback: function (token) {
           turnstileToken = token || "";

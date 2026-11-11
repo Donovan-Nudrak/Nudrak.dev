@@ -9,7 +9,7 @@
 .inquiry__field input:focus-visible,.inquiry__field select:focus-visible,.inquiry__field textarea:focus-visible { outline:2px solid var(--stage-cyan); outline-offset:2px; border-color:var(--stage-cyan); }
 .inquiry__field input[aria-invalid="true"],.inquiry__field select[aria-invalid="true"],.inquiry__field textarea[aria-invalid="true"] { border-color:#ff9baf; }
 .inquiry__turnstile { display:flex; flex-direction:column; gap:.4rem; margin-top:1.15rem; }
-.inquiry__turnstile-widget { min-height:65px; max-width:100%; overflow-x:auto; }
+.inquiry__turnstile-widget { min-height:0; max-width:100%; overflow-x:auto; }
 .inquiry__turnstile-widget[aria-invalid="true"] { outline:2px solid #ff9baf; outline-offset:2px; }
 .inquiry__status { min-height:1.4em; margin:1rem 0 .75rem; }
 .inquiry__submit-row { display:flex; flex-wrap:wrap; align-items:center; gap:.85rem 1.25rem; }
