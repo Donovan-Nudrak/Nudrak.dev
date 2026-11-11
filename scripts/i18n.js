@@ -724,14 +724,14 @@
     });
   }
 
-  function setLanguage(lang) {
-    if (!content[lang]) return;
+  function isSupportedLanguage(lang) {
+    return lang === "es" || lang === "en";
+  }
+
+  // Apply translations without treating detection or module registration as a choice.
+  function applyLanguage(lang) {
+    if (!isSupportedLanguage(lang)) return;
     currentLang = lang;
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-    } catch (_) {
-      // Language changes still apply when browser storage is unavailable.
-    }
     document.documentElement.lang = lang === "es" ? "es" : "en";
 
     document.title = t("docTitle");
@@ -760,26 +760,46 @@
     document.dispatchEvent(new CustomEvent("languagechange", { detail: { lang: currentLang } }));
   }
 
+  // The selector and public setter represent an explicit visitor choice.
+  function setLanguage(lang) {
+    if (!isSupportedLanguage(lang)) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch (_) {
+      // Language changes still apply when browser storage is unavailable.
+    }
+    applyLanguage(lang);
+  }
+
   document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       setLanguage(btn.getAttribute("data-set-lang"));
     });
   });
 
-  let saved = null;
-  try {
-    saved = localStorage.getItem(STORAGE_KEY);
-  } catch (_) {
-    // Start in English and keep the selected language in memory for this page.
+  function initialLanguage() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (isSupportedLanguage(saved)) return saved;
+    } catch (_) {
+      // Browser preferences still work when storage cannot be read.
+    }
+    const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+    for (const tag of languages) {
+      if (typeof tag !== "string") continue;
+      const language = tag.toLowerCase().split("-")[0];
+      if (isSupportedLanguage(language)) return language;
+    }
+    return "en";
   }
-  setLanguage(content[saved] ? saved : "en");
+  applyLanguage(initialLanguage());
 
   // Section modules contribute their own strings to the single language controller.
   function register(translations) {
     Object.keys(translations).forEach(function (lang) {
-      if (content[lang]) Object.assign(content[lang], translations[lang]);
+      if (isSupportedLanguage(lang)) Object.assign(content[lang], translations[lang]);
     });
-    setLanguage(currentLang);
+    applyLanguage(currentLang);
   }
 
   window.I18n = { register: register, setLanguage: setLanguage, t: t, getLang: function () { return currentLang; } };
