@@ -118,7 +118,7 @@
   --panel-tr:12px;
   --panel-br:24px;
   --panel-bl:12px;
-  --panel-fill:linear-gradient(135deg,rgba(8,22,30,.9),var(--stage-surface) 60%);
+  --panel-fill:linear-gradient(135deg,rgba(8,22,30,.98),var(--stage-surface-overlay) 60%);
   --panel-tl-line:var(--stage-cyan);
   --panel-br-line:var(--stage-cyan);
   /* Match the diagonal and straight cyan accents, including the no-JS state. */
@@ -196,17 +196,19 @@
   padding:11px 22px;
   min-width:168px;
   font-size:14px;
+  color:var(--stage-black);
 }
 
-.offer-card__button::before {
+.offer-card__button::before,.offer-card__button::after {
   background:var(--stage-cyan);
 }
 .offer-card__button svg {
-  color:var(--stage-cyan);
+  color:currentColor;
   width:22px;
 }
 
 .agency-offers {
+  --panel-fill:var(--stage-surface-overlay);
   --panel-tl:28px;
   --panel-br:28px;
   --panel-accent:var(--stage-cyan);
@@ -253,20 +255,39 @@
   color:var(--stage-white);
 }
 .agency-offer__link {
+  position:relative;
+  isolation:isolate;
   grid-column:2;
   justify-self:start;
   display:inline-flex;
   align-items:center;
   gap:22px;
-  min-height:44px;
-  color:var(--stage-cyan);
+  min-height:48px;
+  min-width:168px;
+  padding:12px 18px;
+  color:var(--stage-black);
   font-size:14px;
+}
+.agency-offer__link::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:var(--stage-cyan);
+  clip-path:var(--stage-button-shape);
+  pointer-events:none;
 }
 .agency-offer__link svg,.service-modes__ask svg {
   width:23px;
   height:18px;
 }
-.agency-offer__link:hover,.service-modes__ask:hover {
+.agency-offer__link svg {
+  flex-shrink:0;
+}
+.agency-offer__link:hover {
+  color:var(--stage-black);
+}
+.service-modes__ask:hover {
   color:var(--stage-white);
 }
 
@@ -330,6 +351,7 @@
   gap:20px;
 }
 .service-mode {
+  --panel-fill:var(--stage-surface-overlay);
   --panel-tr:18px;
   --panel-bl:18px;
   padding:28px;

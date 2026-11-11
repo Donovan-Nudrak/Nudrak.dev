@@ -75,7 +75,7 @@
   --panel-tr:12px;
   --panel-br:22px;
   --panel-bl:8px;
-  --panel-fill:var(--stage-surface);
+  --panel-fill:var(--stage-surface-overlay);
   --panel-line:var(--stage-line);
   --panel-accent:var(--stage-cyan);
   --panel-accent-size:36px;

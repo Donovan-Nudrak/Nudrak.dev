@@ -147,7 +147,7 @@
 
 /* A text link advertises its action before hover; framed buttons retain their
    own shape. Channel labels stay static while their destination is underlined. */
-:is(.service-hub,.page-section) a:not(.stage-button):not(.contact-channel--link):not(.service-hub__jump a) {
+:is(.service-hub,.page-section) a:not(.stage-button,.agency-offer__link):not(.contact-channel--link):not(.service-hub__jump a) {
   text-decoration-line:underline;
   text-decoration-thickness:1px;
   text-underline-offset:.22em;
@@ -159,6 +159,7 @@
   text-underline-offset:.22em;
 }
 :is(.service-hub,.page-section,.site-footer) .stage-button,
+.service-hub .agency-offer__link,
 .page-section :is(.work-filter,.contact-copy),
 .service-hub .inquiry__retry {
   font:600 var(--type-action)/1.4 var(--stage-font);
@@ -168,7 +169,7 @@
   overflow-wrap:anywhere;
 }
 :is(.service-hub,.page-section,.site-footer) .stage-button > span { min-width:0; }
-:is(.service-hub,.page-section) :is(.agency-offer__link,.service-modes__ask,
+:is(.service-hub,.page-section) :is(.service-modes__ask,
   .service-inquiry__email,.inquiry__mail-fallback,.work-card__links a,
   .work-detail__links a,.profile-project,.profile-certificate),
 .service-hub__jump a {
