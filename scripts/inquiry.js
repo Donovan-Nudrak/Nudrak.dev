@@ -73,13 +73,30 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
+  function syncClassificationValidity() {
+    const audience = audienceSelect.value;
+    const service = serviceSelect.value;
+    const option = serviceOptions.find(option => option.value === service);
+    const errors = {
+      audience: audience && !Object.hasOwn(AUDIENCE_KEYS, audience) ? "inquiryAudienceInvalid" : "",
+      service: service && (!Object.hasOwn(SERVICE_KEYS, service) || !option || option.disabled ||
+        (option.dataset.audience && option.dataset.audience !== audience)) ? "inquiryServiceInvalid" : "",
+    };
+    // Keep native constraint checks and our field errors in agreement.
+    audienceSelect.setCustomValidity(errors.audience ? t(errors.audience) : "");
+    serviceSelect.setCustomValidity(errors.service ? t(errors.service) : "");
+    return errors;
+  }
+
   function syncHiddenMeta() {
+    syncClassificationValidity();
     const lang = currentLang();
     if (languageInput) languageInput.value = lang;
     const service = serviceSelect.value;
     const labelKey = SERVICE_KEYS[service];
     const label = labelKey ? t(labelKey) : "";
-    const audienceLabel = t(AUDIENCE_KEYS[audienceSelect.value]);
+    const audienceKey = AUDIENCE_KEYS[audienceSelect.value];
+    const audienceLabel = audienceKey ? t(audienceKey) : "";
     if (serviceLabelInput) serviceLabelInput.value = label;
     if (audienceLabelInput) audienceLabelInput.value = audienceLabel;
     if (subjectInput) {
@@ -160,7 +177,7 @@
     let firstInvalid = null;
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
-    const service = serviceSelect.value;
+    const classificationErrors = syncClassificationValidity();
     const message = messageInput.value.trim();
 
     if (!name) {
@@ -183,16 +200,16 @@
       setFieldError("email", "");
     }
 
-    if (!AUDIENCE_KEYS[audienceSelect.value]) {
-      setFieldError("audience", "inquiryRequired");
+    if (classificationErrors.audience) {
+      setFieldError("audience", classificationErrors.audience);
       ok = false;
       firstInvalid = firstInvalid || audienceSelect;
     } else {
       setFieldError("audience", "");
     }
 
-    if (!service || !SERVICE_KEYS[service] || serviceSelect.selectedOptions[0]?.disabled) {
-      setFieldError("service", "inquiryRequired");
+    if (classificationErrors.service) {
+      setFieldError("service", classificationErrors.service);
       ok = false;
       firstInvalid = firstInvalid || serviceSelect;
     } else {
@@ -254,8 +271,8 @@
     const body = [
       t("inquiryName") + ": " + nameInput.value.trim(),
       t("inquiryEmail") + ": " + emailInput.value.trim(),
-      t("inquiryAudience") + ": " + audienceLabelInput.value,
-      t("inquiryService") + ": " + (serviceLabelInput.value || serviceSelect.value),
+      ...(audienceSelect.value ? [t("inquiryAudience") + ": " + audienceLabelInput.value] : []),
+      ...(serviceSelect.value ? [t("inquiryService") + ": " + (serviceLabelInput.value || serviceSelect.value)] : []),
       "",
       messageInput.value.trim(),
     ].join("\n");
@@ -427,7 +444,8 @@
     serviceSelect.querySelectorAll("optgroup").forEach(group => {
       group.hidden = Array.from(group.children).every(option => option.hidden);
     });
-    if (serviceOptions.some(option => option.value === selected && option.disabled)) {
+    if (serviceOptions.some(option => option.value === selected &&
+      (option.disabled || (option.dataset.audience && option.dataset.audience !== audience)))) {
       serviceSelect.value = "";
       return true;
     }
@@ -514,6 +532,13 @@
     syncHiddenMeta();
     updateMailFallback();
     const formData = new FormData(form);
+    // Omit empty classifications together with their human-readable labels.
+    ["audience", "service"].forEach(function (name) {
+      if (!formData.get(name)) {
+        formData.delete(name);
+        formData.delete(name + "_label");
+      }
+    });
     formData.set("cf-turnstile-response", challenge.token);
     // Snapshot data before disabling controls so repeated submits cannot lose fields.
     setSubmitting(true);

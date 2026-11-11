@@ -357,7 +357,7 @@
         <section class="service-hub__block service-inquiry" aria-labelledby="inquiry-heading">
           <div class="service-inquiry__intro"><p class="stage-kicker" data-i18n="svcInquiryEyebrow">LET’S TALK ABOUT YOUR PROJECT</p><div class="service-hub__heading"><span class="service-hub__index" aria-hidden="true">05</span><h3 class="stage-title" id="inquiry-heading" data-i18n="svcInquiryTitle">What do you need built?</h3></div><p class="stage-copy" data-i18n="svcInquiryIntro">Tell me what you need and share the context you have. It can be a new project, an improvement or a collaboration. I’ll reply to the email you provide.</p><a class="service-inquiry__email" href="mailto:donovannud@gmail.com">donovannud@gmail.com</a></div>
         <form class="inquiry inquiry--services stage-surface angular-surface" id="inquiry" aria-labelledby="inquiry-heading" novalidate>
-          <p class="inquiry__intro" data-i18n="svcInquiryRequired">All fields are required. If you haven’t decided on a service, choose “I need guidance”.</p>
+          <p class="inquiry__intro" data-i18n="svcInquiryRequired">Name, email and message are required. Inquiry type and service are optional.</p>
 
           <noscript>
             <p class="inquiry__noscript">JavaScript is required to send from this page. Email <a href="mailto:donovannud@gmail.com">donovannud@gmail.com</a>. · Se necesita JavaScript para enviar desde esta página.</p>
@@ -385,8 +385,8 @@
             </div>
 
             <div class="inquiry__field">
-              <label for="inquiry-audience" data-i18n="inquiryAudience">Inquiry type</label>
-              <select id="inquiry-audience" name="audience" required aria-describedby="inquiry-audience-error">
+              <label for="inquiry-audience"><span data-i18n="inquiryAudience">Inquiry type</span> <span data-i18n="inquiryOptional">(optional)</span></label>
+              <select id="inquiry-audience" name="audience" aria-describedby="inquiry-audience-error">
                 <option value="" data-i18n="inquiryAudiencePlaceholder">Select who is inquiring</option>
                 <option value="direct" data-i18n="inquiryAudienceDirect">Business or professional</option>
                 <option value="agency" data-i18n="inquiryAudienceAgency">Agency or studio</option>
@@ -396,8 +396,8 @@
               <p class="inquiry__field-error" id="inquiry-audience-error" hidden></p>
             </div>
             <div class="inquiry__field">
-              <label for="inquiry-service" data-i18n="inquiryService">Service of interest</label>
-              <select id="inquiry-service" name="service" required aria-describedby="inquiry-service-error">
+              <label for="inquiry-service"><span data-i18n="inquiryService">Service of interest</span> <span data-i18n="inquiryOptional">(optional)</span></label>
+              <select id="inquiry-service" name="service" aria-describedby="inquiry-service-error">
                 <option value="" data-i18n="inquiryServicePlaceholder">Select an option</option>
                 <option value="guidance" data-i18n="inquiryServiceGuidance">I need guidance</option>
                 <optgroup label="Businesses and professionals" data-i18n-label="svcNavDirect"><option value="web" data-audience="direct" data-i18n="svc_web_title">Business and professional websites</option>
