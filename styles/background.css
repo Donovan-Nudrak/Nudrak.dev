@@ -20,7 +20,7 @@ body::before,body::after {
 .stage-backdrop__image {
   position:absolute;
   inset:0;
-  background:url("../assets/hero-cityscape.png") 60% top/cover no-repeat;
+  background:url("../assets/hero-cityscape.avif") 60% top/cover no-repeat;
   transform-origin:65% 65%;
 }
 
