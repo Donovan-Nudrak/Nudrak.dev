@@ -21,6 +21,7 @@ body::before,body::after {
   position:absolute;
   inset:0;
   background:url("../assets/hero-cityscape.avif") 60% top/cover no-repeat;
+  opacity:.40;
   transform-origin:65% 65%;
 }
 
