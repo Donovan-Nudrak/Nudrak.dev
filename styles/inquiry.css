@@ -6,6 +6,7 @@
 .inquiry__field { display:flex; flex-direction:column; gap:.4rem; min-width:0; }
 .inquiry__field input,.inquiry__field select,.inquiry__field textarea { width:100%; padding:.7rem .85rem; font-size:1rem; color-scheme:dark; }
 .inquiry__field textarea { min-height:8.5rem; resize:vertical; }
+.inquiry__selection { margin:0; color:var(--stage-muted); font-size:1rem; line-height:1.6; overflow-wrap:anywhere; }
 .inquiry__field input:focus-visible,.inquiry__field select:focus-visible,.inquiry__field textarea:focus-visible { outline:2px solid var(--stage-cyan); outline-offset:2px; border-color:var(--stage-cyan); }
 .inquiry__field input[aria-invalid="true"],.inquiry__field select[aria-invalid="true"],.inquiry__field textarea[aria-invalid="true"] { border-color:#ff9baf; }
 .inquiry__turnstile { display:flex; flex-direction:column; gap:.4rem; margin-top:1.15rem; }

@@ -10,6 +10,7 @@
   const emailInput = document.getElementById("inquiry-email");
   const audienceSelect = document.getElementById("inquiry-audience");
   const serviceSelect = document.getElementById("inquiry-service");
+  const serviceSelection = document.getElementById("inquiry-service-selection");
   const messageInput = document.getElementById("inquiry-message");
   const statusEl = document.getElementById("inquiry-status");
   const submitBtn = document.getElementById("inquiry-submit");
@@ -95,6 +96,10 @@
     const service = serviceSelect.value;
     const labelKey = SERVICE_KEYS[service];
     const label = labelKey ? t(labelKey) : "";
+    if (serviceSelection) {
+      serviceSelection.textContent = service ? serviceSelect.selectedOptions[0].textContent.trim() : "";
+      serviceSelection.hidden = !service;
+    }
     const audienceKey = AUDIENCE_KEYS[audienceSelect.value];
     const audienceLabel = audienceKey ? t(audienceKey) : "";
     if (serviceLabelInput) serviceLabelInput.value = label;

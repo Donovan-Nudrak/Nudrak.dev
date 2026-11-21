@@ -299,6 +299,12 @@
   letter-spacing:-.02em;
 }
 .agency-offer > div { min-width:0; }
+.service-hub :is(.offer-card,.agency-offer,.service-mode,.service-collab__list,.service-faq),
+.technical-profile .stage-copy,.contact-channel,
+.method-step,.work-detail__body { overflow-wrap:anywhere; }
+.contact-channel > div { min-width:0; }
+.service-faq > div,.service-faq__item summary > [data-i18n],
+.method-step__action > span { min-width:0; }
 .service-hub__intro { margin-bottom:36px; }
 .service-hub__heading .stage-title,
 .service-hub__title > span,.page-section__title > span { min-width:0; overflow-wrap:anywhere; }
@@ -330,6 +336,11 @@
     --type-body:1.0625rem;
   }
   .service-mode h5 { margin:14px 0 18px; }
+  /* Keep the number beside the heading; give agency copy the full mobile measure. */
+  .agency-offer > div { display:contents; }
+  .agency-offer h4 { grid-column:2; }
+  .agency-offer p,.agency-offer__link { grid-column:1 / -1; }
+  .agency-offer p { margin-top:0; }
   .work-detail__body { padding:28px 22px; }
   .work-card__body { padding:26px 22px; }
   .service-hub__heading { gap:12px; }
